@@ -102,6 +102,34 @@
               class="mt-4 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200">
         Download Recommendation
       </button>
+      <!-- Upload Patient List Button -->
+      <button onclick="document.getElementById('patientUpload').click()"
+      class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-200">
+      Upload Patient List
+      </button>
+      <input type="file" id="patientUpload" accept=".csv" class="hidden" />
+
+      <!-- Eligibility Table -->
+      <div id="patientResult" class="mt-6 hidden">
+      <h3 class="text-lg font-semibold text-gray-700 mb-2">Patient Eligibility Check</h3>
+      <table class="w-full text-sm text-left border border-collapse border-gray-300">
+      <thead class="bg-gray-100">
+      <tr>
+      <th class="border px-4 py-2">Patient Name</th>
+      <th class="border px-4 py-2">Age</th>
+      <th class="border px-4 py-2">Region</th>
+      <th class="border px-4 py-2">Medical History</th>
+      <th class="border px-4 py-2">Eligible</th>
+      </tr>
+      </thead>
+      <tbody id="patientTableBody"></tbody>
+      </table>
+      <!-- Filter Button -->
+      <button id="filterEligibleBtn"
+              class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200 hidden">
+        Show Only Eligible Patients
+      </button>
+      </div>
     </div>
   </div>
 
@@ -110,33 +138,33 @@
     const responseEl = document.getElementById('aiResponse');
 
     form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData);
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
 
-  responseEl.innerHTML = "<p class='italic text-gray-500'>🧠 Making your trial based on past studies...</p>";
+      responseEl.innerHTML = "<p class='italic text-gray-500'>🧠 Making your trial based on past studies...</p>";
 
-  try {
-    const res = await fetch('/submit-trial', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      try {
+        const res = await fetch('/submit-trial', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+        let content = result.message || "<p>No AI response received.</p>";
+
+        // ✅ Remove ```html and ``` if wrapped
+        if (content.startsWith("```html")) {
+          content = content.replace(/^```html\s*/, "").replace(/```$/, "");
+        }
+
+        responseEl.innerHTML = content;
+
+      } catch (err) {
+        responseEl.innerHTML = "<p class='text-red-500'>❌ Error fetching AI response.</p>";
+      }
     });
-
-    const result = await res.json();
-    let content = result.message || "<p>No AI response received.</p>";
-
-    // ✅ Remove ```html and ``` if wrapped
-    if (content.startsWith("```html")) {
-      content = content.replace(/^```html\s*/, "").replace(/```$/, "");
-    }
-
-    responseEl.innerHTML = content;
-
-  } catch (err) {
-    responseEl.innerHTML = "<p class='text-red-500'>❌ Error fetching AI response.</p>";
-  }
-});
     function printResponse() {
       const content = document.getElementById('aiResponse').innerHTML;
       const printWindow = window.open('', '', 'width=800,height=600');
@@ -172,6 +200,56 @@
       printWindow.document.close();
       printWindow.print();
     }
+  
+    document.getElementById('patientUpload').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    const csv = event.target.result;
+    const rows = csv.split("\n").slice(1); // Skip header
+    const output = [];
+
+    rows.forEach(row => {
+      const [name, age, region, history] = row.split(",");
+      const isEligible =
+        parseInt(age) >= 18 && parseInt(age) <= 65 &&
+        region.trim().toLowerCase() === 'india' &&
+        !history.toLowerCase().includes("renal") &&
+        !history.toLowerCase().includes("hepatic") &&
+        !history.toLowerCase().includes("cardiovascular");
+
+      output.push({ name, age, region, history, eligible: isEligible ? '✅ Yes' : '❌ No' });
+    });
+
+    const tbody = document.getElementById('patientTableBody');
+    tbody.innerHTML = '';
+    output.forEach(p => {
+      tbody.innerHTML += `
+        <tr>
+          <td class="border px-4 py-2">${p.name}</td>
+          <td class="border px-4 py-2">${p.age}</td>
+          <td class="border px-4 py-2">${p.region}</td>
+          <td class="border px-4 py-2">${p.history}</td>
+          <td class="border px-4 py-2">${p.eligible}</td>
+        </tr>
+      `;
+    });
+    document.getElementById('patientResult').classList.remove('hidden');
+    document.getElementById('filterEligibleBtn').classList.remove('hidden');
+    
+  };
+
+  reader.readAsText(file);
+});
+    document.getElementById('filterEligibleBtn').addEventListener('click', () => {
+      const rows = document.querySelectorAll('#patientTableBody tr');
+      rows.forEach(row => {
+        const eligibility = row.cells[4].textContent.trim();
+        row.style.display = eligibility === '✅ Yes' ? '' : 'none';
+      });
+    });
   </script>
 </body>
 </html>
