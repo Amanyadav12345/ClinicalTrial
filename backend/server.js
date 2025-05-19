@@ -73,11 +73,12 @@ app.post('/submit-trial', async (req, res) => {
     }
   );
 });
-const path = require('path');
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../index.html'));
-});
+app.use(cors());
+app.use(bodyParser.json());
+const path = require('path');
+// ✅ This serves everything inside the public folder
+app.use(express.static(path.join(__dirname, '../public')));
 app.listen(4000, () => {
   console.log('Server running at http://localhost:4000');
 });
