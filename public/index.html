@@ -242,6 +242,9 @@
         </tr>
       `;
     });
+    const eligibleOnly = output.filter(p => p.eligible === '✅ Yes');
+    localStorage.setItem('eligiblePatients', JSON.stringify(eligibleOnly));
+
     document.getElementById('patientResult').classList.remove('hidden');
     document.getElementById('filterEligibleBtn').classList.remove('hidden');
     document.getElementById('openDashboardBtn').classList.remove('hidden');

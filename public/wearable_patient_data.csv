@@ -1,0 +1,1389 @@
+patient_name,age,region,medical_history,timestamp,heart_rate,steps,sleep_hours,stress_score,source
+Elizabeth Jennings,36,India,diabetes,2025-05-19 00:00:00,79,4692,7.3,6,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-18 00:00:00,72,4642,6.9,6,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-17 00:00:00,91,9838,5.6,8,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-16 00:00:00,92,4742,5.7,9,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-15 00:00:00,96,9338,8.3,6,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-14 00:00:00,86,8820,6.3,5,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-13 00:00:00,77,2308,7.4,1,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-12 00:00:00,89,8556,5.3,3,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-11 00:00:00,60,9989,4.3,6,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-10 00:00:00,90,6694,6.1,8,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-09 00:00:00,96,3619,8.2,8,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-08 00:00:00,69,5353,6.7,3,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-07 00:00:00,89,4557,5.8,8,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-06 00:00:00,61,8989,5.9,4,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-05 00:00:00,68,9986,8.5,3,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-04 00:00:00,76,2865,8.4,9,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-03 00:00:00,89,4711,7.9,10,Fitbit
+Elizabeth Jennings,36,India,diabetes,2025-05-02 00:00:00,73,7482,6.5,4,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-19 00:00:00,89,5434,5.3,3,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-18 00:00:00,70,3924,7.9,6,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-17 00:00:00,90,9551,5.4,7,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-16 00:00:00,98,7766,4.8,7,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-15 00:00:00,72,4567,8.0,9,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-14 00:00:00,62,4934,8.8,3,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-13 00:00:00,97,2764,4.3,4,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-12 00:00:00,77,7022,4.1,3,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-11 00:00:00,72,5480,8.1,7,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-10 00:00:00,84,3903,5.5,9,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-09 00:00:00,75,9518,8.6,1,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-08 00:00:00,66,6053,4.2,4,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-07 00:00:00,84,5770,6.8,10,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-06 00:00:00,81,3073,5.8,8,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-05 00:00:00,62,4861,8.4,3,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-04 00:00:00,95,9773,5.1,9,Fitbit
+Matthew Newman,31,India,type 2 diabetes,2025-05-03 00:00:00,69,5972,5.7,6,Fitbit
+Jason Pacheco,53,India,diabetes,2025-05-19 00:00:00,95,4300,4.2,9,Fitbit
+Jason Pacheco,53,India,diabetes,2025-05-18 00:00:00,87,5225,6.9,3,Fitbit
+Jason Pacheco,53,India,diabetes,2025-05-17 00:00:00,60,3154,7.6,8,Fitbit
+Jason Pacheco,53,India,diabetes,2025-05-16 00:00:00,62,6885,8.5,5,Fitbit
+Jason Pacheco,53,India,diabetes,2025-05-15 00:00:00,63,7106,4.7,5,Fitbit
+Jason Pacheco,53,India,diabetes,2025-05-14 00:00:00,76,7972,7.1,2,Fitbit
+Jason Pacheco,53,India,diabetes,2025-05-13 00:00:00,74,6121,4.9,10,Fitbit
+Jason Pacheco,53,India,diabetes,2025-05-12 00:00:00,75,2924,7.5,10,Fitbit
+Jason Pacheco,53,India,diabetes,2025-05-11 00:00:00,91,5503,4.1,9,Fitbit
+Jason Pacheco,53,India,diabetes,2025-05-10 00:00:00,75,2197,6.7,10,Fitbit
+Jason Pacheco,53,India,diabetes,2025-05-09 00:00:00,70,7523,5.3,10,Fitbit
+Micheal Rojas,43,India,healthy,2025-05-19 00:00:00,91,3689,6.0,10,Fitbit
+Micheal Rojas,43,India,healthy,2025-05-18 00:00:00,69,6129,7.8,1,Fitbit
+Micheal Rojas,43,India,healthy,2025-05-17 00:00:00,91,5446,4.2,3,Fitbit
+Micheal Rojas,43,India,healthy,2025-05-16 00:00:00,60,7125,5.3,5,Fitbit
+Micheal Rojas,43,India,healthy,2025-05-15 00:00:00,73,5869,5.9,9,Fitbit
+Micheal Rojas,43,India,healthy,2025-05-14 00:00:00,92,2245,5.5,8,Fitbit
+Micheal Rojas,43,India,healthy,2025-05-13 00:00:00,69,7103,7.9,10,Fitbit
+Micheal Rojas,43,India,healthy,2025-05-12 00:00:00,70,7976,8.4,1,Fitbit
+Micheal Rojas,43,India,healthy,2025-05-11 00:00:00,90,9969,7.9,4,Fitbit
+Micheal Rojas,43,India,healthy,2025-05-10 00:00:00,100,8365,4.1,6,Fitbit
+Micheal Rojas,43,India,healthy,2025-05-09 00:00:00,92,4757,7.3,10,Fitbit
+Micheal Rojas,43,India,healthy,2025-05-08 00:00:00,86,3391,4.3,5,Fitbit
+Micheal Rojas,43,India,healthy,2025-05-07 00:00:00,75,5320,5.0,9,Fitbit
+Jordan Colon,31,India,healthy,2025-05-19 00:00:00,97,9356,5.9,9,Fitbit
+Jordan Colon,31,India,healthy,2025-05-18 00:00:00,86,2362,4.2,3,Fitbit
+Jordan Colon,31,India,healthy,2025-05-17 00:00:00,67,7353,8.7,5,Fitbit
+Jordan Colon,31,India,healthy,2025-05-16 00:00:00,84,3036,4.7,10,Fitbit
+Jordan Colon,31,India,healthy,2025-05-15 00:00:00,78,5849,4.4,8,Fitbit
+Jordan Colon,31,India,healthy,2025-05-14 00:00:00,90,7593,6.5,9,Fitbit
+Jordan Colon,31,India,healthy,2025-05-13 00:00:00,82,5865,4.3,6,Fitbit
+Jordan Colon,31,India,healthy,2025-05-12 00:00:00,98,8621,6.8,1,Fitbit
+Jordan Colon,31,India,healthy,2025-05-11 00:00:00,86,3986,8.2,10,Fitbit
+Jordan Colon,31,India,healthy,2025-05-10 00:00:00,73,9099,6.0,6,Fitbit
+Jordan Colon,31,India,healthy,2025-05-09 00:00:00,63,9938,8.5,5,Fitbit
+Jordan Colon,31,India,healthy,2025-05-08 00:00:00,62,9762,5.8,9,Fitbit
+Jordan Colon,31,India,healthy,2025-05-07 00:00:00,86,3600,4.8,4,Fitbit
+Jordan Colon,31,India,healthy,2025-05-06 00:00:00,93,6516,5.7,3,Fitbit
+Jordan Colon,31,India,healthy,2025-05-05 00:00:00,83,4849,4.2,5,Fitbit
+Jordan Colon,31,India,healthy,2025-05-04 00:00:00,86,6991,5.2,9,Fitbit
+Jordan Colon,31,India,healthy,2025-05-03 00:00:00,82,5854,5.2,6,Fitbit
+Joseph Stevenson,18,India,diabetes,2025-05-19 00:00:00,99,8330,5.1,3,Fitbit
+Joseph Stevenson,18,India,diabetes,2025-05-18 00:00:00,77,6739,5.4,10,Fitbit
+Joseph Stevenson,18,India,diabetes,2025-05-17 00:00:00,68,4799,4.8,8,Fitbit
+Joseph Stevenson,18,India,diabetes,2025-05-16 00:00:00,97,2193,8.4,10,Fitbit
+Joseph Stevenson,18,India,diabetes,2025-05-15 00:00:00,87,2725,4.4,3,Fitbit
+Joseph Stevenson,18,India,diabetes,2025-05-14 00:00:00,80,8111,8.6,3,Fitbit
+Joseph Stevenson,18,India,diabetes,2025-05-13 00:00:00,99,4867,7.0,7,Fitbit
+Joseph Stevenson,18,India,diabetes,2025-05-12 00:00:00,81,5897,7.4,3,Fitbit
+Joseph Stevenson,18,India,diabetes,2025-05-11 00:00:00,66,3261,5.4,1,Fitbit
+Joseph Stevenson,18,India,diabetes,2025-05-10 00:00:00,81,9436,7.4,2,Fitbit
+Joseph Stevenson,18,India,diabetes,2025-05-09 00:00:00,81,3725,7.3,5,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-19 00:00:00,69,8713,5.5,10,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-18 00:00:00,100,6372,8.4,3,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-17 00:00:00,73,2703,7.6,9,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-16 00:00:00,60,6114,5.6,10,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-15 00:00:00,67,9660,9.0,10,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-14 00:00:00,98,6456,7.7,4,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-13 00:00:00,78,4638,6.8,8,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-12 00:00:00,66,9912,8.2,3,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-11 00:00:00,78,6690,8.5,6,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-10 00:00:00,93,7569,4.5,6,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-09 00:00:00,94,4013,4.4,8,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-08 00:00:00,93,9381,6.6,4,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-07 00:00:00,77,5403,4.3,10,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-06 00:00:00,63,5317,7.6,5,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-05 00:00:00,89,3659,8.7,10,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-04 00:00:00,66,9909,8.9,2,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-03 00:00:00,76,7171,4.3,6,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-02 00:00:00,100,3375,8.2,3,Fitbit
+Michael Hensley Jr.,20,India,no significant history,2025-05-01 00:00:00,86,7587,7.7,4,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-19 00:00:00,89,7006,6.5,10,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-18 00:00:00,63,6041,4.5,4,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-17 00:00:00,74,3472,7.7,10,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-16 00:00:00,98,5088,7.9,3,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-15 00:00:00,63,4520,5.3,2,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-14 00:00:00,68,3943,4.4,4,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-13 00:00:00,91,5331,7.1,1,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-12 00:00:00,69,5884,4.5,9,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-11 00:00:00,89,3028,5.6,8,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-10 00:00:00,86,7016,4.8,10,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-09 00:00:00,62,4404,6.4,1,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-08 00:00:00,88,4999,8.0,6,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-07 00:00:00,84,8495,6.2,6,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-06 00:00:00,68,5209,4.9,9,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-05 00:00:00,86,9495,4.9,7,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-04 00:00:00,95,5469,7.4,8,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-03 00:00:00,70,5007,8.4,4,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-02 00:00:00,77,4956,4.1,4,Fitbit
+Glenn Schneider,40,India,asthma,2025-05-01 00:00:00,61,8845,5.5,9,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-19 00:00:00,96,3279,8.6,7,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-18 00:00:00,97,3330,6.9,3,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-17 00:00:00,89,9968,5.3,5,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-16 00:00:00,90,5982,8.8,7,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-15 00:00:00,72,7131,6.3,4,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-14 00:00:00,64,2983,6.1,7,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-13 00:00:00,81,7975,4.7,8,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-12 00:00:00,85,4305,7.2,9,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-11 00:00:00,100,6909,4.7,10,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-10 00:00:00,88,9006,5.3,1,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-09 00:00:00,83,9378,5.1,5,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-08 00:00:00,76,8332,7.4,9,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-07 00:00:00,98,9805,7.7,7,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-06 00:00:00,100,6483,4.8,8,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-05 00:00:00,63,7259,6.4,3,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-04 00:00:00,84,9382,7.9,9,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-03 00:00:00,87,6056,8.9,7,Fitbit
+Brandon Meyer,60,India,pregnancy,2025-05-02 00:00:00,85,6686,4.8,6,Fitbit
+Elizabeth Johnson,42,India,diabetes,2025-05-19 00:00:00,92,7490,8.5,6,Fitbit
+Elizabeth Johnson,42,India,diabetes,2025-05-18 00:00:00,80,7670,6.8,6,Fitbit
+Elizabeth Johnson,42,India,diabetes,2025-05-17 00:00:00,99,9548,7.2,10,Fitbit
+Elizabeth Johnson,42,India,diabetes,2025-05-16 00:00:00,73,9554,8.5,3,Fitbit
+Elizabeth Johnson,42,India,diabetes,2025-05-15 00:00:00,79,4274,5.7,9,Fitbit
+Elizabeth Johnson,42,India,diabetes,2025-05-14 00:00:00,86,3007,6.9,7,Fitbit
+Elizabeth Johnson,42,India,diabetes,2025-05-13 00:00:00,100,6028,8.5,9,Fitbit
+Elizabeth Johnson,42,India,diabetes,2025-05-12 00:00:00,85,5948,5.7,9,Fitbit
+Elizabeth Johnson,42,India,diabetes,2025-05-11 00:00:00,85,3330,8.5,7,Fitbit
+Elizabeth Johnson,42,India,diabetes,2025-05-10 00:00:00,94,8547,8.4,5,Fitbit
+Elizabeth Johnson,42,India,diabetes,2025-05-09 00:00:00,61,2120,7.0,10,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-19 00:00:00,84,6288,5.9,4,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-18 00:00:00,84,4938,8.7,2,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-17 00:00:00,74,8539,5.8,1,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-16 00:00:00,80,6426,4.7,10,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-15 00:00:00,100,4058,4.1,10,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-14 00:00:00,99,3576,8.4,4,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-13 00:00:00,66,9825,5.9,8,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-12 00:00:00,97,6695,5.1,5,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-11 00:00:00,82,9606,7.6,5,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-10 00:00:00,71,9824,4.7,6,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-09 00:00:00,75,4223,7.7,2,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-08 00:00:00,86,6804,8.3,2,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-07 00:00:00,89,9728,8.3,8,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-06 00:00:00,66,3872,7.9,2,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-05 00:00:00,87,8081,8.0,5,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-04 00:00:00,97,9980,7.5,9,Fitbit
+Shawn Salazar,33,India,obesity,2025-05-03 00:00:00,70,7922,5.5,1,Fitbit
+Jason Campos,25,India,no significant history,2025-05-19 00:00:00,67,8363,5.9,5,Fitbit
+Jason Campos,25,India,no significant history,2025-05-18 00:00:00,99,4818,4.3,10,Fitbit
+Jason Campos,25,India,no significant history,2025-05-17 00:00:00,92,2559,7.8,10,Fitbit
+Jason Campos,25,India,no significant history,2025-05-16 00:00:00,90,4962,5.4,7,Fitbit
+Jason Campos,25,India,no significant history,2025-05-15 00:00:00,98,4477,8.9,7,Fitbit
+Jason Campos,25,India,no significant history,2025-05-14 00:00:00,76,5687,6.1,3,Fitbit
+Jason Campos,25,India,no significant history,2025-05-13 00:00:00,79,5153,7.2,6,Fitbit
+Jason Campos,25,India,no significant history,2025-05-12 00:00:00,82,2391,4.7,1,Fitbit
+Jason Campos,25,India,no significant history,2025-05-11 00:00:00,76,6181,8.8,8,Fitbit
+Jason Campos,25,India,no significant history,2025-05-10 00:00:00,69,3678,7.7,9,Fitbit
+Jason Campos,25,India,no significant history,2025-05-09 00:00:00,93,5521,4.4,2,Fitbit
+Jason Campos,25,India,no significant history,2025-05-08 00:00:00,78,2281,5.9,3,Fitbit
+Jason Campos,25,India,no significant history,2025-05-07 00:00:00,93,7830,8.4,1,Fitbit
+Jason Campos,25,India,no significant history,2025-05-06 00:00:00,96,5063,7.7,10,Fitbit
+Jason Campos,25,India,no significant history,2025-05-05 00:00:00,83,6564,4.8,8,Fitbit
+Jason Campos,25,India,no significant history,2025-05-04 00:00:00,85,4637,6.3,6,Fitbit
+Taylor Butler,25,India,healthy,2025-05-19 00:00:00,92,6943,8.4,8,Fitbit
+Taylor Butler,25,India,healthy,2025-05-18 00:00:00,87,2734,5.8,5,Fitbit
+Taylor Butler,25,India,healthy,2025-05-17 00:00:00,76,8272,7.8,2,Fitbit
+Taylor Butler,25,India,healthy,2025-05-16 00:00:00,60,3343,8.5,4,Fitbit
+Taylor Butler,25,India,healthy,2025-05-15 00:00:00,96,6713,6.9,2,Fitbit
+Taylor Butler,25,India,healthy,2025-05-14 00:00:00,87,3900,6.0,7,Fitbit
+Taylor Butler,25,India,healthy,2025-05-13 00:00:00,70,9128,4.7,7,Fitbit
+Taylor Butler,25,India,healthy,2025-05-12 00:00:00,83,9684,7.2,6,Fitbit
+Taylor Butler,25,India,healthy,2025-05-11 00:00:00,68,7864,5.1,7,Fitbit
+Taylor Butler,25,India,healthy,2025-05-10 00:00:00,64,9885,4.4,4,Fitbit
+Taylor Butler,25,India,healthy,2025-05-09 00:00:00,75,4240,6.5,5,Fitbit
+Taylor Butler,25,India,healthy,2025-05-08 00:00:00,65,6015,7.0,7,Fitbit
+Taylor Butler,25,India,healthy,2025-05-07 00:00:00,70,2247,4.5,4,Fitbit
+Taylor Butler,25,India,healthy,2025-05-06 00:00:00,60,6073,7.4,4,Fitbit
+Cindy Williams,44,India,healthy,2025-05-19 00:00:00,71,2324,8.2,8,Fitbit
+Cindy Williams,44,India,healthy,2025-05-18 00:00:00,85,7487,6.7,1,Fitbit
+Cindy Williams,44,India,healthy,2025-05-17 00:00:00,90,8886,7.0,6,Fitbit
+Cindy Williams,44,India,healthy,2025-05-16 00:00:00,89,5041,7.3,4,Fitbit
+Cindy Williams,44,India,healthy,2025-05-15 00:00:00,88,2426,5.9,7,Fitbit
+Cindy Williams,44,India,healthy,2025-05-14 00:00:00,98,2907,5.4,2,Fitbit
+Cindy Williams,44,India,healthy,2025-05-13 00:00:00,65,4892,4.1,9,Fitbit
+Cindy Williams,44,India,healthy,2025-05-12 00:00:00,91,4722,6.2,2,Fitbit
+Cindy Williams,44,India,healthy,2025-05-11 00:00:00,71,9744,5.3,1,Fitbit
+Cindy Williams,44,India,healthy,2025-05-10 00:00:00,69,5746,8.1,7,Fitbit
+Cindy Williams,44,India,healthy,2025-05-09 00:00:00,81,8406,5.8,2,Fitbit
+Cindy Williams,44,India,healthy,2025-05-08 00:00:00,100,9436,8.2,9,Fitbit
+Cindy Williams,44,India,healthy,2025-05-07 00:00:00,94,9215,5.9,4,Fitbit
+John Patrick,50,India,diabetes,2025-05-19 00:00:00,84,6243,8.7,1,Fitbit
+John Patrick,50,India,diabetes,2025-05-18 00:00:00,80,2591,8.6,9,Fitbit
+John Patrick,50,India,diabetes,2025-05-17 00:00:00,75,5529,6.9,6,Fitbit
+John Patrick,50,India,diabetes,2025-05-16 00:00:00,75,6927,7.9,3,Fitbit
+John Patrick,50,India,diabetes,2025-05-15 00:00:00,67,4512,5.3,4,Fitbit
+John Patrick,50,India,diabetes,2025-05-14 00:00:00,91,2748,7.1,7,Fitbit
+John Patrick,50,India,diabetes,2025-05-13 00:00:00,99,2935,6.4,3,Fitbit
+John Patrick,50,India,diabetes,2025-05-12 00:00:00,74,4783,7.3,4,Fitbit
+John Patrick,50,India,diabetes,2025-05-11 00:00:00,82,3540,4.1,2,Fitbit
+John Patrick,50,India,diabetes,2025-05-10 00:00:00,78,8889,7.3,8,Fitbit
+John Patrick,50,India,diabetes,2025-05-09 00:00:00,80,3360,5.0,7,Fitbit
+John Patrick,50,India,diabetes,2025-05-08 00:00:00,73,8580,8.7,6,Fitbit
+John Patrick,50,India,diabetes,2025-05-07 00:00:00,92,5019,4.5,4,Fitbit
+John Patrick,50,India,diabetes,2025-05-06 00:00:00,60,9405,5.2,9,Fitbit
+John Patrick,50,India,diabetes,2025-05-05 00:00:00,90,9811,7.4,9,Fitbit
+Paul Welch,28,India,diabetes,2025-05-19 00:00:00,82,6456,8.2,4,Fitbit
+Paul Welch,28,India,diabetes,2025-05-18 00:00:00,68,9911,4.9,10,Fitbit
+Paul Welch,28,India,diabetes,2025-05-17 00:00:00,80,8784,5.4,4,Fitbit
+Paul Welch,28,India,diabetes,2025-05-16 00:00:00,89,9284,5.4,4,Fitbit
+Paul Welch,28,India,diabetes,2025-05-15 00:00:00,99,7586,4.9,7,Fitbit
+Paul Welch,28,India,diabetes,2025-05-14 00:00:00,74,8256,4.4,1,Fitbit
+Paul Welch,28,India,diabetes,2025-05-13 00:00:00,68,4023,5.2,5,Fitbit
+Paul Welch,28,India,diabetes,2025-05-12 00:00:00,64,9161,4.6,9,Fitbit
+Paul Welch,28,India,diabetes,2025-05-11 00:00:00,71,8700,7.9,3,Fitbit
+Paul Welch,28,India,diabetes,2025-05-10 00:00:00,98,4335,9.0,6,Fitbit
+Paul Welch,28,India,diabetes,2025-05-09 00:00:00,78,3061,6.5,4,Fitbit
+Paul Welch,28,India,diabetes,2025-05-08 00:00:00,96,9566,5.1,9,Fitbit
+Paul Welch,28,India,diabetes,2025-05-07 00:00:00,64,7599,4.4,2,Fitbit
+Brittany Obrien,37,India,healthy,2025-05-19 00:00:00,97,8331,6.1,4,Fitbit
+Brittany Obrien,37,India,healthy,2025-05-18 00:00:00,61,3622,5.9,7,Fitbit
+Brittany Obrien,37,India,healthy,2025-05-17 00:00:00,87,9335,4.0,6,Fitbit
+Brittany Obrien,37,India,healthy,2025-05-16 00:00:00,68,2738,6.0,5,Fitbit
+Brittany Obrien,37,India,healthy,2025-05-15 00:00:00,88,9114,6.4,9,Fitbit
+Brittany Obrien,37,India,healthy,2025-05-14 00:00:00,96,9009,4.2,6,Fitbit
+Brittany Obrien,37,India,healthy,2025-05-13 00:00:00,73,3539,7.3,2,Fitbit
+Brittany Obrien,37,India,healthy,2025-05-12 00:00:00,92,5583,7.7,10,Fitbit
+Brittany Obrien,37,India,healthy,2025-05-11 00:00:00,75,8065,6.5,3,Fitbit
+Brittany Obrien,37,India,healthy,2025-05-10 00:00:00,94,3741,8.6,10,Fitbit
+Andrew Miller,51,India,obesity,2025-05-19 00:00:00,96,7055,7.7,10,Fitbit
+Andrew Miller,51,India,obesity,2025-05-18 00:00:00,93,2630,4.4,6,Fitbit
+Andrew Miller,51,India,obesity,2025-05-17 00:00:00,60,3510,8.7,9,Fitbit
+Andrew Miller,51,India,obesity,2025-05-16 00:00:00,76,5276,6.6,6,Fitbit
+Andrew Miller,51,India,obesity,2025-05-15 00:00:00,100,7337,4.8,9,Fitbit
+Andrew Miller,51,India,obesity,2025-05-14 00:00:00,95,8857,7.4,10,Fitbit
+Andrew Miller,51,India,obesity,2025-05-13 00:00:00,84,8383,6.7,1,Fitbit
+Andrew Miller,51,India,obesity,2025-05-12 00:00:00,79,7701,6.1,10,Fitbit
+Andrew Miller,51,India,obesity,2025-05-11 00:00:00,82,8388,8.0,7,Fitbit
+Andrew Miller,51,India,obesity,2025-05-10 00:00:00,91,7847,8.0,5,Fitbit
+Andrew Miller,51,India,obesity,2025-05-09 00:00:00,92,2130,7.8,5,Fitbit
+Andrew Miller,51,India,obesity,2025-05-08 00:00:00,79,6854,8.6,5,Fitbit
+Andrew Miller,51,India,obesity,2025-05-07 00:00:00,100,7234,6.2,10,Fitbit
+Andrew Miller,51,India,obesity,2025-05-06 00:00:00,94,3921,8.2,8,Fitbit
+Andrew Miller,51,India,obesity,2025-05-05 00:00:00,71,5800,4.8,5,Fitbit
+Andrew Miller,51,India,obesity,2025-05-04 00:00:00,78,4625,7.5,6,Fitbit
+David Frost,29,India,type 2 diabetes,2025-05-19 00:00:00,89,9284,7.7,9,Fitbit
+David Frost,29,India,type 2 diabetes,2025-05-18 00:00:00,100,6838,8.6,6,Fitbit
+David Frost,29,India,type 2 diabetes,2025-05-17 00:00:00,95,8509,7.9,7,Fitbit
+David Frost,29,India,type 2 diabetes,2025-05-16 00:00:00,76,3940,6.7,9,Fitbit
+David Frost,29,India,type 2 diabetes,2025-05-15 00:00:00,82,7312,4.3,1,Fitbit
+David Frost,29,India,type 2 diabetes,2025-05-14 00:00:00,65,7303,5.1,9,Fitbit
+David Frost,29,India,type 2 diabetes,2025-05-13 00:00:00,62,3975,5.7,1,Fitbit
+David Frost,29,India,type 2 diabetes,2025-05-12 00:00:00,62,9956,4.0,5,Fitbit
+David Frost,29,India,type 2 diabetes,2025-05-11 00:00:00,91,4589,6.3,3,Fitbit
+David Frost,29,India,type 2 diabetes,2025-05-10 00:00:00,74,8788,4.9,10,Fitbit
+David Frost,29,India,type 2 diabetes,2025-05-09 00:00:00,94,3089,5.5,5,Fitbit
+David Frost,29,India,type 2 diabetes,2025-05-08 00:00:00,73,5348,4.8,8,Fitbit
+David Frost,29,India,type 2 diabetes,2025-05-07 00:00:00,68,8277,5.3,3,Fitbit
+David Frost,29,India,type 2 diabetes,2025-05-06 00:00:00,71,6294,4.4,6,Fitbit
+David Frost,29,India,type 2 diabetes,2025-05-05 00:00:00,96,7189,4.3,6,Fitbit
+David Frost,29,India,type 2 diabetes,2025-05-04 00:00:00,80,6762,5.1,2,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-19 00:00:00,87,7211,5.1,8,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-18 00:00:00,78,6838,6.2,8,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-17 00:00:00,73,9564,4.6,10,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-16 00:00:00,93,3952,8.7,3,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-15 00:00:00,99,5438,4.6,10,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-14 00:00:00,67,6437,6.5,2,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-13 00:00:00,95,7242,6.3,6,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-12 00:00:00,98,5124,7.9,8,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-11 00:00:00,82,5340,5.4,2,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-10 00:00:00,90,4659,7.9,5,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-09 00:00:00,65,6369,7.2,7,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-08 00:00:00,76,7755,8.1,10,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-07 00:00:00,88,7809,7.5,9,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-06 00:00:00,87,5965,7.2,2,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-05 00:00:00,92,7050,7.6,1,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-04 00:00:00,90,9087,5.7,3,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-03 00:00:00,96,8634,7.2,8,Fitbit
+Melanie Brown,28,India,no significant history,2025-05-02 00:00:00,99,9467,5.4,4,Fitbit
+Joseph Miller,40,India,healthy,2025-05-19 00:00:00,69,7100,6.1,7,Fitbit
+Joseph Miller,40,India,healthy,2025-05-18 00:00:00,87,8249,7.7,2,Fitbit
+Joseph Miller,40,India,healthy,2025-05-17 00:00:00,93,6576,4.1,1,Fitbit
+Joseph Miller,40,India,healthy,2025-05-16 00:00:00,62,2418,6.6,9,Fitbit
+Joseph Miller,40,India,healthy,2025-05-15 00:00:00,73,7740,8.0,3,Fitbit
+Joseph Miller,40,India,healthy,2025-05-14 00:00:00,81,5794,5.2,5,Fitbit
+Joseph Miller,40,India,healthy,2025-05-13 00:00:00,81,8069,4.3,7,Fitbit
+Joseph Miller,40,India,healthy,2025-05-12 00:00:00,67,5513,6.4,10,Fitbit
+Joseph Miller,40,India,healthy,2025-05-11 00:00:00,92,4427,8.2,6,Fitbit
+Joseph Miller,40,India,healthy,2025-05-10 00:00:00,71,4370,7.2,10,Fitbit
+Joseph Miller,40,India,healthy,2025-05-09 00:00:00,72,5151,4.1,8,Fitbit
+Joseph Miller,40,India,healthy,2025-05-08 00:00:00,78,6484,4.6,7,Fitbit
+Connor Burch,49,India,diabetes,2025-05-19 00:00:00,64,8915,6.0,7,Fitbit
+Connor Burch,49,India,diabetes,2025-05-18 00:00:00,95,9740,8.0,5,Fitbit
+Connor Burch,49,India,diabetes,2025-05-17 00:00:00,81,5818,8.1,9,Fitbit
+Connor Burch,49,India,diabetes,2025-05-16 00:00:00,64,5713,7.8,3,Fitbit
+Connor Burch,49,India,diabetes,2025-05-15 00:00:00,95,6282,5.2,4,Fitbit
+Connor Burch,49,India,diabetes,2025-05-14 00:00:00,83,3582,8.1,1,Fitbit
+Connor Burch,49,India,diabetes,2025-05-13 00:00:00,79,6078,5.1,6,Fitbit
+Connor Burch,49,India,diabetes,2025-05-12 00:00:00,92,8074,7.9,10,Fitbit
+Connor Burch,49,India,diabetes,2025-05-11 00:00:00,97,9590,8.0,7,Fitbit
+Connor Burch,49,India,diabetes,2025-05-10 00:00:00,84,8311,4.5,1,Fitbit
+Connor Burch,49,India,diabetes,2025-05-09 00:00:00,99,2342,4.0,8,Fitbit
+Connor Burch,49,India,diabetes,2025-05-08 00:00:00,98,8492,6.3,5,Fitbit
+Connor Burch,49,India,diabetes,2025-05-07 00:00:00,97,6870,6.3,4,Fitbit
+Connor Burch,49,India,diabetes,2025-05-06 00:00:00,82,7572,8.2,8,Fitbit
+Connor Burch,49,India,diabetes,2025-05-05 00:00:00,67,7871,6.2,8,Fitbit
+Connor Burch,49,India,diabetes,2025-05-04 00:00:00,80,8457,6.8,3,Fitbit
+Connor Burch,49,India,diabetes,2025-05-03 00:00:00,89,7346,8.4,2,Fitbit
+Jennifer Thornton,63,India,diabetes,2025-05-19 00:00:00,86,5066,8.6,6,Fitbit
+Jennifer Thornton,63,India,diabetes,2025-05-18 00:00:00,92,9027,6.7,8,Fitbit
+Jennifer Thornton,63,India,diabetes,2025-05-17 00:00:00,78,4973,7.1,8,Fitbit
+Jennifer Thornton,63,India,diabetes,2025-05-16 00:00:00,73,4528,6.0,3,Fitbit
+Jennifer Thornton,63,India,diabetes,2025-05-15 00:00:00,86,4116,5.9,5,Fitbit
+Jennifer Thornton,63,India,diabetes,2025-05-14 00:00:00,72,6900,4.1,6,Fitbit
+Jennifer Thornton,63,India,diabetes,2025-05-13 00:00:00,78,6914,8.0,8,Fitbit
+Jennifer Thornton,63,India,diabetes,2025-05-12 00:00:00,64,4729,5.6,10,Fitbit
+Jennifer Thornton,63,India,diabetes,2025-05-11 00:00:00,65,7688,6.3,7,Fitbit
+Jennifer Thornton,63,India,diabetes,2025-05-10 00:00:00,97,8684,4.2,3,Fitbit
+Jennifer Thornton,63,India,diabetes,2025-05-09 00:00:00,82,6262,6.6,7,Fitbit
+Jennifer Thornton,63,India,diabetes,2025-05-08 00:00:00,70,9162,6.4,1,Fitbit
+Jennifer Thornton,63,India,diabetes,2025-05-07 00:00:00,87,9338,8.7,6,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-19 00:00:00,75,5059,4.6,5,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-18 00:00:00,63,9871,4.5,8,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-17 00:00:00,63,5716,4.2,3,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-16 00:00:00,79,2027,8.1,1,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-15 00:00:00,87,2858,6.9,8,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-14 00:00:00,63,4577,6.7,3,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-13 00:00:00,81,4420,4.7,9,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-12 00:00:00,67,5443,5.5,6,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-11 00:00:00,76,4565,8.8,7,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-10 00:00:00,60,3959,5.5,1,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-09 00:00:00,68,6303,7.8,2,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-08 00:00:00,69,8001,8.5,7,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-07 00:00:00,84,7751,8.8,7,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-06 00:00:00,99,5933,8.6,1,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-05 00:00:00,67,7577,5.3,2,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-04 00:00:00,92,4292,5.3,6,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-03 00:00:00,96,3456,9.0,2,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-02 00:00:00,77,9027,5.3,7,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-05-01 00:00:00,66,5686,5.9,9,Fitbit
+Evan Hall,44,India,type 2 diabetes,2025-04-30 00:00:00,95,9949,7.9,1,Fitbit
+Donald Martin,63,India,healthy,2025-05-19 00:00:00,98,7641,4.2,3,Fitbit
+Donald Martin,63,India,healthy,2025-05-18 00:00:00,82,3577,4.2,4,Fitbit
+Donald Martin,63,India,healthy,2025-05-17 00:00:00,74,8048,6.9,1,Fitbit
+Donald Martin,63,India,healthy,2025-05-16 00:00:00,63,7673,6.7,2,Fitbit
+Donald Martin,63,India,healthy,2025-05-15 00:00:00,90,5516,7.5,8,Fitbit
+Donald Martin,63,India,healthy,2025-05-14 00:00:00,92,5383,8.4,4,Fitbit
+Donald Martin,63,India,healthy,2025-05-13 00:00:00,90,8620,7.9,6,Fitbit
+Donald Martin,63,India,healthy,2025-05-12 00:00:00,71,6091,5.9,7,Fitbit
+Donald Martin,63,India,healthy,2025-05-11 00:00:00,87,9194,6.1,1,Fitbit
+Donald Martin,63,India,healthy,2025-05-10 00:00:00,63,9649,5.9,10,Fitbit
+Donald Martin,63,India,healthy,2025-05-09 00:00:00,70,2395,4.7,8,Fitbit
+Donald Martin,63,India,healthy,2025-05-08 00:00:00,100,2610,7.5,3,Fitbit
+Donald Martin,63,India,healthy,2025-05-07 00:00:00,92,8839,4.7,1,Fitbit
+Mark Collins,56,India,no significant history,2025-05-19 00:00:00,75,6435,6.1,3,Fitbit
+Mark Collins,56,India,no significant history,2025-05-18 00:00:00,62,6410,6.1,7,Fitbit
+Mark Collins,56,India,no significant history,2025-05-17 00:00:00,64,2048,9.0,10,Fitbit
+Mark Collins,56,India,no significant history,2025-05-16 00:00:00,75,9141,4.2,1,Fitbit
+Mark Collins,56,India,no significant history,2025-05-15 00:00:00,70,6198,5.9,10,Fitbit
+Mark Collins,56,India,no significant history,2025-05-14 00:00:00,76,8480,4.5,9,Fitbit
+Mark Collins,56,India,no significant history,2025-05-13 00:00:00,72,8011,6.9,10,Fitbit
+Mark Collins,56,India,no significant history,2025-05-12 00:00:00,99,5248,5.7,2,Fitbit
+Mark Collins,56,India,no significant history,2025-05-11 00:00:00,99,7178,5.9,6,Fitbit
+Mark Collins,56,India,no significant history,2025-05-10 00:00:00,87,2507,6.9,4,Fitbit
+Mark Collins,56,India,no significant history,2025-05-09 00:00:00,82,4396,8.5,9,Fitbit
+Mark Collins,56,India,no significant history,2025-05-08 00:00:00,86,2403,6.5,2,Fitbit
+Mark Collins,56,India,no significant history,2025-05-07 00:00:00,83,2768,6.2,1,Fitbit
+Mark Collins,56,India,no significant history,2025-05-06 00:00:00,99,7706,6.0,7,Fitbit
+Mark Collins,56,India,no significant history,2025-05-05 00:00:00,99,4248,8.6,7,Fitbit
+Mark Collins,56,India,no significant history,2025-05-04 00:00:00,81,9928,6.8,2,Fitbit
+Nathan Willis,20,India,asthma,2025-05-19 00:00:00,64,9738,6.9,5,Fitbit
+Nathan Willis,20,India,asthma,2025-05-18 00:00:00,66,8538,6.2,7,Fitbit
+Nathan Willis,20,India,asthma,2025-05-17 00:00:00,95,5408,7.3,3,Fitbit
+Nathan Willis,20,India,asthma,2025-05-16 00:00:00,89,3793,8.7,2,Fitbit
+Nathan Willis,20,India,asthma,2025-05-15 00:00:00,86,4689,7.6,10,Fitbit
+Nathan Willis,20,India,asthma,2025-05-14 00:00:00,70,9658,5.7,6,Fitbit
+Nathan Willis,20,India,asthma,2025-05-13 00:00:00,81,7377,6.0,3,Fitbit
+Nathan Willis,20,India,asthma,2025-05-12 00:00:00,88,5436,6.7,3,Fitbit
+Nathan Willis,20,India,asthma,2025-05-11 00:00:00,95,9891,7.3,7,Fitbit
+Nathan Willis,20,India,asthma,2025-05-10 00:00:00,80,9720,4.4,8,Fitbit
+Nathan Willis,20,India,asthma,2025-05-09 00:00:00,81,8457,8.6,2,Fitbit
+Nathan Willis,20,India,asthma,2025-05-08 00:00:00,94,8263,7.9,5,Fitbit
+Nathan Willis,20,India,asthma,2025-05-07 00:00:00,74,7560,7.5,7,Fitbit
+Nathan Willis,20,India,asthma,2025-05-06 00:00:00,86,8003,5.7,9,Fitbit
+Nathan Willis,20,India,asthma,2025-05-05 00:00:00,98,8923,9.0,10,Fitbit
+Nathan Willis,20,India,asthma,2025-05-04 00:00:00,64,9732,8.9,5,Fitbit
+Nathan Willis,20,India,asthma,2025-05-03 00:00:00,67,8341,4.1,10,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-19 00:00:00,89,9698,5.1,4,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-18 00:00:00,70,6354,5.6,2,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-17 00:00:00,96,4456,8.1,8,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-16 00:00:00,74,3374,5.2,6,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-15 00:00:00,86,5312,5.8,5,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-14 00:00:00,93,9778,5.9,2,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-13 00:00:00,91,6912,8.9,7,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-12 00:00:00,97,6179,7.6,4,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-11 00:00:00,94,2031,5.6,5,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-10 00:00:00,95,8654,4.9,1,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-09 00:00:00,93,4836,7.5,1,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-08 00:00:00,90,8408,7.8,8,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-07 00:00:00,75,7071,4.8,8,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-06 00:00:00,78,5389,7.9,8,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-05 00:00:00,80,3751,5.6,5,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-04 00:00:00,76,9642,8.4,5,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-03 00:00:00,88,3146,7.8,2,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-02 00:00:00,77,9752,4.9,4,Fitbit
+Jay Riley,52,India,pregnancy,2025-05-01 00:00:00,63,8244,5.2,8,Fitbit
+Jay Riley,52,India,pregnancy,2025-04-30 00:00:00,78,4472,4.9,5,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-19 00:00:00,82,3504,6.0,1,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-18 00:00:00,90,2396,7.7,4,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-17 00:00:00,98,4568,8.7,6,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-16 00:00:00,70,6444,7.4,8,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-15 00:00:00,81,7538,6.7,1,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-14 00:00:00,69,2484,8.0,10,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-13 00:00:00,63,3618,7.1,10,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-12 00:00:00,83,5851,5.4,8,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-11 00:00:00,98,4962,6.7,10,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-10 00:00:00,74,7889,7.4,3,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-09 00:00:00,69,9028,6.7,7,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-08 00:00:00,80,9194,5.8,9,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-07 00:00:00,94,4167,7.4,4,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-06 00:00:00,95,7976,5.6,1,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-05 00:00:00,71,8816,6.7,5,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-04 00:00:00,78,8785,5.2,7,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-03 00:00:00,78,9476,6.1,4,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-02 00:00:00,72,3151,5.6,4,Fitbit
+Jamie Guerra,34,India,healthy,2025-05-01 00:00:00,62,6393,8.2,2,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-19 00:00:00,96,2800,8.0,4,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-18 00:00:00,90,9158,8.7,5,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-17 00:00:00,80,3943,5.1,8,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-16 00:00:00,90,9534,6.0,4,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-15 00:00:00,100,4637,8.1,5,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-14 00:00:00,80,4369,8.4,3,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-13 00:00:00,91,5866,8.6,9,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-12 00:00:00,64,7083,4.4,7,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-11 00:00:00,80,5296,5.3,10,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-10 00:00:00,99,2313,6.3,4,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-09 00:00:00,99,8448,8.5,7,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-08 00:00:00,65,6564,8.5,5,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-07 00:00:00,93,8727,5.3,2,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-06 00:00:00,69,6433,5.2,3,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-05 00:00:00,92,7062,8.6,6,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-04 00:00:00,97,9724,4.1,10,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-03 00:00:00,81,5646,8.7,4,Fitbit
+Howard Long MD,28,India,no significant history,2025-05-02 00:00:00,76,8952,6.4,5,Fitbit
+Laura Rodriguez,20,India,obesity,2025-05-19 00:00:00,72,9961,4.9,3,Fitbit
+Laura Rodriguez,20,India,obesity,2025-05-18 00:00:00,65,8736,5.7,1,Fitbit
+Laura Rodriguez,20,India,obesity,2025-05-17 00:00:00,71,8029,8.6,3,Fitbit
+Laura Rodriguez,20,India,obesity,2025-05-16 00:00:00,71,3048,8.3,7,Fitbit
+Laura Rodriguez,20,India,obesity,2025-05-15 00:00:00,70,5140,6.1,7,Fitbit
+Laura Rodriguez,20,India,obesity,2025-05-14 00:00:00,90,5400,4.4,4,Fitbit
+Laura Rodriguez,20,India,obesity,2025-05-13 00:00:00,62,7737,7.2,4,Fitbit
+Laura Rodriguez,20,India,obesity,2025-05-12 00:00:00,69,3125,7.0,8,Fitbit
+Laura Rodriguez,20,India,obesity,2025-05-11 00:00:00,90,8738,7.0,4,Fitbit
+Laura Rodriguez,20,India,obesity,2025-05-10 00:00:00,70,5379,4.0,9,Fitbit
+Laura Rodriguez,20,India,obesity,2025-05-09 00:00:00,61,2936,4.5,8,Fitbit
+Laura Rodriguez,20,India,obesity,2025-05-08 00:00:00,98,5440,6.1,7,Fitbit
+Laura Rodriguez,20,India,obesity,2025-05-07 00:00:00,67,8502,6.0,8,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-19 00:00:00,79,3343,4.6,5,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-18 00:00:00,95,6141,7.0,8,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-17 00:00:00,62,8221,6.9,8,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-16 00:00:00,67,9229,7.7,1,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-15 00:00:00,93,5400,5.3,7,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-14 00:00:00,95,2354,4.1,1,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-13 00:00:00,77,3411,5.0,8,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-12 00:00:00,74,8632,7.2,4,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-11 00:00:00,93,9263,7.1,5,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-10 00:00:00,94,8010,5.8,3,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-09 00:00:00,64,6078,4.5,6,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-08 00:00:00,89,4384,7.3,1,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-07 00:00:00,71,9260,6.7,5,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-06 00:00:00,65,4005,6.1,10,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-05 00:00:00,92,7080,7.1,1,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-04 00:00:00,95,6437,5.0,7,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-03 00:00:00,89,2496,8.5,9,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-02 00:00:00,66,9002,6.4,9,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-05-01 00:00:00,90,2717,7.3,5,Fitbit
+Michael Gonzalez,22,India,pregnancy,2025-04-30 00:00:00,88,4769,6.3,1,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-19 00:00:00,91,5255,6.2,5,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-18 00:00:00,87,5952,5.1,7,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-17 00:00:00,90,9116,6.9,5,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-16 00:00:00,63,5577,6.5,7,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-15 00:00:00,85,3922,5.6,4,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-14 00:00:00,67,3735,5.2,6,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-13 00:00:00,72,5352,5.2,9,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-12 00:00:00,75,3670,8.3,2,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-11 00:00:00,73,5256,6.6,6,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-10 00:00:00,100,2959,8.7,5,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-09 00:00:00,91,7540,6.2,10,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-08 00:00:00,62,9239,4.1,4,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-07 00:00:00,85,5379,8.0,9,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-06 00:00:00,62,5063,4.4,4,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-05 00:00:00,82,9872,5.8,4,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-04 00:00:00,75,8826,7.8,5,Fitbit
+Patricia Barrera,64,India,diabetes,2025-05-03 00:00:00,73,7018,5.5,5,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-19 00:00:00,95,2882,4.9,8,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-18 00:00:00,97,2444,4.2,1,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-17 00:00:00,65,2766,5.8,1,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-16 00:00:00,85,8609,5.8,5,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-15 00:00:00,100,8909,7.1,1,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-14 00:00:00,74,7225,8.9,9,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-13 00:00:00,99,5491,5.9,9,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-12 00:00:00,72,5091,6.8,3,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-11 00:00:00,83,4997,7.4,2,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-10 00:00:00,94,9005,5.8,3,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-09 00:00:00,87,7154,5.6,1,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-08 00:00:00,63,6340,8.2,6,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-07 00:00:00,78,2456,6.4,7,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-06 00:00:00,84,6009,6.9,4,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-05 00:00:00,61,4424,7.5,4,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-04 00:00:00,81,2813,7.9,1,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-03 00:00:00,72,9190,4.2,3,Fitbit
+Leonard Ruiz,63,India,obesity,2025-05-02 00:00:00,83,6841,6.2,6,Fitbit
+Mr. Timothy Kerr MD,53,India,obesity,2025-05-19 00:00:00,79,3995,7.2,1,Fitbit
+Mr. Timothy Kerr MD,53,India,obesity,2025-05-18 00:00:00,66,9462,6.7,10,Fitbit
+Mr. Timothy Kerr MD,53,India,obesity,2025-05-17 00:00:00,75,2189,5.8,6,Fitbit
+Mr. Timothy Kerr MD,53,India,obesity,2025-05-16 00:00:00,91,3958,7.1,2,Fitbit
+Mr. Timothy Kerr MD,53,India,obesity,2025-05-15 00:00:00,86,9267,7.1,1,Fitbit
+Mr. Timothy Kerr MD,53,India,obesity,2025-05-14 00:00:00,90,8472,8.6,3,Fitbit
+Mr. Timothy Kerr MD,53,India,obesity,2025-05-13 00:00:00,79,9865,7.7,3,Fitbit
+Mr. Timothy Kerr MD,53,India,obesity,2025-05-12 00:00:00,60,8254,6.8,4,Fitbit
+Mr. Timothy Kerr MD,53,India,obesity,2025-05-11 00:00:00,69,6790,5.1,1,Fitbit
+Mr. Timothy Kerr MD,53,India,obesity,2025-05-10 00:00:00,66,7821,8.4,7,Fitbit
+Mr. Timothy Kerr MD,53,India,obesity,2025-05-09 00:00:00,82,6535,4.4,10,Fitbit
+Mr. Timothy Kerr MD,53,India,obesity,2025-05-08 00:00:00,80,5821,4.2,1,Fitbit
+Mr. Timothy Kerr MD,53,India,obesity,2025-05-07 00:00:00,70,4527,7.0,10,Fitbit
+Michael Ibarra,59,India,pregnancy,2025-05-19 00:00:00,82,9782,4.1,10,Fitbit
+Michael Ibarra,59,India,pregnancy,2025-05-18 00:00:00,99,4971,8.0,2,Fitbit
+Michael Ibarra,59,India,pregnancy,2025-05-17 00:00:00,69,5229,7.9,5,Fitbit
+Michael Ibarra,59,India,pregnancy,2025-05-16 00:00:00,85,5695,7.9,10,Fitbit
+Michael Ibarra,59,India,pregnancy,2025-05-15 00:00:00,82,6114,7.5,3,Fitbit
+Michael Ibarra,59,India,pregnancy,2025-05-14 00:00:00,87,3539,4.8,3,Fitbit
+Michael Ibarra,59,India,pregnancy,2025-05-13 00:00:00,88,4497,7.6,6,Fitbit
+Michael Ibarra,59,India,pregnancy,2025-05-12 00:00:00,86,5693,7.0,1,Fitbit
+Michael Ibarra,59,India,pregnancy,2025-05-11 00:00:00,89,8043,8.8,7,Fitbit
+Michael Ibarra,59,India,pregnancy,2025-05-10 00:00:00,95,3835,4.9,8,Fitbit
+Michael Ibarra,59,India,pregnancy,2025-05-09 00:00:00,77,7426,5.5,9,Fitbit
+Michael Ibarra,59,India,pregnancy,2025-05-08 00:00:00,67,3663,7.8,7,Fitbit
+Kristine Woods,37,India,type 2 diabetes,2025-05-19 00:00:00,75,7113,6.4,2,Fitbit
+Kristine Woods,37,India,type 2 diabetes,2025-05-18 00:00:00,82,4993,7.0,2,Fitbit
+Kristine Woods,37,India,type 2 diabetes,2025-05-17 00:00:00,91,4552,8.8,3,Fitbit
+Kristine Woods,37,India,type 2 diabetes,2025-05-16 00:00:00,77,3107,5.3,2,Fitbit
+Kristine Woods,37,India,type 2 diabetes,2025-05-15 00:00:00,98,9544,5.5,4,Fitbit
+Kristine Woods,37,India,type 2 diabetes,2025-05-14 00:00:00,67,5950,6.9,8,Fitbit
+Kristine Woods,37,India,type 2 diabetes,2025-05-13 00:00:00,86,3538,7.1,2,Fitbit
+Kristine Woods,37,India,type 2 diabetes,2025-05-12 00:00:00,80,9499,4.2,6,Fitbit
+Kristine Woods,37,India,type 2 diabetes,2025-05-11 00:00:00,100,9549,9.0,8,Fitbit
+Kristine Woods,37,India,type 2 diabetes,2025-05-10 00:00:00,71,7517,4.4,8,Fitbit
+Kristine Woods,37,India,type 2 diabetes,2025-05-09 00:00:00,89,5016,4.4,9,Fitbit
+Kristine Woods,37,India,type 2 diabetes,2025-05-08 00:00:00,100,7703,8.4,3,Fitbit
+Kristine Woods,37,India,type 2 diabetes,2025-05-07 00:00:00,70,5660,5.3,7,Fitbit
+Kristine Woods,37,India,type 2 diabetes,2025-05-06 00:00:00,76,2329,4.9,6,Fitbit
+Kristine Woods,37,India,type 2 diabetes,2025-05-05 00:00:00,62,5999,6.5,6,Fitbit
+Kristine Woods,37,India,type 2 diabetes,2025-05-04 00:00:00,66,3887,6.9,8,Fitbit
+Amy Higgins,60,India,diabetes,2025-05-19 00:00:00,90,3732,6.3,1,Fitbit
+Amy Higgins,60,India,diabetes,2025-05-18 00:00:00,86,4320,5.5,9,Fitbit
+Amy Higgins,60,India,diabetes,2025-05-17 00:00:00,84,9568,7.1,7,Fitbit
+Amy Higgins,60,India,diabetes,2025-05-16 00:00:00,60,4325,6.2,4,Fitbit
+Amy Higgins,60,India,diabetes,2025-05-15 00:00:00,81,9293,6.4,8,Fitbit
+Amy Higgins,60,India,diabetes,2025-05-14 00:00:00,72,7796,7.4,6,Fitbit
+Amy Higgins,60,India,diabetes,2025-05-13 00:00:00,74,9215,4.6,2,Fitbit
+Amy Higgins,60,India,diabetes,2025-05-12 00:00:00,73,4425,7.5,9,Fitbit
+Amy Higgins,60,India,diabetes,2025-05-11 00:00:00,88,7751,5.3,8,Fitbit
+Amy Higgins,60,India,diabetes,2025-05-10 00:00:00,73,6537,6.2,2,Fitbit
+Amy Higgins,60,India,diabetes,2025-05-09 00:00:00,64,6003,7.8,7,Fitbit
+Amy Higgins,60,India,diabetes,2025-05-08 00:00:00,99,2189,5.0,1,Fitbit
+Paula Stanley,40,India,obesity,2025-05-19 00:00:00,69,5408,5.2,2,Fitbit
+Paula Stanley,40,India,obesity,2025-05-18 00:00:00,99,9415,7.5,1,Fitbit
+Paula Stanley,40,India,obesity,2025-05-17 00:00:00,74,5965,7.1,4,Fitbit
+Paula Stanley,40,India,obesity,2025-05-16 00:00:00,83,7446,6.6,10,Fitbit
+Paula Stanley,40,India,obesity,2025-05-15 00:00:00,79,8937,4.5,8,Fitbit
+Paula Stanley,40,India,obesity,2025-05-14 00:00:00,91,8486,5.7,4,Fitbit
+Paula Stanley,40,India,obesity,2025-05-13 00:00:00,82,9533,6.8,8,Fitbit
+Paula Stanley,40,India,obesity,2025-05-12 00:00:00,71,9720,8.5,8,Fitbit
+Paula Stanley,40,India,obesity,2025-05-11 00:00:00,72,8192,6.5,7,Fitbit
+Paula Stanley,40,India,obesity,2025-05-10 00:00:00,64,4168,7.4,3,Fitbit
+Paula Stanley,40,India,obesity,2025-05-09 00:00:00,78,5950,8.3,7,Fitbit
+Paula Stanley,40,India,obesity,2025-05-08 00:00:00,68,7256,8.8,1,Fitbit
+Paula Stanley,40,India,obesity,2025-05-07 00:00:00,81,2244,5.1,7,Fitbit
+Paula Stanley,40,India,obesity,2025-05-06 00:00:00,94,9647,8.5,1,Fitbit
+Paula Stanley,40,India,obesity,2025-05-05 00:00:00,62,3946,8.5,1,Fitbit
+Paula Stanley,40,India,obesity,2025-05-04 00:00:00,85,6261,5.7,2,Fitbit
+Carla Sawyer,64,India,healthy,2025-05-19 00:00:00,78,7778,5.5,1,Fitbit
+Carla Sawyer,64,India,healthy,2025-05-18 00:00:00,92,4702,4.6,4,Fitbit
+Carla Sawyer,64,India,healthy,2025-05-17 00:00:00,67,5316,6.6,9,Fitbit
+Carla Sawyer,64,India,healthy,2025-05-16 00:00:00,85,8558,6.5,8,Fitbit
+Carla Sawyer,64,India,healthy,2025-05-15 00:00:00,65,6299,5.5,7,Fitbit
+Carla Sawyer,64,India,healthy,2025-05-14 00:00:00,62,3309,7.7,3,Fitbit
+Carla Sawyer,64,India,healthy,2025-05-13 00:00:00,77,7289,7.6,7,Fitbit
+Carla Sawyer,64,India,healthy,2025-05-12 00:00:00,79,6267,4.3,5,Fitbit
+Carla Sawyer,64,India,healthy,2025-05-11 00:00:00,84,3588,6.8,6,Fitbit
+Carla Sawyer,64,India,healthy,2025-05-10 00:00:00,64,7407,5.7,3,Fitbit
+Carla Sawyer,64,India,healthy,2025-05-09 00:00:00,70,7180,4.5,9,Fitbit
+Carla Sawyer,64,India,healthy,2025-05-08 00:00:00,93,9581,7.5,10,Fitbit
+Carla Sawyer,64,India,healthy,2025-05-07 00:00:00,88,7622,4.0,10,Fitbit
+Carla Sawyer,64,India,healthy,2025-05-06 00:00:00,92,2964,6.5,5,Fitbit
+Craig Hall,51,India,diabetes,2025-05-19 00:00:00,85,2431,5.2,7,Fitbit
+Craig Hall,51,India,diabetes,2025-05-18 00:00:00,83,4176,8.7,7,Fitbit
+Craig Hall,51,India,diabetes,2025-05-17 00:00:00,72,4028,6.3,5,Fitbit
+Craig Hall,51,India,diabetes,2025-05-16 00:00:00,76,3646,5.4,7,Fitbit
+Craig Hall,51,India,diabetes,2025-05-15 00:00:00,99,8224,4.4,1,Fitbit
+Craig Hall,51,India,diabetes,2025-05-14 00:00:00,84,8971,6.9,8,Fitbit
+Craig Hall,51,India,diabetes,2025-05-13 00:00:00,100,2233,8.7,1,Fitbit
+Craig Hall,51,India,diabetes,2025-05-12 00:00:00,94,5625,4.9,9,Fitbit
+Craig Hall,51,India,diabetes,2025-05-11 00:00:00,82,4036,4.5,1,Fitbit
+Craig Hall,51,India,diabetes,2025-05-10 00:00:00,90,2171,6.4,4,Fitbit
+Craig Hall,51,India,diabetes,2025-05-09 00:00:00,90,7035,7.5,4,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-19 00:00:00,62,7971,4.8,9,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-18 00:00:00,98,5094,4.6,7,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-17 00:00:00,98,7942,8.8,9,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-16 00:00:00,70,8676,6.0,9,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-15 00:00:00,77,8477,5.0,10,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-14 00:00:00,80,6151,7.2,2,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-13 00:00:00,86,6619,6.0,1,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-12 00:00:00,93,5734,5.2,7,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-11 00:00:00,72,5041,7.0,7,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-10 00:00:00,64,3808,5.7,1,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-09 00:00:00,95,8446,4.0,1,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-08 00:00:00,65,7364,8.6,4,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-07 00:00:00,69,2658,6.2,7,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-06 00:00:00,96,2591,8.3,9,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-05 00:00:00,90,3914,4.9,7,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-04 00:00:00,96,5712,6.1,1,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-03 00:00:00,91,9296,5.3,8,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-02 00:00:00,72,2572,7.4,5,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-05-01 00:00:00,76,9151,7.2,5,Fitbit
+Matthew Gonzales,57,India,type 2 diabetes,2025-04-30 00:00:00,87,6879,7.2,6,Fitbit
+Sean Smith,19,India,asthma,2025-05-19 00:00:00,71,3041,6.0,8,Fitbit
+Sean Smith,19,India,asthma,2025-05-18 00:00:00,97,2491,7.0,3,Fitbit
+Sean Smith,19,India,asthma,2025-05-17 00:00:00,100,6245,4.9,10,Fitbit
+Sean Smith,19,India,asthma,2025-05-16 00:00:00,70,9331,4.5,2,Fitbit
+Sean Smith,19,India,asthma,2025-05-15 00:00:00,84,9446,5.4,3,Fitbit
+Sean Smith,19,India,asthma,2025-05-14 00:00:00,86,4586,6.8,2,Fitbit
+Sean Smith,19,India,asthma,2025-05-13 00:00:00,75,2960,6.7,10,Fitbit
+Sean Smith,19,India,asthma,2025-05-12 00:00:00,98,2241,4.6,1,Fitbit
+Sean Smith,19,India,asthma,2025-05-11 00:00:00,67,6016,4.3,2,Fitbit
+Sean Smith,19,India,asthma,2025-05-10 00:00:00,92,9941,7.2,10,Fitbit
+Sean Smith,19,India,asthma,2025-05-09 00:00:00,80,7824,5.8,1,Fitbit
+Sean Smith,19,India,asthma,2025-05-08 00:00:00,98,6533,8.4,9,Fitbit
+Sean Smith,19,India,asthma,2025-05-07 00:00:00,73,8737,4.8,8,Fitbit
+Kristy Gamble,43,India,pregnancy,2025-05-19 00:00:00,77,4249,4.9,8,Fitbit
+Kristy Gamble,43,India,pregnancy,2025-05-18 00:00:00,82,6256,7.8,3,Fitbit
+Kristy Gamble,43,India,pregnancy,2025-05-17 00:00:00,82,6257,8.9,3,Fitbit
+Kristy Gamble,43,India,pregnancy,2025-05-16 00:00:00,71,6164,4.4,8,Fitbit
+Kristy Gamble,43,India,pregnancy,2025-05-15 00:00:00,70,5608,5.9,1,Fitbit
+Kristy Gamble,43,India,pregnancy,2025-05-14 00:00:00,85,7918,7.7,4,Fitbit
+Kristy Gamble,43,India,pregnancy,2025-05-13 00:00:00,84,5190,8.1,2,Fitbit
+Kristy Gamble,43,India,pregnancy,2025-05-12 00:00:00,81,8387,6.3,7,Fitbit
+Kristy Gamble,43,India,pregnancy,2025-05-11 00:00:00,60,7643,7.2,8,Fitbit
+Kristy Gamble,43,India,pregnancy,2025-05-10 00:00:00,85,4028,6.0,5,Fitbit
+Kristy Gamble,43,India,pregnancy,2025-05-09 00:00:00,75,9472,7.7,4,Fitbit
+Stacey Miles,51,India,obesity,2025-05-19 00:00:00,84,5729,8.6,5,Fitbit
+Stacey Miles,51,India,obesity,2025-05-18 00:00:00,65,8581,7.8,9,Fitbit
+Stacey Miles,51,India,obesity,2025-05-17 00:00:00,97,9655,4.5,4,Fitbit
+Stacey Miles,51,India,obesity,2025-05-16 00:00:00,98,7855,4.0,6,Fitbit
+Stacey Miles,51,India,obesity,2025-05-15 00:00:00,72,6040,8.4,6,Fitbit
+Stacey Miles,51,India,obesity,2025-05-14 00:00:00,96,9120,5.0,2,Fitbit
+Stacey Miles,51,India,obesity,2025-05-13 00:00:00,60,4092,6.5,1,Fitbit
+Stacey Miles,51,India,obesity,2025-05-12 00:00:00,91,4582,8.5,5,Fitbit
+Stacey Miles,51,India,obesity,2025-05-11 00:00:00,67,3810,5.7,10,Fitbit
+Stacey Miles,51,India,obesity,2025-05-10 00:00:00,97,7685,5.6,2,Fitbit
+Stacey Miles,51,India,obesity,2025-05-09 00:00:00,64,4862,5.0,8,Fitbit
+Stacey Miles,51,India,obesity,2025-05-08 00:00:00,61,7569,4.2,5,Fitbit
+Stacey Miles,51,India,obesity,2025-05-07 00:00:00,60,7162,6.6,10,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-19 00:00:00,67,7338,7.3,1,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-18 00:00:00,69,6783,8.6,5,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-17 00:00:00,97,3911,6.6,3,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-16 00:00:00,93,4956,7.3,8,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-15 00:00:00,62,6273,4.9,2,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-14 00:00:00,71,5408,6.6,3,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-13 00:00:00,86,8673,8.4,4,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-12 00:00:00,83,4814,5.5,7,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-11 00:00:00,100,3250,8.0,7,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-10 00:00:00,63,6659,7.0,5,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-09 00:00:00,68,9261,4.2,8,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-08 00:00:00,92,8142,5.7,6,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-07 00:00:00,75,7771,7.5,4,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-06 00:00:00,64,4181,7.5,6,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-05 00:00:00,62,5323,6.7,2,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-04 00:00:00,73,5456,8.0,6,Fitbit
+Mr. Brandon Walters,34,India,pregnancy,2025-05-03 00:00:00,95,8339,6.9,7,Fitbit
+Jason Gates,51,India,healthy,2025-05-19 00:00:00,71,9145,7.7,1,Fitbit
+Jason Gates,51,India,healthy,2025-05-18 00:00:00,73,3372,7.9,8,Fitbit
+Jason Gates,51,India,healthy,2025-05-17 00:00:00,87,6361,7.7,2,Fitbit
+Jason Gates,51,India,healthy,2025-05-16 00:00:00,84,7887,6.1,1,Fitbit
+Jason Gates,51,India,healthy,2025-05-15 00:00:00,71,7597,8.4,10,Fitbit
+Jason Gates,51,India,healthy,2025-05-14 00:00:00,92,3988,4.8,8,Fitbit
+Jason Gates,51,India,healthy,2025-05-13 00:00:00,65,5417,8.1,8,Fitbit
+Jason Gates,51,India,healthy,2025-05-12 00:00:00,77,9707,4.4,7,Fitbit
+Jason Gates,51,India,healthy,2025-05-11 00:00:00,69,5684,8.1,2,Fitbit
+Jason Gates,51,India,healthy,2025-05-10 00:00:00,65,4196,4.5,4,Fitbit
+Jason Gates,51,India,healthy,2025-05-09 00:00:00,100,3789,8.1,10,Fitbit
+Jordan Williams,61,India,diabetes,2025-05-19 00:00:00,88,3090,7.9,9,Fitbit
+Jordan Williams,61,India,diabetes,2025-05-18 00:00:00,86,2507,4.9,4,Fitbit
+Jordan Williams,61,India,diabetes,2025-05-17 00:00:00,87,8506,6.9,1,Fitbit
+Jordan Williams,61,India,diabetes,2025-05-16 00:00:00,85,6267,6.1,6,Fitbit
+Jordan Williams,61,India,diabetes,2025-05-15 00:00:00,85,2490,7.7,7,Fitbit
+Jordan Williams,61,India,diabetes,2025-05-14 00:00:00,69,6528,8.4,8,Fitbit
+Jordan Williams,61,India,diabetes,2025-05-13 00:00:00,96,8855,6.6,6,Fitbit
+Jordan Williams,61,India,diabetes,2025-05-12 00:00:00,86,8035,4.1,9,Fitbit
+Jordan Williams,61,India,diabetes,2025-05-11 00:00:00,73,7127,4.1,2,Fitbit
+Jordan Williams,61,India,diabetes,2025-05-10 00:00:00,76,3598,7.6,5,Fitbit
+Jordan Williams,61,India,diabetes,2025-05-09 00:00:00,85,7442,4.0,4,Fitbit
+Robert Fry,64,India,asthma,2025-05-19 00:00:00,71,7309,6.4,7,Fitbit
+Robert Fry,64,India,asthma,2025-05-18 00:00:00,70,6811,6.0,5,Fitbit
+Robert Fry,64,India,asthma,2025-05-17 00:00:00,79,4552,4.6,9,Fitbit
+Robert Fry,64,India,asthma,2025-05-16 00:00:00,85,3660,6.6,9,Fitbit
+Robert Fry,64,India,asthma,2025-05-15 00:00:00,91,9233,8.4,2,Fitbit
+Robert Fry,64,India,asthma,2025-05-14 00:00:00,67,6409,4.9,8,Fitbit
+Robert Fry,64,India,asthma,2025-05-13 00:00:00,71,4912,7.5,7,Fitbit
+Robert Fry,64,India,asthma,2025-05-12 00:00:00,81,5640,4.9,7,Fitbit
+Robert Fry,64,India,asthma,2025-05-11 00:00:00,93,7880,8.4,4,Fitbit
+Robert Fry,64,India,asthma,2025-05-10 00:00:00,70,4415,7.0,4,Fitbit
+Robert Fry,64,India,asthma,2025-05-09 00:00:00,64,8991,7.3,6,Fitbit
+Robert Fry,64,India,asthma,2025-05-08 00:00:00,99,6144,8.1,8,Fitbit
+Robert Fry,64,India,asthma,2025-05-07 00:00:00,71,3995,8.6,7,Fitbit
+Robert Fry,64,India,asthma,2025-05-06 00:00:00,96,9619,7.6,9,Fitbit
+Robert Fry,64,India,asthma,2025-05-05 00:00:00,92,2571,6.4,6,Fitbit
+Whitney Martin,56,India,obesity,2025-05-19 00:00:00,69,8358,8.0,10,Fitbit
+Whitney Martin,56,India,obesity,2025-05-18 00:00:00,91,4574,8.7,5,Fitbit
+Whitney Martin,56,India,obesity,2025-05-17 00:00:00,89,4088,5.6,5,Fitbit
+Whitney Martin,56,India,obesity,2025-05-16 00:00:00,79,9704,8.9,10,Fitbit
+Whitney Martin,56,India,obesity,2025-05-15 00:00:00,100,5897,8.2,5,Fitbit
+Whitney Martin,56,India,obesity,2025-05-14 00:00:00,97,8119,4.2,3,Fitbit
+Whitney Martin,56,India,obesity,2025-05-13 00:00:00,94,7363,5.4,6,Fitbit
+Whitney Martin,56,India,obesity,2025-05-12 00:00:00,66,8281,6.7,10,Fitbit
+Whitney Martin,56,India,obesity,2025-05-11 00:00:00,74,7850,8.6,4,Fitbit
+Whitney Martin,56,India,obesity,2025-05-10 00:00:00,68,9970,5.4,2,Fitbit
+Gail Walters,27,India,healthy,2025-05-19 00:00:00,83,9213,4.5,4,Fitbit
+Gail Walters,27,India,healthy,2025-05-18 00:00:00,80,3205,4.8,5,Fitbit
+Gail Walters,27,India,healthy,2025-05-17 00:00:00,63,5485,6.0,10,Fitbit
+Gail Walters,27,India,healthy,2025-05-16 00:00:00,97,4841,4.8,6,Fitbit
+Gail Walters,27,India,healthy,2025-05-15 00:00:00,69,8196,5.8,1,Fitbit
+Gail Walters,27,India,healthy,2025-05-14 00:00:00,70,2058,8.3,10,Fitbit
+Gail Walters,27,India,healthy,2025-05-13 00:00:00,81,2754,5.1,7,Fitbit
+Gail Walters,27,India,healthy,2025-05-12 00:00:00,96,6240,6.1,9,Fitbit
+Gail Walters,27,India,healthy,2025-05-11 00:00:00,100,4836,8.2,8,Fitbit
+Gail Walters,27,India,healthy,2025-05-10 00:00:00,92,7499,6.8,6,Fitbit
+Gail Walters,27,India,healthy,2025-05-09 00:00:00,89,3003,4.3,4,Fitbit
+Gail Walters,27,India,healthy,2025-05-08 00:00:00,76,6972,8.6,10,Fitbit
+Jeffrey Owens,51,India,pregnancy,2025-05-19 00:00:00,94,5756,4.3,3,Fitbit
+Jeffrey Owens,51,India,pregnancy,2025-05-18 00:00:00,61,5185,5.8,6,Fitbit
+Jeffrey Owens,51,India,pregnancy,2025-05-17 00:00:00,88,2205,4.4,6,Fitbit
+Jeffrey Owens,51,India,pregnancy,2025-05-16 00:00:00,94,8861,6.3,3,Fitbit
+Jeffrey Owens,51,India,pregnancy,2025-05-15 00:00:00,79,2550,4.6,9,Fitbit
+Jeffrey Owens,51,India,pregnancy,2025-05-14 00:00:00,62,4301,7.3,5,Fitbit
+Jeffrey Owens,51,India,pregnancy,2025-05-13 00:00:00,60,4552,9.0,4,Fitbit
+Jeffrey Owens,51,India,pregnancy,2025-05-12 00:00:00,63,4394,5.1,1,Fitbit
+Jeffrey Owens,51,India,pregnancy,2025-05-11 00:00:00,71,8644,7.9,7,Fitbit
+Jeffrey Owens,51,India,pregnancy,2025-05-10 00:00:00,71,2684,5.9,7,Fitbit
+James Collier,57,India,diabetes,2025-05-19 00:00:00,63,2667,7.1,8,Fitbit
+James Collier,57,India,diabetes,2025-05-18 00:00:00,93,7095,5.0,1,Fitbit
+James Collier,57,India,diabetes,2025-05-17 00:00:00,80,8522,5.8,1,Fitbit
+James Collier,57,India,diabetes,2025-05-16 00:00:00,99,7988,8.6,3,Fitbit
+James Collier,57,India,diabetes,2025-05-15 00:00:00,98,3626,8.8,8,Fitbit
+James Collier,57,India,diabetes,2025-05-14 00:00:00,89,9744,5.0,6,Fitbit
+James Collier,57,India,diabetes,2025-05-13 00:00:00,91,3470,5.3,4,Fitbit
+James Collier,57,India,diabetes,2025-05-12 00:00:00,93,9238,8.9,3,Fitbit
+James Collier,57,India,diabetes,2025-05-11 00:00:00,100,3529,6.5,6,Fitbit
+James Collier,57,India,diabetes,2025-05-10 00:00:00,90,7460,6.5,7,Fitbit
+James Collier,57,India,diabetes,2025-05-09 00:00:00,74,8168,5.5,1,Fitbit
+James Collier,57,India,diabetes,2025-05-08 00:00:00,72,9522,7.5,3,Fitbit
+James Collier,57,India,diabetes,2025-05-07 00:00:00,62,3843,7.9,4,Fitbit
+James Collier,57,India,diabetes,2025-05-06 00:00:00,66,5089,4.4,2,Fitbit
+James Collier,57,India,diabetes,2025-05-05 00:00:00,76,6418,5.6,7,Fitbit
+Anthony Rogers,24,India,diabetes,2025-05-19 00:00:00,66,5341,8.0,4,Fitbit
+Anthony Rogers,24,India,diabetes,2025-05-18 00:00:00,83,2659,8.5,8,Fitbit
+Anthony Rogers,24,India,diabetes,2025-05-17 00:00:00,64,8496,5.5,1,Fitbit
+Anthony Rogers,24,India,diabetes,2025-05-16 00:00:00,60,5533,7.8,2,Fitbit
+Anthony Rogers,24,India,diabetes,2025-05-15 00:00:00,84,6558,5.1,9,Fitbit
+Anthony Rogers,24,India,diabetes,2025-05-14 00:00:00,61,7266,9.0,1,Fitbit
+Anthony Rogers,24,India,diabetes,2025-05-13 00:00:00,73,4758,5.9,10,Fitbit
+Anthony Rogers,24,India,diabetes,2025-05-12 00:00:00,100,8936,5.9,2,Fitbit
+Anthony Rogers,24,India,diabetes,2025-05-11 00:00:00,63,5405,4.7,3,Fitbit
+Anthony Rogers,24,India,diabetes,2025-05-10 00:00:00,91,6946,5.8,10,Fitbit
+Anthony Rogers,24,India,diabetes,2025-05-09 00:00:00,79,7401,4.6,2,Fitbit
+Anthony Rogers,24,India,diabetes,2025-05-08 00:00:00,69,3611,7.9,6,Fitbit
+Pat Patel,57,India,obesity,2025-05-19 00:00:00,90,6803,4.1,8,Fitbit
+Pat Patel,57,India,obesity,2025-05-18 00:00:00,91,2999,6.7,7,Fitbit
+Pat Patel,57,India,obesity,2025-05-17 00:00:00,85,3564,7.8,4,Fitbit
+Pat Patel,57,India,obesity,2025-05-16 00:00:00,80,2156,6.4,8,Fitbit
+Pat Patel,57,India,obesity,2025-05-15 00:00:00,96,7305,4.9,6,Fitbit
+Pat Patel,57,India,obesity,2025-05-14 00:00:00,86,8733,6.1,2,Fitbit
+Pat Patel,57,India,obesity,2025-05-13 00:00:00,83,8755,6.5,9,Fitbit
+Pat Patel,57,India,obesity,2025-05-12 00:00:00,64,8391,7.4,2,Fitbit
+Pat Patel,57,India,obesity,2025-05-11 00:00:00,92,9461,6.3,7,Fitbit
+Pat Patel,57,India,obesity,2025-05-10 00:00:00,66,4666,4.4,9,Fitbit
+Jordan Reddy,27,India,no significant history,2025-05-19 00:00:00,66,5508,4.1,8,Fitbit
+Jordan Reddy,27,India,no significant history,2025-05-18 00:00:00,60,8204,4.0,4,Fitbit
+Jordan Reddy,27,India,no significant history,2025-05-17 00:00:00,74,3900,4.0,1,Fitbit
+Jordan Reddy,27,India,no significant history,2025-05-16 00:00:00,91,2827,5.0,6,Fitbit
+Jordan Reddy,27,India,no significant history,2025-05-15 00:00:00,78,6374,8.9,4,Fitbit
+Jordan Reddy,27,India,no significant history,2025-05-14 00:00:00,63,3956,5.1,8,Fitbit
+Jordan Reddy,27,India,no significant history,2025-05-13 00:00:00,87,5552,6.2,2,Fitbit
+Jordan Reddy,27,India,no significant history,2025-05-12 00:00:00,82,3003,8.6,3,Fitbit
+Jordan Reddy,27,India,no significant history,2025-05-11 00:00:00,67,8456,5.2,7,Fitbit
+Jordan Reddy,27,India,no significant history,2025-05-10 00:00:00,93,4653,5.8,5,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-19 00:00:00,79,2995,7.4,3,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-18 00:00:00,83,2296,6.5,6,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-17 00:00:00,65,3836,5.5,10,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-16 00:00:00,62,8283,4.6,5,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-15 00:00:00,86,6273,4.5,2,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-14 00:00:00,91,2404,5.3,3,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-13 00:00:00,90,9256,4.6,6,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-12 00:00:00,65,8729,8.2,7,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-11 00:00:00,73,8096,8.8,4,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-10 00:00:00,98,6008,4.9,9,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-09 00:00:00,98,5823,6.1,6,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-08 00:00:00,82,5376,8.4,4,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-07 00:00:00,74,4784,8.6,3,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-06 00:00:00,72,7600,8.0,1,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-05 00:00:00,97,6216,4.1,3,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-04 00:00:00,93,4972,7.6,5,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-03 00:00:00,86,4235,6.0,8,Fitbit
+Skyler Singh,52,India,diabetes,2025-05-02 00:00:00,90,4872,7.5,8,Fitbit
+Quinn Nair,64,India,asthma,2025-05-19 00:00:00,71,7068,7.1,7,Fitbit
+Quinn Nair,64,India,asthma,2025-05-18 00:00:00,95,7534,7.8,7,Fitbit
+Quinn Nair,64,India,asthma,2025-05-17 00:00:00,97,6669,7.3,8,Fitbit
+Quinn Nair,64,India,asthma,2025-05-16 00:00:00,90,5410,6.6,9,Fitbit
+Quinn Nair,64,India,asthma,2025-05-15 00:00:00,71,9397,6.0,7,Fitbit
+Quinn Nair,64,India,asthma,2025-05-14 00:00:00,69,4220,7.2,6,Fitbit
+Quinn Nair,64,India,asthma,2025-05-13 00:00:00,87,2915,5.2,3,Fitbit
+Quinn Nair,64,India,asthma,2025-05-12 00:00:00,78,8754,8.8,8,Fitbit
+Quinn Nair,64,India,asthma,2025-05-11 00:00:00,96,8771,6.3,10,Fitbit
+Quinn Nair,64,India,asthma,2025-05-10 00:00:00,72,7162,5.4,10,Fitbit
+Quinn Nair,64,India,asthma,2025-05-09 00:00:00,99,7605,8.1,6,Fitbit
+Quinn Nair,64,India,asthma,2025-05-08 00:00:00,88,4647,8.0,5,Fitbit
+Quinn Nair,64,India,asthma,2025-05-07 00:00:00,65,8711,8.3,8,Fitbit
+Quinn Nair,64,India,asthma,2025-05-06 00:00:00,84,7266,4.2,2,Fitbit
+Quinn Nair,64,India,asthma,2025-05-05 00:00:00,66,9141,8.1,6,Fitbit
+Quinn Nair,64,India,asthma,2025-05-04 00:00:00,97,5477,6.2,3,Fitbit
+Quinn Nair,64,India,asthma,2025-05-03 00:00:00,93,2003,5.6,7,Fitbit
+Quinn Nair,64,India,asthma,2025-05-02 00:00:00,93,7081,6.3,5,Fitbit
+Jesse Nair,27,India,type 2 diabetes,2025-05-19 00:00:00,72,5544,6.6,5,Fitbit
+Jesse Nair,27,India,type 2 diabetes,2025-05-18 00:00:00,87,7968,5.8,1,Fitbit
+Jesse Nair,27,India,type 2 diabetes,2025-05-17 00:00:00,98,4474,4.2,5,Fitbit
+Jesse Nair,27,India,type 2 diabetes,2025-05-16 00:00:00,93,5484,6.1,2,Fitbit
+Jesse Nair,27,India,type 2 diabetes,2025-05-15 00:00:00,100,3601,4.5,8,Fitbit
+Jesse Nair,27,India,type 2 diabetes,2025-05-14 00:00:00,77,6238,5.4,6,Fitbit
+Jesse Nair,27,India,type 2 diabetes,2025-05-13 00:00:00,72,4646,7.3,8,Fitbit
+Jesse Nair,27,India,type 2 diabetes,2025-05-12 00:00:00,72,9554,4.2,9,Fitbit
+Jesse Nair,27,India,type 2 diabetes,2025-05-11 00:00:00,96,4321,8.1,1,Fitbit
+Jesse Nair,27,India,type 2 diabetes,2025-05-10 00:00:00,61,5296,4.5,3,Fitbit
+Jesse Nair,27,India,type 2 diabetes,2025-05-09 00:00:00,86,7946,6.5,5,Fitbit
+Jesse Nair,27,India,type 2 diabetes,2025-05-08 00:00:00,78,5741,4.3,8,Fitbit
+Quinn Singh,57,India,asthma,2025-05-19 00:00:00,88,6061,5.3,8,Fitbit
+Quinn Singh,57,India,asthma,2025-05-18 00:00:00,99,7357,7.0,10,Fitbit
+Quinn Singh,57,India,asthma,2025-05-17 00:00:00,71,4785,8.6,5,Fitbit
+Quinn Singh,57,India,asthma,2025-05-16 00:00:00,79,9800,5.7,6,Fitbit
+Quinn Singh,57,India,asthma,2025-05-15 00:00:00,88,9720,5.6,2,Fitbit
+Quinn Singh,57,India,asthma,2025-05-14 00:00:00,70,2259,6.8,6,Fitbit
+Quinn Singh,57,India,asthma,2025-05-13 00:00:00,65,5282,5.8,3,Fitbit
+Quinn Singh,57,India,asthma,2025-05-12 00:00:00,91,6527,8.8,1,Fitbit
+Quinn Singh,57,India,asthma,2025-05-11 00:00:00,68,8841,7.9,9,Fitbit
+Quinn Singh,57,India,asthma,2025-05-10 00:00:00,84,9502,8.9,6,Fitbit
+Quinn Singh,57,India,asthma,2025-05-09 00:00:00,94,8112,6.2,4,Fitbit
+Quinn Singh,57,India,asthma,2025-05-08 00:00:00,70,2643,7.5,9,Fitbit
+Quinn Singh,57,India,asthma,2025-05-07 00:00:00,85,3210,5.2,10,Fitbit
+Quinn Singh,57,India,asthma,2025-05-06 00:00:00,77,8896,4.2,8,Fitbit
+Quinn Singh,57,India,asthma,2025-05-05 00:00:00,65,8692,4.2,5,Fitbit
+Quinn Singh,57,India,asthma,2025-05-04 00:00:00,95,4529,6.3,4,Fitbit
+Casey Gupta,58,India,type 2 diabetes,2025-05-19 00:00:00,68,6493,8.9,3,Fitbit
+Casey Gupta,58,India,type 2 diabetes,2025-05-18 00:00:00,64,3200,8.8,4,Fitbit
+Casey Gupta,58,India,type 2 diabetes,2025-05-17 00:00:00,66,4982,5.9,6,Fitbit
+Casey Gupta,58,India,type 2 diabetes,2025-05-16 00:00:00,69,5478,4.3,2,Fitbit
+Casey Gupta,58,India,type 2 diabetes,2025-05-15 00:00:00,96,7255,8.3,8,Fitbit
+Casey Gupta,58,India,type 2 diabetes,2025-05-14 00:00:00,99,9211,6.6,5,Fitbit
+Casey Gupta,58,India,type 2 diabetes,2025-05-13 00:00:00,75,7020,5.5,9,Fitbit
+Casey Gupta,58,India,type 2 diabetes,2025-05-12 00:00:00,69,5142,8.0,1,Fitbit
+Casey Gupta,58,India,type 2 diabetes,2025-05-11 00:00:00,80,2098,4.1,7,Fitbit
+Casey Gupta,58,India,type 2 diabetes,2025-05-10 00:00:00,66,4380,8.0,3,Fitbit
+Casey Gupta,58,India,type 2 diabetes,2025-05-09 00:00:00,78,6245,8.3,3,Fitbit
+Casey Gupta,58,India,type 2 diabetes,2025-05-08 00:00:00,93,9369,4.9,6,Fitbit
+Casey Gupta,58,India,type 2 diabetes,2025-05-07 00:00:00,91,6038,6.6,6,Fitbit
+Casey Gupta,58,India,type 2 diabetes,2025-05-06 00:00:00,62,3508,4.0,5,Fitbit
+Casey Gupta,58,India,type 2 diabetes,2025-05-05 00:00:00,89,8271,5.6,9,Fitbit
+Casey Gupta,58,India,type 2 diabetes,2025-05-04 00:00:00,89,8072,4.6,10,Fitbit
+Casey Kapoor,47,India,obesity,2025-05-19 00:00:00,76,7570,8.3,10,Fitbit
+Casey Kapoor,47,India,obesity,2025-05-18 00:00:00,72,4274,8.6,2,Fitbit
+Casey Kapoor,47,India,obesity,2025-05-17 00:00:00,79,4986,5.5,5,Fitbit
+Casey Kapoor,47,India,obesity,2025-05-16 00:00:00,84,9944,6.4,3,Fitbit
+Casey Kapoor,47,India,obesity,2025-05-15 00:00:00,99,4780,4.2,5,Fitbit
+Casey Kapoor,47,India,obesity,2025-05-14 00:00:00,81,8525,5.7,3,Fitbit
+Casey Kapoor,47,India,obesity,2025-05-13 00:00:00,80,3159,7.1,4,Fitbit
+Casey Kapoor,47,India,obesity,2025-05-12 00:00:00,90,5447,6.3,4,Fitbit
+Casey Kapoor,47,India,obesity,2025-05-11 00:00:00,71,7771,7.5,10,Fitbit
+Casey Kapoor,47,India,obesity,2025-05-10 00:00:00,70,8785,8.5,3,Fitbit
+Casey Kapoor,47,India,obesity,2025-05-09 00:00:00,66,7922,8.4,4,Fitbit
+Jordan Gupta,29,India,healthy,2025-05-19 00:00:00,72,8187,4.8,2,Fitbit
+Jordan Gupta,29,India,healthy,2025-05-18 00:00:00,98,3317,7.5,4,Fitbit
+Jordan Gupta,29,India,healthy,2025-05-17 00:00:00,67,7281,4.4,9,Fitbit
+Jordan Gupta,29,India,healthy,2025-05-16 00:00:00,66,9091,6.8,7,Fitbit
+Jordan Gupta,29,India,healthy,2025-05-15 00:00:00,92,2130,5.0,3,Fitbit
+Jordan Gupta,29,India,healthy,2025-05-14 00:00:00,87,3639,4.4,10,Fitbit
+Jordan Gupta,29,India,healthy,2025-05-13 00:00:00,92,9044,6.2,5,Fitbit
+Jordan Gupta,29,India,healthy,2025-05-12 00:00:00,97,9517,7.4,2,Fitbit
+Jordan Gupta,29,India,healthy,2025-05-11 00:00:00,91,5541,5.0,5,Fitbit
+Jordan Gupta,29,India,healthy,2025-05-10 00:00:00,76,7199,4.7,3,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-19 00:00:00,98,8541,6.8,1,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-18 00:00:00,97,2715,5.9,10,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-17 00:00:00,71,8911,8.3,1,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-16 00:00:00,69,7940,7.5,2,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-15 00:00:00,63,4175,6.8,2,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-14 00:00:00,84,2572,6.5,4,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-13 00:00:00,72,3034,5.6,1,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-12 00:00:00,79,8659,7.7,10,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-11 00:00:00,76,5188,5.7,8,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-10 00:00:00,99,2985,6.3,7,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-09 00:00:00,85,4292,7.5,6,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-08 00:00:00,90,7545,6.1,1,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-07 00:00:00,60,5651,4.6,4,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-06 00:00:00,100,3260,5.8,5,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-05 00:00:00,71,3311,6.4,5,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-04 00:00:00,62,4267,4.8,5,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-03 00:00:00,67,5708,6.6,10,Fitbit
+Quinn Mehta,34,India,pregnancy,2025-05-02 00:00:00,83,3396,7.5,7,Fitbit
+Alex Kapoor,23,India,asthma,2025-05-19 00:00:00,85,6488,4.4,8,Fitbit
+Alex Kapoor,23,India,asthma,2025-05-18 00:00:00,63,7691,6.2,8,Fitbit
+Alex Kapoor,23,India,asthma,2025-05-17 00:00:00,81,5367,8.7,8,Fitbit
+Alex Kapoor,23,India,asthma,2025-05-16 00:00:00,84,4715,6.4,5,Fitbit
+Alex Kapoor,23,India,asthma,2025-05-15 00:00:00,63,4009,6.3,9,Fitbit
+Alex Kapoor,23,India,asthma,2025-05-14 00:00:00,62,7267,8.0,7,Fitbit
+Alex Kapoor,23,India,asthma,2025-05-13 00:00:00,74,6877,5.6,9,Fitbit
+Alex Kapoor,23,India,asthma,2025-05-12 00:00:00,63,7505,5.1,10,Fitbit
+Alex Kapoor,23,India,asthma,2025-05-11 00:00:00,80,5660,7.9,6,Fitbit
+Alex Kapoor,23,India,asthma,2025-05-10 00:00:00,91,3228,6.8,6,Fitbit
+Alex Kapoor,23,India,asthma,2025-05-09 00:00:00,60,8733,6.0,1,Fitbit
+Alex Kapoor,23,India,asthma,2025-05-08 00:00:00,100,9024,7.5,5,Fitbit
+Alex Agarwal,64,India,pregnancy,2025-05-19 00:00:00,97,9601,4.5,9,Fitbit
+Alex Agarwal,64,India,pregnancy,2025-05-18 00:00:00,80,4527,8.8,6,Fitbit
+Alex Agarwal,64,India,pregnancy,2025-05-17 00:00:00,83,8863,4.4,2,Fitbit
+Alex Agarwal,64,India,pregnancy,2025-05-16 00:00:00,82,7412,6.0,6,Fitbit
+Alex Agarwal,64,India,pregnancy,2025-05-15 00:00:00,85,2975,5.3,2,Fitbit
+Alex Agarwal,64,India,pregnancy,2025-05-14 00:00:00,66,7785,8.4,7,Fitbit
+Alex Agarwal,64,India,pregnancy,2025-05-13 00:00:00,100,4676,7.8,10,Fitbit
+Alex Agarwal,64,India,pregnancy,2025-05-12 00:00:00,76,3256,8.8,3,Fitbit
+Alex Agarwal,64,India,pregnancy,2025-05-11 00:00:00,89,4355,6.6,2,Fitbit
+Alex Agarwal,64,India,pregnancy,2025-05-10 00:00:00,83,8634,4.4,1,Fitbit
+Alex Agarwal,64,India,pregnancy,2025-05-09 00:00:00,88,3458,5.1,9,Fitbit
+Alex Agarwal,64,India,pregnancy,2025-05-08 00:00:00,71,4735,4.7,3,Fitbit
+Alex Agarwal,64,India,pregnancy,2025-05-07 00:00:00,95,2828,8.1,6,Fitbit
+Morgan Nair,31,India,pregnancy,2025-05-19 00:00:00,82,2906,8.6,5,Fitbit
+Morgan Nair,31,India,pregnancy,2025-05-18 00:00:00,74,5856,5.1,10,Fitbit
+Morgan Nair,31,India,pregnancy,2025-05-17 00:00:00,91,4892,6.4,4,Fitbit
+Morgan Nair,31,India,pregnancy,2025-05-16 00:00:00,94,8774,4.7,6,Fitbit
+Morgan Nair,31,India,pregnancy,2025-05-15 00:00:00,100,6350,8.9,7,Fitbit
+Morgan Nair,31,India,pregnancy,2025-05-14 00:00:00,96,6100,4.7,8,Fitbit
+Morgan Nair,31,India,pregnancy,2025-05-13 00:00:00,68,8968,6.1,7,Fitbit
+Morgan Nair,31,India,pregnancy,2025-05-12 00:00:00,73,8535,8.8,7,Fitbit
+Morgan Nair,31,India,pregnancy,2025-05-11 00:00:00,84,7943,7.2,10,Fitbit
+Morgan Nair,31,India,pregnancy,2025-05-10 00:00:00,88,2738,6.8,5,Fitbit
+Morgan Nair,31,India,pregnancy,2025-05-09 00:00:00,60,5788,5.7,1,Fitbit
+Morgan Nair,31,India,pregnancy,2025-05-08 00:00:00,96,4187,8.0,10,Fitbit
+Morgan Nair,31,India,pregnancy,2025-05-07 00:00:00,93,5969,8.0,9,Fitbit
+Morgan Nair,31,India,pregnancy,2025-05-06 00:00:00,67,6641,4.2,3,Fitbit
+Morgan Nair,31,India,pregnancy,2025-05-05 00:00:00,63,3816,6.7,8,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-19 00:00:00,81,4745,4.0,3,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-18 00:00:00,96,3707,5.0,1,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-17 00:00:00,62,5773,7.6,6,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-16 00:00:00,83,3945,4.6,4,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-15 00:00:00,79,8698,6.7,8,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-14 00:00:00,95,4977,4.1,3,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-13 00:00:00,71,9840,7.7,10,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-12 00:00:00,63,7264,8.2,3,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-11 00:00:00,99,2694,4.5,8,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-10 00:00:00,99,8681,5.0,3,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-09 00:00:00,100,8272,4.2,6,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-08 00:00:00,95,4557,8.9,6,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-07 00:00:00,78,9566,5.0,5,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-06 00:00:00,74,5665,7.8,5,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-05 00:00:00,73,4588,4.9,8,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-04 00:00:00,93,4217,6.0,9,Fitbit
+Skyler Kapoor,18,India,no significant history,2025-05-03 00:00:00,71,8989,6.9,10,Fitbit
+Alex Nair,44,India,diabetes,2025-05-19 00:00:00,65,5016,6.7,8,Fitbit
+Alex Nair,44,India,diabetes,2025-05-18 00:00:00,76,6358,5.2,1,Fitbit
+Alex Nair,44,India,diabetes,2025-05-17 00:00:00,85,3763,8.5,10,Fitbit
+Alex Nair,44,India,diabetes,2025-05-16 00:00:00,100,4405,5.2,10,Fitbit
+Alex Nair,44,India,diabetes,2025-05-15 00:00:00,89,4069,5.7,1,Fitbit
+Alex Nair,44,India,diabetes,2025-05-14 00:00:00,80,9670,6.2,1,Fitbit
+Alex Nair,44,India,diabetes,2025-05-13 00:00:00,64,3423,7.8,6,Fitbit
+Alex Nair,44,India,diabetes,2025-05-12 00:00:00,96,7273,7.8,5,Fitbit
+Alex Nair,44,India,diabetes,2025-05-11 00:00:00,81,4829,5.0,7,Fitbit
+Alex Nair,44,India,diabetes,2025-05-10 00:00:00,88,2557,5.6,9,Fitbit
+Alex Nair,44,India,diabetes,2025-05-09 00:00:00,68,7378,5.6,4,Fitbit
+Alex Nair,44,India,diabetes,2025-05-08 00:00:00,81,5552,7.5,5,Fitbit
+Alex Nair,44,India,diabetes,2025-05-07 00:00:00,94,8669,7.5,10,Fitbit
+Jesse Reddy,34,India,type 2 diabetes,2025-05-19 00:00:00,63,6261,7.6,6,Fitbit
+Jesse Reddy,34,India,type 2 diabetes,2025-05-18 00:00:00,99,6951,5.0,8,Fitbit
+Jesse Reddy,34,India,type 2 diabetes,2025-05-17 00:00:00,73,4993,8.7,2,Fitbit
+Jesse Reddy,34,India,type 2 diabetes,2025-05-16 00:00:00,80,2129,7.1,5,Fitbit
+Jesse Reddy,34,India,type 2 diabetes,2025-05-15 00:00:00,64,7347,6.4,6,Fitbit
+Jesse Reddy,34,India,type 2 diabetes,2025-05-14 00:00:00,94,3545,8.8,6,Fitbit
+Jesse Reddy,34,India,type 2 diabetes,2025-05-13 00:00:00,65,3157,5.1,10,Fitbit
+Jesse Reddy,34,India,type 2 diabetes,2025-05-12 00:00:00,71,9552,5.7,10,Fitbit
+Jesse Reddy,34,India,type 2 diabetes,2025-05-11 00:00:00,83,8527,8.0,1,Fitbit
+Jesse Reddy,34,India,type 2 diabetes,2025-05-10 00:00:00,73,9826,6.2,9,Fitbit
+Jesse Reddy,34,India,type 2 diabetes,2025-05-09 00:00:00,88,6536,8.8,6,Fitbit
+Jesse Reddy,34,India,type 2 diabetes,2025-05-08 00:00:00,99,5409,7.3,3,Fitbit
+Jesse Reddy,34,India,type 2 diabetes,2025-05-07 00:00:00,99,3656,7.1,5,Fitbit
+Jesse Reddy,34,India,type 2 diabetes,2025-05-06 00:00:00,98,7055,5.3,3,Fitbit
+Jesse Reddy,34,India,type 2 diabetes,2025-05-05 00:00:00,89,5753,7.9,3,Fitbit
+Jesse Reddy,34,India,type 2 diabetes,2025-05-04 00:00:00,99,2180,4.4,10,Fitbit
+Pat Gupta,45,India,no significant history,2025-05-19 00:00:00,62,8761,8.4,3,Fitbit
+Pat Gupta,45,India,no significant history,2025-05-18 00:00:00,90,3011,7.4,2,Fitbit
+Pat Gupta,45,India,no significant history,2025-05-17 00:00:00,62,4128,8.3,9,Fitbit
+Pat Gupta,45,India,no significant history,2025-05-16 00:00:00,64,3924,6.1,10,Fitbit
+Pat Gupta,45,India,no significant history,2025-05-15 00:00:00,73,7052,5.8,4,Fitbit
+Pat Gupta,45,India,no significant history,2025-05-14 00:00:00,71,3199,8.8,7,Fitbit
+Pat Gupta,45,India,no significant history,2025-05-13 00:00:00,92,3252,8.9,2,Fitbit
+Pat Gupta,45,India,no significant history,2025-05-12 00:00:00,95,2846,8.8,7,Fitbit
+Pat Gupta,45,India,no significant history,2025-05-11 00:00:00,86,7518,5.1,7,Fitbit
+Pat Gupta,45,India,no significant history,2025-05-10 00:00:00,68,2994,6.1,4,Fitbit
+Pat Gupta,45,India,no significant history,2025-05-09 00:00:00,91,10000,6.3,3,Fitbit
+Pat Gupta,45,India,no significant history,2025-05-08 00:00:00,84,8276,4.0,3,Fitbit
+Pat Gupta,45,India,no significant history,2025-05-07 00:00:00,90,9188,6.1,10,Fitbit
+Pat Gupta,45,India,no significant history,2025-05-06 00:00:00,81,5743,7.3,2,Fitbit
+Pat Gupta,45,India,no significant history,2025-05-05 00:00:00,81,7211,7.8,5,Fitbit
+Pat Gupta,45,India,no significant history,2025-05-04 00:00:00,85,9260,4.2,2,Fitbit
+Casey Sharma,33,India,type 2 diabetes,2025-05-19 00:00:00,63,8808,4.9,2,Fitbit
+Casey Sharma,33,India,type 2 diabetes,2025-05-18 00:00:00,73,5527,8.8,1,Fitbit
+Casey Sharma,33,India,type 2 diabetes,2025-05-17 00:00:00,87,2669,7.8,9,Fitbit
+Casey Sharma,33,India,type 2 diabetes,2025-05-16 00:00:00,87,5367,8.5,8,Fitbit
+Casey Sharma,33,India,type 2 diabetes,2025-05-15 00:00:00,73,7252,8.1,5,Fitbit
+Casey Sharma,33,India,type 2 diabetes,2025-05-14 00:00:00,64,6205,8.1,1,Fitbit
+Casey Sharma,33,India,type 2 diabetes,2025-05-13 00:00:00,97,4650,8.0,1,Fitbit
+Casey Sharma,33,India,type 2 diabetes,2025-05-12 00:00:00,94,5501,4.7,10,Fitbit
+Casey Sharma,33,India,type 2 diabetes,2025-05-11 00:00:00,93,3663,7.2,4,Fitbit
+Casey Sharma,33,India,type 2 diabetes,2025-05-10 00:00:00,82,9253,7.4,5,Fitbit
+Casey Sharma,33,India,type 2 diabetes,2025-05-09 00:00:00,71,5260,6.6,5,Fitbit
+Casey Sharma,33,India,type 2 diabetes,2025-05-08 00:00:00,66,2950,7.1,10,Fitbit
+Casey Sharma,33,India,type 2 diabetes,2025-05-07 00:00:00,75,2144,7.1,3,Fitbit
+Casey Sharma,33,India,type 2 diabetes,2025-05-06 00:00:00,93,9185,8.4,4,Fitbit
+Casey Sharma,33,India,type 2 diabetes,2025-05-05 00:00:00,65,7081,8.3,10,Fitbit
+Taylor Verma,41,India,healthy,2025-05-19 00:00:00,64,7032,7.8,3,Fitbit
+Taylor Verma,41,India,healthy,2025-05-18 00:00:00,68,5509,5.5,9,Fitbit
+Taylor Verma,41,India,healthy,2025-05-17 00:00:00,66,2744,7.0,5,Fitbit
+Taylor Verma,41,India,healthy,2025-05-16 00:00:00,81,4002,5.9,9,Fitbit
+Taylor Verma,41,India,healthy,2025-05-15 00:00:00,73,8450,4.5,3,Fitbit
+Taylor Verma,41,India,healthy,2025-05-14 00:00:00,71,6523,4.4,5,Fitbit
+Taylor Verma,41,India,healthy,2025-05-13 00:00:00,85,6023,4.5,6,Fitbit
+Taylor Verma,41,India,healthy,2025-05-12 00:00:00,80,3011,6.5,5,Fitbit
+Taylor Verma,41,India,healthy,2025-05-11 00:00:00,71,7501,6.8,1,Fitbit
+Taylor Verma,41,India,healthy,2025-05-10 00:00:00,89,9552,5.1,7,Fitbit
+Taylor Verma,41,India,healthy,2025-05-09 00:00:00,88,2798,7.5,6,Fitbit
+Taylor Verma,41,India,healthy,2025-05-08 00:00:00,68,3892,5.2,4,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-19 00:00:00,71,2989,7.9,4,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-18 00:00:00,82,5329,7.6,3,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-17 00:00:00,79,5144,7.2,4,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-16 00:00:00,72,9871,7.5,5,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-15 00:00:00,87,3226,8.2,7,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-14 00:00:00,95,9663,7.1,2,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-13 00:00:00,96,7764,7.9,8,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-12 00:00:00,68,4136,4.8,10,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-11 00:00:00,80,5348,5.6,8,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-10 00:00:00,73,6736,8.5,8,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-09 00:00:00,67,6171,6.5,5,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-08 00:00:00,91,6789,6.1,3,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-07 00:00:00,89,4570,7.1,9,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-06 00:00:00,84,3467,8.5,3,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-05 00:00:00,76,4947,4.6,6,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-04 00:00:00,74,8478,4.3,7,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-03 00:00:00,97,7559,8.3,3,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-02 00:00:00,71,9135,6.5,7,Fitbit
+Skyler Gupta,60,India,pregnancy,2025-05-01 00:00:00,96,7351,4.6,4,Fitbit
+Alex Patel,60,India,obesity,2025-05-19 00:00:00,84,8533,5.0,3,Fitbit
+Alex Patel,60,India,obesity,2025-05-18 00:00:00,74,7296,5.2,5,Fitbit
+Alex Patel,60,India,obesity,2025-05-17 00:00:00,73,2757,7.4,6,Fitbit
+Alex Patel,60,India,obesity,2025-05-16 00:00:00,77,2128,7.4,8,Fitbit
+Alex Patel,60,India,obesity,2025-05-15 00:00:00,80,7121,8.0,1,Fitbit
+Alex Patel,60,India,obesity,2025-05-14 00:00:00,89,9851,6.8,2,Fitbit
+Alex Patel,60,India,obesity,2025-05-13 00:00:00,63,6852,5.8,9,Fitbit
+Alex Patel,60,India,obesity,2025-05-12 00:00:00,75,5558,5.6,1,Fitbit
+Alex Patel,60,India,obesity,2025-05-11 00:00:00,80,5130,6.8,5,Fitbit
+Alex Patel,60,India,obesity,2025-05-10 00:00:00,95,9823,7.8,1,Fitbit
+Alex Patel,60,India,obesity,2025-05-09 00:00:00,90,2699,7.1,3,Fitbit
+Alex Patel,60,India,obesity,2025-05-08 00:00:00,88,3504,4.3,10,Fitbit
+Alex Patel,60,India,obesity,2025-05-07 00:00:00,61,6687,8.0,7,Fitbit
+Alex Patel,60,India,obesity,2025-05-06 00:00:00,99,2868,8.0,1,Fitbit
+Alex Patel,60,India,obesity,2025-05-05 00:00:00,98,8528,7.7,9,Fitbit
+Alex Patel,60,India,obesity,2025-05-04 00:00:00,94,5239,4.6,8,Fitbit
+Alex Patel,60,India,obesity,2025-05-03 00:00:00,77,8327,7.3,6,Fitbit
+Alex Patel,60,India,obesity,2025-05-02 00:00:00,100,2521,4.8,10,Fitbit
+Alex Patel,60,India,obesity,2025-05-01 00:00:00,96,2762,6.5,2,Fitbit
+Alex Patel,60,India,obesity,2025-04-30 00:00:00,82,9710,6.8,6,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-19 00:00:00,75,7176,7.3,9,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-18 00:00:00,67,8320,4.8,10,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-17 00:00:00,87,7997,4.4,1,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-16 00:00:00,98,3789,4.1,7,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-15 00:00:00,100,3723,5.7,5,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-14 00:00:00,66,5754,5.0,7,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-13 00:00:00,66,8672,8.9,3,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-12 00:00:00,62,2075,5.9,2,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-11 00:00:00,90,8653,4.8,7,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-10 00:00:00,61,9650,8.9,9,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-09 00:00:00,65,7713,5.0,2,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-08 00:00:00,97,6627,7.3,4,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-07 00:00:00,65,2445,4.8,4,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-06 00:00:00,76,3860,7.1,6,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-05 00:00:00,98,4266,6.1,8,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-04 00:00:00,79,6782,6.8,5,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-03 00:00:00,86,9690,6.5,8,Fitbit
+Taylor Reddy,40,India,no significant history,2025-05-02 00:00:00,79,7014,7.7,4,Fitbit
+Casey Nair,21,India,healthy,2025-05-19 00:00:00,78,2000,4.4,10,Fitbit
+Casey Nair,21,India,healthy,2025-05-18 00:00:00,72,2256,7.2,5,Fitbit
+Casey Nair,21,India,healthy,2025-05-17 00:00:00,89,2680,8.8,4,Fitbit
+Casey Nair,21,India,healthy,2025-05-16 00:00:00,68,6897,8.3,8,Fitbit
+Casey Nair,21,India,healthy,2025-05-15 00:00:00,66,6401,6.1,5,Fitbit
+Casey Nair,21,India,healthy,2025-05-14 00:00:00,79,9204,7.4,9,Fitbit
+Casey Nair,21,India,healthy,2025-05-13 00:00:00,82,2315,4.3,6,Fitbit
+Casey Nair,21,India,healthy,2025-05-12 00:00:00,60,4793,5.0,4,Fitbit
+Casey Nair,21,India,healthy,2025-05-11 00:00:00,68,8704,4.1,1,Fitbit
+Casey Nair,21,India,healthy,2025-05-10 00:00:00,100,7793,6.8,7,Fitbit
+Casey Nair,21,India,healthy,2025-05-09 00:00:00,95,7042,6.9,1,Fitbit
+Casey Nair,21,India,healthy,2025-05-08 00:00:00,86,3980,5.2,4,Fitbit
+Casey Nair,21,India,healthy,2025-05-07 00:00:00,92,9341,6.5,6,Fitbit
+Casey Nair,21,India,healthy,2025-05-06 00:00:00,80,4779,7.2,2,Fitbit
+Casey Nair,21,India,healthy,2025-05-05 00:00:00,85,4052,4.7,6,Fitbit
+Casey Nair,21,India,healthy,2025-05-04 00:00:00,92,7061,9.0,3,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-19 00:00:00,92,7100,6.2,7,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-18 00:00:00,70,9865,8.7,5,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-17 00:00:00,61,5219,4.0,7,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-16 00:00:00,67,3666,7.4,9,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-15 00:00:00,62,2219,4.2,10,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-14 00:00:00,74,8286,6.2,1,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-13 00:00:00,63,7649,7.4,4,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-12 00:00:00,95,4283,4.6,2,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-11 00:00:00,90,6618,8.6,8,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-10 00:00:00,87,9423,4.5,6,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-09 00:00:00,93,6934,7.8,1,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-08 00:00:00,72,3707,8.3,5,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-07 00:00:00,66,2536,4.2,1,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-06 00:00:00,81,4999,8.4,7,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-05 00:00:00,90,6787,5.9,2,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-04 00:00:00,87,7200,8.0,2,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-03 00:00:00,62,5449,8.5,8,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-02 00:00:00,70,7261,8.6,5,Fitbit
+Taylor Kapoor,33,India,type 2 diabetes,2025-05-01 00:00:00,95,2679,5.3,1,Fitbit
+Alex Gupta,43,India,type 2 diabetes,2025-05-19 00:00:00,60,7771,8.1,9,Fitbit
+Alex Gupta,43,India,type 2 diabetes,2025-05-18 00:00:00,85,9882,8.6,3,Fitbit
+Alex Gupta,43,India,type 2 diabetes,2025-05-17 00:00:00,86,6982,5.7,5,Fitbit
+Alex Gupta,43,India,type 2 diabetes,2025-05-16 00:00:00,84,6112,4.9,4,Fitbit
+Alex Gupta,43,India,type 2 diabetes,2025-05-15 00:00:00,78,6475,4.8,4,Fitbit
+Alex Gupta,43,India,type 2 diabetes,2025-05-14 00:00:00,91,9490,9.0,1,Fitbit
+Alex Gupta,43,India,type 2 diabetes,2025-05-13 00:00:00,83,3299,6.9,4,Fitbit
+Alex Gupta,43,India,type 2 diabetes,2025-05-12 00:00:00,66,8591,7.8,9,Fitbit
+Alex Gupta,43,India,type 2 diabetes,2025-05-11 00:00:00,87,9011,7.2,7,Fitbit
+Alex Gupta,43,India,type 2 diabetes,2025-05-10 00:00:00,77,3778,5.3,10,Fitbit
+Alex Gupta,43,India,type 2 diabetes,2025-05-09 00:00:00,90,9018,6.1,4,Fitbit
+Alex Gupta,43,India,type 2 diabetes,2025-05-08 00:00:00,86,2648,4.1,2,Fitbit
+Alex Gupta,43,India,type 2 diabetes,2025-05-07 00:00:00,87,7653,5.4,3,Fitbit
+Alex Gupta,43,India,type 2 diabetes,2025-05-06 00:00:00,79,5814,7.4,8,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-19 00:00:00,89,7746,5.7,10,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-18 00:00:00,96,3348,4.1,5,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-17 00:00:00,83,7881,8.6,7,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-16 00:00:00,100,5447,5.2,2,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-15 00:00:00,60,5332,7.8,5,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-14 00:00:00,88,5137,7.9,5,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-13 00:00:00,73,6849,4.4,8,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-12 00:00:00,89,3566,4.3,8,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-11 00:00:00,74,5348,8.4,8,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-10 00:00:00,73,7049,7.0,5,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-09 00:00:00,90,6961,4.9,10,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-08 00:00:00,94,3512,7.1,6,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-07 00:00:00,87,8865,6.7,3,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-06 00:00:00,85,5998,7.6,4,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-05 00:00:00,94,5863,7.8,7,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-04 00:00:00,94,9639,4.2,5,Fitbit
+Jesse Gupta,19,India,obesity,2025-05-03 00:00:00,76,6430,8.8,10,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-19 00:00:00,81,2795,6.3,6,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-18 00:00:00,61,2865,8.6,9,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-17 00:00:00,92,5064,5.1,6,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-16 00:00:00,77,7651,5.8,1,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-15 00:00:00,79,2725,8.8,6,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-14 00:00:00,90,8582,8.7,5,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-13 00:00:00,89,7893,6.6,10,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-12 00:00:00,83,3426,9.0,8,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-11 00:00:00,84,3466,4.8,2,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-10 00:00:00,68,9422,5.8,3,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-09 00:00:00,73,4960,5.1,4,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-08 00:00:00,61,8043,5.1,6,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-07 00:00:00,65,9978,5.4,3,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-06 00:00:00,95,2575,7.0,5,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-05 00:00:00,78,7514,4.1,4,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-04 00:00:00,75,2765,7.0,9,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-03 00:00:00,61,7962,5.9,5,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-02 00:00:00,99,2541,4.7,2,Fitbit
+Quinn Sharma,19,India,no significant history,2025-05-01 00:00:00,61,2068,6.6,3,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-19 00:00:00,83,2688,4.5,9,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-18 00:00:00,86,3684,4.6,4,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-17 00:00:00,72,7992,7.6,4,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-16 00:00:00,73,2798,5.9,4,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-15 00:00:00,97,9571,5.8,8,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-14 00:00:00,77,6965,6.2,5,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-13 00:00:00,99,5649,5.5,6,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-12 00:00:00,79,6093,5.6,3,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-11 00:00:00,76,2814,6.9,6,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-10 00:00:00,91,7649,4.5,10,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-09 00:00:00,64,8189,4.2,5,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-08 00:00:00,100,7992,8.4,3,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-07 00:00:00,70,3379,7.7,2,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-06 00:00:00,77,7311,7.5,7,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-05 00:00:00,70,8958,4.3,4,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-04 00:00:00,98,4449,8.6,5,Fitbit
+Skyler Nair,61,India,diabetes,2025-05-03 00:00:00,90,7196,4.4,4,Fitbit
+Pat Reddy,29,India,healthy,2025-05-19 00:00:00,71,9565,4.2,4,Fitbit
+Pat Reddy,29,India,healthy,2025-05-18 00:00:00,88,2788,4.0,4,Fitbit
+Pat Reddy,29,India,healthy,2025-05-17 00:00:00,64,7384,5.2,1,Fitbit
+Pat Reddy,29,India,healthy,2025-05-16 00:00:00,64,9943,7.7,2,Fitbit
+Pat Reddy,29,India,healthy,2025-05-15 00:00:00,90,9262,7.4,5,Fitbit
+Pat Reddy,29,India,healthy,2025-05-14 00:00:00,84,6037,4.3,5,Fitbit
+Pat Reddy,29,India,healthy,2025-05-13 00:00:00,79,4465,5.9,3,Fitbit
+Pat Reddy,29,India,healthy,2025-05-12 00:00:00,88,7920,4.5,7,Fitbit
+Pat Reddy,29,India,healthy,2025-05-11 00:00:00,87,3514,6.7,5,Fitbit
+Pat Reddy,29,India,healthy,2025-05-10 00:00:00,69,2050,7.3,2,Fitbit
+Pat Reddy,29,India,healthy,2025-05-09 00:00:00,72,5490,4.5,1,Fitbit
+Pat Reddy,29,India,healthy,2025-05-08 00:00:00,91,8478,6.4,9,Fitbit
+Pat Reddy,29,India,healthy,2025-05-07 00:00:00,95,4198,5.2,9,Fitbit
+Pat Reddy,29,India,healthy,2025-05-06 00:00:00,77,2664,7.1,7,Fitbit
+Morgan Verma,49,India,asthma,2025-05-19 00:00:00,96,7960,4.5,6,Fitbit
+Morgan Verma,49,India,asthma,2025-05-18 00:00:00,100,6373,4.2,5,Fitbit
+Morgan Verma,49,India,asthma,2025-05-17 00:00:00,98,6321,6.4,3,Fitbit
+Morgan Verma,49,India,asthma,2025-05-16 00:00:00,93,2569,5.0,1,Fitbit
+Morgan Verma,49,India,asthma,2025-05-15 00:00:00,73,2026,6.2,5,Fitbit
+Morgan Verma,49,India,asthma,2025-05-14 00:00:00,69,8054,8.1,6,Fitbit
+Morgan Verma,49,India,asthma,2025-05-13 00:00:00,80,3362,8.3,10,Fitbit
+Morgan Verma,49,India,asthma,2025-05-12 00:00:00,67,7473,4.1,1,Fitbit
+Morgan Verma,49,India,asthma,2025-05-11 00:00:00,75,4128,7.0,9,Fitbit
+Morgan Verma,49,India,asthma,2025-05-10 00:00:00,77,7562,6.6,4,Fitbit
+Morgan Verma,49,India,asthma,2025-05-09 00:00:00,91,7175,4.5,2,Fitbit
+Morgan Verma,49,India,asthma,2025-05-08 00:00:00,83,3950,4.5,6,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-19 00:00:00,82,8374,7.0,2,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-18 00:00:00,85,8241,7.0,6,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-17 00:00:00,85,7888,8.1,10,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-16 00:00:00,62,8908,4.2,5,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-15 00:00:00,96,4849,5.7,5,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-14 00:00:00,94,4230,5.2,1,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-13 00:00:00,65,2098,5.5,2,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-12 00:00:00,65,5082,7.3,10,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-11 00:00:00,84,4884,5.1,5,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-10 00:00:00,60,7700,6.6,1,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-09 00:00:00,73,3102,6.0,2,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-08 00:00:00,93,3343,5.7,9,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-07 00:00:00,96,8725,6.8,8,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-06 00:00:00,72,6210,7.9,4,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-05 00:00:00,82,4857,6.5,4,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-04 00:00:00,67,6853,8.7,10,Fitbit
+Quinn Reddy,23,India,diabetes,2025-05-03 00:00:00,88,9119,5.1,4,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-19 00:00:00,65,8624,7.9,4,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-18 00:00:00,87,7159,5.9,3,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-17 00:00:00,67,7012,8.6,5,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-16 00:00:00,89,7572,8.6,6,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-15 00:00:00,84,2585,4.4,1,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-14 00:00:00,94,5982,6.6,2,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-13 00:00:00,84,2375,7.5,5,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-12 00:00:00,97,2450,4.5,5,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-11 00:00:00,61,3167,6.4,8,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-10 00:00:00,72,3273,6.6,9,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-09 00:00:00,72,8898,5.5,8,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-08 00:00:00,86,2377,8.2,1,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-07 00:00:00,95,9484,5.5,5,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-06 00:00:00,73,9141,4.7,7,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-05 00:00:00,88,9995,4.1,4,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-04 00:00:00,81,8338,6.0,1,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-03 00:00:00,87,9837,4.6,1,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-02 00:00:00,77,7061,8.9,3,Fitbit
+Jordan Patel,19,India,diabetes,2025-05-01 00:00:00,83,3152,5.1,5,Fitbit
+Chris Mehta,64,India,pregnancy,2025-05-19 00:00:00,97,6798,6.4,6,Fitbit
+Chris Mehta,64,India,pregnancy,2025-05-18 00:00:00,69,9197,4.1,7,Fitbit
+Chris Mehta,64,India,pregnancy,2025-05-17 00:00:00,63,8038,8.3,9,Fitbit
+Chris Mehta,64,India,pregnancy,2025-05-16 00:00:00,78,3102,6.4,1,Fitbit
+Chris Mehta,64,India,pregnancy,2025-05-15 00:00:00,88,5085,8.0,1,Fitbit
+Chris Mehta,64,India,pregnancy,2025-05-14 00:00:00,73,3213,6.8,7,Fitbit
+Chris Mehta,64,India,pregnancy,2025-05-13 00:00:00,96,4113,6.7,2,Fitbit
+Chris Mehta,64,India,pregnancy,2025-05-12 00:00:00,65,2788,6.2,8,Fitbit
+Chris Mehta,64,India,pregnancy,2025-05-11 00:00:00,61,4417,5.5,10,Fitbit
+Chris Mehta,64,India,pregnancy,2025-05-10 00:00:00,89,8787,8.8,8,Fitbit
+Morgan Mehta,41,India,no significant history,2025-05-19 00:00:00,90,8369,5.7,4,Fitbit
+Morgan Mehta,41,India,no significant history,2025-05-18 00:00:00,61,8465,4.3,9,Fitbit
+Morgan Mehta,41,India,no significant history,2025-05-17 00:00:00,83,6650,5.7,5,Fitbit
+Morgan Mehta,41,India,no significant history,2025-05-16 00:00:00,61,6725,5.9,10,Fitbit
+Morgan Mehta,41,India,no significant history,2025-05-15 00:00:00,86,8692,7.9,5,Fitbit
+Morgan Mehta,41,India,no significant history,2025-05-14 00:00:00,61,3150,4.3,1,Fitbit
+Morgan Mehta,41,India,no significant history,2025-05-13 00:00:00,62,4801,4.5,10,Fitbit
+Morgan Mehta,41,India,no significant history,2025-05-12 00:00:00,69,5665,8.8,10,Fitbit
+Morgan Mehta,41,India,no significant history,2025-05-11 00:00:00,83,4541,7.6,4,Fitbit
+Morgan Mehta,41,India,no significant history,2025-05-10 00:00:00,84,7093,6.2,7,Fitbit
+Morgan Mehta,41,India,no significant history,2025-05-09 00:00:00,84,6827,7.8,3,Fitbit
+Morgan Mehta,41,India,no significant history,2025-05-08 00:00:00,92,6347,6.9,8,Fitbit
+Morgan Mehta,41,India,no significant history,2025-05-07 00:00:00,85,5913,8.3,8,Fitbit
+Morgan Mehta,41,India,no significant history,2025-05-06 00:00:00,63,2409,5.3,9,Fitbit
+Morgan Mehta,41,India,no significant history,2025-05-05 00:00:00,94,2036,8.2,3,Fitbit
+Morgan Mehta,41,India,no significant history,2025-05-04 00:00:00,76,7069,4.8,6,Fitbit
+Casey Reddy,52,India,obesity,2025-05-19 00:00:00,62,5283,4.8,3,Fitbit
+Casey Reddy,52,India,obesity,2025-05-18 00:00:00,100,7584,7.1,5,Fitbit
+Casey Reddy,52,India,obesity,2025-05-17 00:00:00,70,7446,5.2,4,Fitbit
+Casey Reddy,52,India,obesity,2025-05-16 00:00:00,84,2462,4.8,2,Fitbit
+Casey Reddy,52,India,obesity,2025-05-15 00:00:00,88,5243,8.7,3,Fitbit
+Casey Reddy,52,India,obesity,2025-05-14 00:00:00,72,2645,7.2,1,Fitbit
+Casey Reddy,52,India,obesity,2025-05-13 00:00:00,94,5877,5.5,5,Fitbit
+Casey Reddy,52,India,obesity,2025-05-12 00:00:00,61,8835,6.4,10,Fitbit
+Casey Reddy,52,India,obesity,2025-05-11 00:00:00,61,5283,7.0,5,Fitbit
+Casey Reddy,52,India,obesity,2025-05-10 00:00:00,89,4483,8.5,1,Fitbit
+Casey Reddy,52,India,obesity,2025-05-09 00:00:00,86,2972,4.9,3,Fitbit
+Casey Reddy,52,India,obesity,2025-05-08 00:00:00,80,5393,7.0,1,Fitbit
+Casey Reddy,52,India,obesity,2025-05-07 00:00:00,72,2875,5.9,7,Fitbit
+Casey Reddy,52,India,obesity,2025-05-06 00:00:00,73,9004,4.8,9,Fitbit
+Casey Reddy,52,India,obesity,2025-05-05 00:00:00,66,9259,4.6,9,Fitbit
+Pat Nair,19,India,asthma,2025-05-19 00:00:00,62,8387,7.7,10,Fitbit
+Pat Nair,19,India,asthma,2025-05-18 00:00:00,84,2677,8.6,6,Fitbit
+Pat Nair,19,India,asthma,2025-05-17 00:00:00,73,6305,8.6,1,Fitbit
+Pat Nair,19,India,asthma,2025-05-16 00:00:00,62,3768,6.3,9,Fitbit
+Pat Nair,19,India,asthma,2025-05-15 00:00:00,76,7807,4.3,9,Fitbit
+Pat Nair,19,India,asthma,2025-05-14 00:00:00,80,7045,6.8,4,Fitbit
+Pat Nair,19,India,asthma,2025-05-13 00:00:00,67,3181,8.0,8,Fitbit
+Pat Nair,19,India,asthma,2025-05-12 00:00:00,81,8204,5.3,4,Fitbit
+Pat Nair,19,India,asthma,2025-05-11 00:00:00,94,2526,8.5,1,Fitbit
+Pat Nair,19,India,asthma,2025-05-10 00:00:00,100,5868,8.8,2,Fitbit
+Pat Nair,19,India,asthma,2025-05-09 00:00:00,78,7351,4.8,4,Fitbit
+Pat Nair,19,India,asthma,2025-05-08 00:00:00,88,4221,6.3,6,Fitbit
+Pat Nair,19,India,asthma,2025-05-07 00:00:00,62,5582,6.4,1,Fitbit
+Pat Nair,19,India,asthma,2025-05-06 00:00:00,94,3796,5.2,3,Fitbit
+Pat Nair,19,India,asthma,2025-05-05 00:00:00,67,3427,7.8,1,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-19 00:00:00,86,5895,5.8,1,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-18 00:00:00,81,9522,8.0,5,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-17 00:00:00,64,7969,7.2,7,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-16 00:00:00,77,9957,4.6,9,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-15 00:00:00,65,7135,4.7,8,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-14 00:00:00,95,9644,5.2,3,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-13 00:00:00,67,8748,6.8,7,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-12 00:00:00,87,3555,6.7,10,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-11 00:00:00,100,6852,7.5,7,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-10 00:00:00,92,7812,6.9,8,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-09 00:00:00,86,5004,6.2,1,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-08 00:00:00,64,6859,4.3,9,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-07 00:00:00,74,3684,4.9,7,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-06 00:00:00,82,3879,4.3,8,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-05 00:00:00,80,9375,6.6,9,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-04 00:00:00,71,2951,6.8,9,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-03 00:00:00,81,9773,4.4,9,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-02 00:00:00,70,5658,8.8,5,Fitbit
+Morgan Kapoor,26,India,diabetes,2025-05-01 00:00:00,65,9635,4.5,7,Fitbit
+Chris Reddy,34,India,diabetes,2025-05-19 00:00:00,69,8231,8.9,8,Fitbit
+Chris Reddy,34,India,diabetes,2025-05-18 00:00:00,62,8190,5.5,3,Fitbit
+Chris Reddy,34,India,diabetes,2025-05-17 00:00:00,66,8573,5.1,6,Fitbit
+Chris Reddy,34,India,diabetes,2025-05-16 00:00:00,85,3800,6.4,2,Fitbit
+Chris Reddy,34,India,diabetes,2025-05-15 00:00:00,82,7447,4.9,4,Fitbit
+Chris Reddy,34,India,diabetes,2025-05-14 00:00:00,60,5483,6.4,9,Fitbit
+Chris Reddy,34,India,diabetes,2025-05-13 00:00:00,97,4310,5.9,2,Fitbit
+Chris Reddy,34,India,diabetes,2025-05-12 00:00:00,72,2315,6.6,10,Fitbit
+Chris Reddy,34,India,diabetes,2025-05-11 00:00:00,60,7087,7.7,2,Fitbit
+Chris Reddy,34,India,diabetes,2025-05-10 00:00:00,64,9304,8.5,3,Fitbit
+Chris Reddy,34,India,diabetes,2025-05-09 00:00:00,87,4159,6.2,3,Fitbit
+Chris Singh,47,India,healthy,2025-05-19 00:00:00,80,5068,7.5,4,Fitbit
+Chris Singh,47,India,healthy,2025-05-18 00:00:00,74,2778,4.6,2,Fitbit
+Chris Singh,47,India,healthy,2025-05-17 00:00:00,87,8298,6.5,9,Fitbit
+Chris Singh,47,India,healthy,2025-05-16 00:00:00,72,6555,6.5,5,Fitbit
+Chris Singh,47,India,healthy,2025-05-15 00:00:00,80,5096,4.3,1,Fitbit
+Chris Singh,47,India,healthy,2025-05-14 00:00:00,86,8730,4.4,4,Fitbit
+Chris Singh,47,India,healthy,2025-05-13 00:00:00,66,3545,8.0,6,Fitbit
+Chris Singh,47,India,healthy,2025-05-12 00:00:00,92,8167,5.1,9,Fitbit
+Chris Singh,47,India,healthy,2025-05-11 00:00:00,80,8022,6.5,4,Fitbit
+Chris Singh,47,India,healthy,2025-05-10 00:00:00,81,3005,5.1,7,Fitbit
+Chris Singh,47,India,healthy,2025-05-09 00:00:00,97,3188,6.6,10,Fitbit
+Chris Singh,47,India,healthy,2025-05-08 00:00:00,90,4677,4.6,5,Fitbit
+Chris Singh,47,India,healthy,2025-05-07 00:00:00,79,7367,5.9,5,Fitbit
+Chris Singh,47,India,healthy,2025-05-06 00:00:00,86,7268,6.1,4,Fitbit

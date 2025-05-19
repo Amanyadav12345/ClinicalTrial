@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Personal Health Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-100 text-gray-800 p-6 font-sans min-h-screen">
+  <h1 class="text-3xl font-bold text-center text-blue-700 mb-6">Personal Health Dashboard</h1>
+  <h2 class="text-lg text-center mb-6" id="patientNameDisplay"></h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-white p-4 shadow rounded"><canvas id="heartRateChart"></canvas></div>
+    <div class="bg-white p-4 shadow rounded"><canvas id="stepsChart"></canvas></div>
+    <div class="bg-white p-4 shadow rounded"><canvas id="sleepChart"></canvas></div>
+    <div class="bg-white p-4 shadow rounded"><canvas id="stressChart"></canvas></div>
+  </div>
+
+  <script>
+    const patientName = localStorage.getItem('selectedPatientName');
+    document.getElementById('patientNameDisplay').textContent = `Tracking health for: ${patientName}`;
+
+    fetch('wearable_patient_data.csv')
+      .then(response => response.text())
+      .then(csvText => {
+        const parsed = Papa.parse(csvText, { header: true });
+        const records = parsed.data;
+
+        const data = records.filter(r => r.patient_name === patientName);
+
+        const labels = data.map(r => new Date(r.timestamp).toLocaleDateString());
+        const heartRates = data.map(r => parseInt(r.heart_rate));
+        const steps = data.map(r => parseInt(r.steps));
+        const sleep = data.map(r => parseFloat(r.sleep_hours));
+        const stress = data.map(r => parseInt(r.stress_score));
+
+        const makeChart = (id, label, data, color) => {
+          new Chart(document.getElementById(id), {
+            type: 'line',
+            data: {
+              labels,
+              datasets: [{
+                label,
+                data,
+                borderColor: color,
+                backgroundColor: color,
+                fill: false
+              }]
+            },
+            options: {
+              responsive: true,
+              scales: {
+                y: { beginAtZero: true }
+              }
+            }
+          });
+        };
+
+        makeChart("heartRateChart", "Heart Rate (bpm)", heartRates, "rgb(239,68,68)");
+        makeChart("stepsChart", "Steps", steps, "rgb(34,197,94)");
+        makeChart("sleepChart", "Sleep Hours", sleep, "rgb(59,130,246)");
+        makeChart("stressChart", "Stress Score", stress, "rgb(245,158,11)");
+      });
+  </script>
+</body>
+</html>
