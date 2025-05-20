@@ -73,7 +73,49 @@ app.post('/submit-trial', async (req, res) => {
     }
   );
 });
+app.post('/analyze-health', async (req, res) => {
+  const { name, heartRates, steps, sleep, stress } = req.body;
 
+  const prompt = `
+You are a digital health expert reviewing personal wearable data.
+Give a brief, clear health insight report for this patient: ${name}.
+
+Vital Signs:
+- Average heart rate: ${average(heartRates)} bpm
+- Total steps: ${sum(steps)} steps
+- Average sleep: ${average(sleep)} hours
+- Average stress score: ${average(stress)} / 10
+
+Tasks:
+1. Identify any risk or abnormality.
+2. Suggest lifestyle improvements or warnings.
+3. Be concise and avoid medical jargon.
+4. Output clean HTML paragraphs only (no code blocks).
+5. make pointers in response for better readability.
+6. this analysis is seen by doctors not patients.
+`;
+
+  try {
+    const result = await model.generateContent({
+      contents: [{ role: 'user', parts: [{ text: prompt }] }]
+    });
+    const response = result.response.text();
+    res.json({ insight: response });
+  } catch (error) {
+    console.error('Health analysis failed:', error);
+    res.status(500).json({ insight: 'Failed to generate health summary.' });
+  }
+});
+
+// Utility helpers
+function average(arr) {
+  const nums = arr.map(Number).filter(n => !isNaN(n));
+  return nums.length ? (nums.reduce((a, b) => a + b, 0) / nums.length).toFixed(1) : 'N/A';
+}
+function sum(arr) {
+  const nums = arr.map(Number).filter(n => !isNaN(n));
+  return nums.length ? nums.reduce((a, b) => a + b, 0) : 0;
+}
 app.use(cors());
 app.use(bodyParser.json());
 const path = require('path');

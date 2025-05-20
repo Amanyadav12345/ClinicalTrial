@@ -17,52 +17,78 @@
     <div class="bg-white p-4 shadow rounded"><canvas id="sleepChart"></canvas></div>
     <div class="bg-white p-4 shadow rounded"><canvas id="stressChart"></canvas></div>
   </div>
+  <div class="bg-white p-4 mt-6 shadow rounded">
+  <h2 class="text-xl font-semibold text-gray-700 mb-2">Health Insight</h2>
+  <div id="aiInsight" class="prose max-w-none text-sm text-gray-800">Loading...</div>
+</div>
 
   <script>
+
     const patientName = localStorage.getItem('selectedPatientName');
     document.getElementById('patientNameDisplay').textContent = `Tracking health for: ${patientName}`;
 
-    fetch('wearable_patient_data.csv')
-      .then(response => response.text())
-      .then(csvText => {
-        const parsed = Papa.parse(csvText, { header: true });
-        const records = parsed.data;
+fetch('wearable_patient_data.csv')
+  .then(response => response.text())
+  .then(csvText => {
+    const parsed = Papa.parse(csvText, { header: true });
+    const records = parsed.data;
 
-        const data = records.filter(r => r.patient_name === patientName);
+    const data = records.filter(r => r.patient_name === patientName);
 
-        const labels = data.map(r => new Date(r.timestamp).toLocaleDateString());
-        const heartRates = data.map(r => parseInt(r.heart_rate));
-        const steps = data.map(r => parseInt(r.steps));
-        const sleep = data.map(r => parseFloat(r.sleep_hours));
-        const stress = data.map(r => parseInt(r.stress_score));
+    const labels = data.map(r => new Date(r.timestamp).toLocaleDateString());
+    const heartRates = data.map(r => parseInt(r.heart_rate));
+    const steps = data.map(r => parseInt(r.steps));
+    const sleep = data.map(r => parseFloat(r.sleep_hours));
+    const stress = data.map(r => parseInt(r.stress_score));
 
-        const makeChart = (id, label, data, color) => {
-          new Chart(document.getElementById(id), {
-            type: 'line',
-            data: {
-              labels,
-              datasets: [{
-                label,
-                data,
-                borderColor: color,
-                backgroundColor: color,
-                fill: false
-              }]
-            },
-            options: {
-              responsive: true,
-              scales: {
-                y: { beginAtZero: true }
-              }
-            }
-          });
-        };
-
-        makeChart("heartRateChart", "Heart Rate (bpm)", heartRates, "rgb(239,68,68)");
-        makeChart("stepsChart", "Steps", steps, "rgb(34,197,94)");
-        makeChart("sleepChart", "Sleep Hours", sleep, "rgb(59,130,246)");
-        makeChart("stressChart", "Stress Score", stress, "rgb(245,158,11)");
+    const makeChart = (id, label, data, color) => {
+      new Chart(document.getElementById(id), {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [{
+            label,
+            data,
+            borderColor: color,
+            backgroundColor: color,
+            fill: false
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: true }
+          }
+        }
       });
+    };
+
+    makeChart("heartRateChart", "Heart Rate (bpm)", heartRates, "rgb(239,68,68)");
+    makeChart("stepsChart", "Steps", steps, "rgb(34,197,94)");
+    makeChart("sleepChart", "Sleep Hours", sleep, "rgb(59,130,246)");
+    makeChart("stressChart", "Stress Score", stress, "rgb(245,158,11)");
+
+    // ✅ Gemini AI fetch moved inside where heartRates etc. are defined
+    fetch('http://localhost:4000/analyze-health', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: patientName,
+        heartRates,
+        steps,
+        sleep,
+        stress
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('aiInsight').innerHTML = data.insight;
+      })
+      .catch(err => {
+        document.getElementById('aiInsight').innerHTML = "<p class='text-red-600'>❌ Could not generate health report.</p>";
+      });
+  });
+
   </script>
 </body>
 </html>
