@@ -144,68 +144,81 @@
           }]
         }
       });
+    const regionAliasMap = {
+  usa: "United States of America",
+  us: "United States of America",
+  uk: "United Kingdom",
+  'u.k.': "United Kingdom",
+  'united states': "United States of America"
+};
 
-      // Region Choropleth Map
-      const res = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json');
-      const world = await res.json();
-      const countries = ChartGeo.topojson.feature(world, world.objects.countries).features;
+// Region Choropleth Map
+const res = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json');
+const world = await res.json();
+const countries = ChartGeo.topojson.feature(world, world.objects.countries).features;
 
-      const regionCounts = Object.entries(regionDataMap).map(([region, count]) => {
-        const match = countries.find(
-          f => f.properties.name.toLowerCase() === region.toLowerCase()
-        );
-        return match ? { feature: match, value: count } : null;
-      }).filter(Boolean);
+// Optional: log all available names to verify
+const countryNames = countries.map(c => c.properties.name.toLowerCase());
+console.log("Available country names in map:", countryNames);
 
-      const mapCanvas = document.getElementById('regionMapChart');
-      new Chart(mapCanvas, {
-        type: 'choropleth',
-        data: {
-          labels: regionCounts.map(d => d.feature.properties.name),
-          datasets: [{
-            label: 'Patients by Country',
-            data: regionCounts,
-              backgroundColor: (ctx) => {
-              const value = ctx.raw?.value || 0;
-              if (value === 0) return 'rgba(107, 114, 128, 0.4)'; // Tailwind's gray-500-ish
-              const alpha = Math.min(0.2 + value / 10, 1);
-              return `rgba(37, 99, 235, ${alpha})`; // Blue gradient for higher values
-            },
-            borderColor: '#cccccc',
-            
-            borderWidth: 0.5
-          }]
-        },
-        options: {
-          //  responsive: true,
-  maintainAspectRatio: true,
-          showOutline: true,
-          showGraticule: true,
-          scales: {
-            projection: {
-              axis: 'x',
-              projection: 'equalEarth', // change to 'mercator', 'naturalEarth1', 'orthographic', etc.
-              center: [0, 15],        // pan the map to center at [longitude, latitude]
-              rotate: [0, 0, 0],      // rotate the map ([λ, φ, γ] - used with orthographic)
-              scale: 1,               // zoom level (1 = default, increase to zoom in)
-              translate: [0, 0],
-            }
-          },
-          elements: {
-    arc: {
-      borderWidth: 1
-    }
+// Normalize region names using alias map
+const regionCounts = Object.entries(regionDataMap).map(([region, count]) => {
+  const normalizedRegion = regionAliasMap[region.toLowerCase()] || region;
+  const match = countries.find(
+    f => f.properties.name.toLowerCase() === normalizedRegion.toLowerCase()
+  );
+  return match ? { feature: match, value: count } : null;
+}).filter(Boolean);
+
+const mapCanvas = document.getElementById('regionMapChart');
+new Chart(mapCanvas, {
+  type: 'choropleth',
+  data: {
+    labels: regionCounts.map(d => d.feature.properties.name),
+    datasets: [{
+      label: 'Patients by Country',
+      data: regionCounts,
+      backgroundColor: (ctx) => {
+        const value = ctx.raw?.value || 0;
+        if (value === 0) return 'rgba(107, 114, 128, 0.4)'; // gray fallback
+        const alpha = Math.min(0.2 + value / 10, 1);
+        return `rgba(37, 99, 235, ${alpha})`; // blue gradient
+      },
+      borderColor: '#cccccc',
+      borderWidth: 0.5
+    }]
   },
-          plugins: {
-            tooltip: {
-              callbacks: {
-                label: ctx => `${ctx.raw.feature.properties.name}: ${ctx.raw.value} patients`
-              }
-            },
-            legend: { display: false }
-          }
+  options: {
+    maintainAspectRatio: true,
+    showOutline: true,
+    showGraticule: true,
+    scales: {
+      projection: {
+        axis: 'x',
+        projection: 'equalEarth',
+        center: [0, 15],
+        rotate: [0, 0, 0],
+        scale: 1,
+        translate: [0, 0],
+      }
+    },
+    elements: {
+      arc: {
+        borderWidth: 1
+      }
+    },
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: ctx => `${ctx.raw.feature.properties.name}: ${ctx.raw.value} patients`
         }
-      });
+      },
+      legend: {
+        display: false
+      }
+    }
+  }
+});
     };
   </script>
 </body>

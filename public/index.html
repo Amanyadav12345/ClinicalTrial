@@ -181,18 +181,39 @@
         const rows = csv.split("\n").slice(1);
         const output = [];
 
+        const selectedDisease = document.querySelector('input[name="disease"]').value.trim().toLowerCase();
+
         rows.forEach(row => {
-          const [name, age, region, history] = row.split(",");
+          const fields = row.split(",");
+          if (fields.length < 4) return; // Skip if row doesn't have all 4 values
+
+          const [name, age, region, historyRaw] = fields;
+          const history = historyRaw.trim().toLowerCase();
+          const ageNum = parseInt(age);
+          const regionClean = region.trim().toLowerCase();
+
+          // Disease check
+          const hasTargetDisease = history.includes(selectedDisease);
+
+          // Exclusion logic
+          const hasCriticalComorbidity =
+            history.includes("renal") ||
+            history.includes("hepatic") ||
+            history.includes("cardiovascular");
+
           const isEligible =
-            parseInt(age) >= 18 && parseInt(age) <= 65 &&
-            region.trim().toLowerCase() === 'india' &&
-            !history.toLowerCase().includes("renal") &&
-            !history.toLowerCase().includes("hepatic") &&
-            !history.toLowerCase().includes("cardiovascular");
+            hasTargetDisease &&
+            ageNum >= 18 && ageNum <= 65 &&
+            !hasCriticalComorbidity;
 
-          output.push({ name, age, region, history, eligible: isEligible ? '✅ Yes' : '❌ No' });
+          output.push({
+            name: name.trim(),
+            age: ageNum,
+            region: regionClean,
+            history,
+            eligible: isEligible ? '✅ Yes' : '❌ No'
+          });
         });
-
         const tbody = document.getElementById('patientTableBody');
         tbody.innerHTML = '';
         output.forEach(p => {
