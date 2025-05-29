@@ -99,7 +99,7 @@
         <input type="file" id="patientUpload" accept=".csv" class="hidden" />
 
         <!-- Eligibility Table -->
-        <div id="patientResult" class="mt-6 hidden">
+        <div id="patientResult" class="mt-6 hidden overflow-auto max-h-[600px] bg-white p-6 rounded-md shadow border">
           <h3 class="text-lg font-semibold text-gray-700 mb-2">Patient Eligibility Check</h3>
           <table class="w-full text-sm text-left border border-collapse border-gray-300">
             <thead class="bg-gray-100">
@@ -113,8 +113,8 @@
             </thead>
             <tbody id="patientTableBody"></tbody>
           </table>
-
-          <button id="filterEligibleBtn"
+        </div>
+        <button id="filterEligibleBtn"
                   class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200 hidden">
             Show Only Eligible Patients
           </button>
@@ -123,7 +123,6 @@
                   onclick="window.open('dashboard.html', '_blank')">
             Open Monitoring Dashboard
           </button>
-        </div>
       </div>
     </div>
   </main>
