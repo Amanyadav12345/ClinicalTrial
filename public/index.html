@@ -59,7 +59,14 @@
   </aside>
 
   <!-- Main Content -->
+   <div class="absolute top-4 right-4 z-50">
+  <button onclick="openChemistryLab()"
+          class="bg-purple-600 hover:bg-purple-700 text-white text-xl rounded-full w-10 h-10 flex items-center justify-center shadow-md transition">
+    🧪 
+  </button>
+</div>
   <main class="flex-1 p-6 flex justify-center">
+
     <div class="bg-white shadow-xl rounded-2xl p-8 w-full max-w-4xl space-y-6">
       <h2 class="text-3xl font-bold text-center text-blue-700">TrialTrack – Tracks trials and patients in real-time</h2>
 
@@ -155,6 +162,13 @@
     }
 
     loadCountries();
+
+
+      function openChemistryLab() {
+        window.open('chemistry-lab.html', '_blank');
+      }
+
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);

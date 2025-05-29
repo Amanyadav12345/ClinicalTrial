@@ -139,6 +139,36 @@ Tasks:
   }
 });
 
+
+app.post("/optimize-production", async (req, res) => {
+  const { reaction } = req.body;
+
+  const prompt = `
+You are a top-tier chemical engineer. Optimize the following reaction:
+
+${reaction}
+
+Tasks:
+1. Suggest ideal conditions (temperature, pressure, catalysts) to maximize yield and safety.
+2. Recommend cost-saving improvements without compromising efficiency.
+3. Mention any known side reactions and how to avoid them.
+4. Output in clean HTML (<h2>, <ul>, <p>, etc.).
+
+Only return content — no code blocks or headers.
+`;
+
+  try {
+    const result = await model.generateContent({
+      contents: [{ role: "user", parts: [{ text: prompt }] }],
+    });
+    const output = result.response.text();
+    res.json({ recommendation: output });
+  } catch (err) {
+    console.error("AI error:", err);
+    res.status(500).json({ recommendation: "❌ AI failed to generate a response." });
+  }
+});
+
 // Utility helpers
 function average(arr) {
   const nums = arr.map(Number).filter((n) => !isNaN(n));

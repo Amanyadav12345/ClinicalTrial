@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chemistry Lab – AI Reaction Optimizer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-indigo-100 to-purple-100 min-h-screen p-10">
+  <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-xl space-y-6">
+    <h2 class="text-2xl font-bold text-purple-800 text-center">🧪 Chemistry Lab – Reaction Optimizer</h2>
+    
+    <form id="chemForm" class="space-y-4">
+      <input type="text" name="reaction" placeholder="Enter chemical reaction (e.g., C6H6 + Cl2 → C6H5Cl + HCl)" required
+             class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500"/>
+      <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-md shadow">
+        Optimize Reaction
+      </button>
+    </form>
+
+    <div id="chemistryOutput" class="prose bg-gray-50 p-5 rounded-md border text-gray-800"></div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('chemForm');
+      const output = document.getElementById('chemistryOutput');
+
+      if (!form || !output) {
+        console.error("❌ Form or output element not found in DOM.");
+        return;
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        output.innerHTML = "<p class='italic text-gray-500'>⚗️ Analyzing your chemical reaction...</p>";
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Analyzing...";
+
+        try {
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData);
+
+          const res = await fetch('/optimize-production', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+
+          if (!res.ok) throw new Error(`Server error ${res.status}`);
+
+          const result = await res.json();
+          output.innerHTML = result.recommendation
+            ? `<div class="prose max-w-none">${result.recommendation}</div>`
+            : "<p class='text-yellow-600'>⚠️ No meaningful output from AI.</p>";
+        } catch (err) {
+          output.innerHTML = `<p class='text-red-600'>❌ Error: ${err.message}</p>`;
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Optimize Reaction";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
