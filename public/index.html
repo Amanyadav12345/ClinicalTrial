@@ -66,10 +66,19 @@
       <form id="trialForm" class="space-y-5">
         <input type="text" name="disease" placeholder="Disease" required
                class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"/>
-        <input type="text" name="phase" placeholder="Trial Phase" required
-               class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"/>
-        <input type="text" name="region" placeholder="Region" required
-               class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"/>
+        <input list="trialPhases" name="phase" placeholder="Trial Phase" required
+        class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"/>
+
+                <datalist id="trialPhases">
+                  <option value="Phase 0">
+                  <option value="Phase 1">
+                  <option value="Phase 2">
+                  <option value="Phase 3">
+                  <option value="Phase 4">
+                </datalist>
+        <input list="countryList" name="region" placeholder="Region" required
+         class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"/>
+        <datalist id="countryList"></datalist>
         <input type="text" name="endpoints" placeholder="Endpoints (comma-separated)" required
                class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"/>
         <input type="text" name="duration" placeholder="Duration (e.g., 12 months)" required
@@ -130,7 +139,22 @@
   <script>
     const form = document.getElementById('trialForm');
     const responseEl = document.getElementById('aiResponse');
+    async function loadCountries() {
+      const res = await fetch('https://restcountries.com/v3.1/all');
+      const countries = await res.json();
+      const datalist = document.getElementById('countryList');
 
+      countries
+        .map(c => c.name.common)
+        .sort()
+        .forEach(name => {
+          const option = document.createElement('option');
+          option.value = name;
+          datalist.appendChild(option);
+        });
+    }
+
+    loadCountries();
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
