@@ -1,5 +1,5 @@
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./clinical.db');
+const sqlite3 = require("sqlite3").verbose();
+const db = new sqlite3.Database("./clinical_trials.db");
 
 db.serialize(() => {
   db.run(`
@@ -9,7 +9,9 @@ db.serialize(() => {
       phase TEXT,
       region TEXT,
       endpoints TEXT,
-      duration TEXT
+      duration TEXT,
+      ai_output TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
   `);
 });
