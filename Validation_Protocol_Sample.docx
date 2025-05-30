@@ -1,0 +1,29 @@
+Title: Software Validation Protocol for TrialTrack
+
+Objective: To validate the TrialTrack platform's compliance with 21 CFR Part 11 for electronic records and signatures.
+
+Scope: This validation applies to core modules including trial submission, patient eligibility, and audit logging.
+
+Responsibilities:
+- QA Lead: Define validation plan
+- Developer: Execute unit/integration tests
+- Compliance Officer: Review evidence and sign-off
+
+IQ (Installation Qualification):
+- Node.js v18 installed
+- MongoDB v6.0 operational
+- SSL encryption enabled
+
+OQ (Operational Qualification):
+- Login authentication tests passed
+- Audit log capture verified
+- Data encryption confirmed
+
+PQ (Performance Qualification):
+- 100 concurrent user sessions tested
+- Response time under 500ms
+- Data saved persistently
+
+Signatures:
+QA Lead: ____________     Date: ______
+Compliance Officer: ____________     Date: ______

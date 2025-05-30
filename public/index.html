@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TrialTrack – Tracks trials and patients in real-time</title>
@@ -65,10 +67,29 @@
 
   <!-- Main Content -->
    <div class="absolute top-4 right-4 z-50">
+  <div class="relative group inline-block mr-2">
   <button onclick="openChemistryLab()"
           class="bg-purple-600 hover:bg-purple-700 text-white text-xl rounded-full w-10 h-10 flex items-center justify-center shadow-md transition">
     🧪 
   </button>
+  <span class="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition pointer-events-none">
+
+    Open Chemistry Lab
+  </span>
+</div>
+
+<!-- Compliance Document Upload Button with Tooltip -->
+<div class="relative group inline-block">
+  <button onclick="window.open('compliance-upload.html', '_blank')"
+
+          class="bg-purple-600 hover:bg-purple-700 text-white text-xl rounded-full w-10 h-10 flex items-center justify-center shadow-md transition">
+    📄 
+  </button>
+  <span class="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition pointer-events-none">
+  
+    Upload Compliance Docs
+  </span>
+</div>
 </div>
   <main class="flex-1 p-6 flex justify-center">
 
@@ -130,6 +151,8 @@
                 <th class="border px-4 py-2">Region</th>
                 <th class="border px-4 py-2">Medical History</th>
                 <th class="border px-4 py-2">Eligible</th>
+                <th class="border px-4 py-2">e-consent</th>
+
               </tr>
             </thead>
             <tbody id="patientTableBody"></tbody>
@@ -147,8 +170,85 @@
       </div>
     </div>
   </main>
+<!-- Consent Modal with Signature Pad -->
+<div id="consentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+  <div class="bg-white rounded-lg p-6 w-full max-w-md shadow-lg relative">
+    <h2 class="text-xl font-bold text-blue-700 mb-4">📄 eConsent Form</h2>
+    <p id="consentPatientName" class="mb-2 text-sm text-gray-600"></p>
 
+    <label class="block mb-2 text-sm font-medium text-gray-700">Signature:</label>
+    <div class="border rounded mb-2 bg-gray-100">
+      <canvas id="signatureCanvas" class="w-full h-40"></canvas>
+    </div>
+    <div class="flex justify-between mb-4">
+      <button onclick="clearSignature()" class="text-sm text-red-600 underline">Clear Signature</button>
+    </div>
+
+    <div class="flex justify-end space-x-3">
+      <button onclick="submitConsent()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+        Submit Consent
+      </button>
+      <button onclick="closeConsent()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
   <script>
+let currentConsentPatient = "";
+let signaturePad;
+
+function fillConsent(name) {
+  currentConsentPatient = name;
+  document.getElementById("consentPatientName").textContent = `Filling consent for: ${name}`;
+  document.getElementById("consentModal").classList.remove("hidden");
+
+  const canvas = document.getElementById("signatureCanvas");
+  resizeCanvas(canvas);
+  signaturePad = new SignaturePad(canvas);
+}
+
+function closeConsent() {
+  document.getElementById("consentModal").classList.add("hidden");
+  if (signaturePad) signaturePad.clear();
+}
+
+function clearSignature() {
+  if (signaturePad) signaturePad.clear();
+}
+
+function submitConsent() {
+  if (signaturePad.isEmpty()) {
+    alert("Please provide a signature.");
+    return;
+  }
+
+  const signatureData = signaturePad.toDataURL(); // base64 encoded PNG
+  alert(`Consent recorded for ${currentConsentPatient}.`);
+
+  // Optional: Save to backend, e.g., via fetch or form submission
+  // console.log(signatureData);
+
+  // Update the table cell
+  const rows = document.querySelectorAll('#patientTableBody tr');
+  rows.forEach(row => {
+    if (row.cells[0].textContent.trim() === currentConsentPatient) {
+      row.cells[5].innerHTML = '✅ Yes';
+    }
+  });
+
+  closeConsent();
+}
+
+// Make canvas DPI aware
+function resizeCanvas(canvas) {
+  const ratio = Math.max(window.devicePixelRatio || 1, 1);
+  canvas.width = canvas.offsetWidth * ratio;
+  canvas.height = canvas.offsetHeight * ratio;
+  canvas.getContext("2d").scale(ratio, ratio);
+}
+
+
       const toggleBtn = document.getElementById('toggleSidebar');
   const sidebar = document.getElementById('sidebarWrapper');
 
@@ -232,66 +332,71 @@
       const file = e.target.files[0];
       if (!file) return;
 
-      const reader = new FileReader();
+     const reader = new FileReader();
       reader.onload = function(event) {
-        const csv = event.target.result;
-        const rows = csv.split("\n").slice(1);
-        const output = [];
+  const csv = event.target.result;
+  const rows = csv.split("\n").slice(1); // skip header
+  const output = [];
+  const selectedDisease = document.querySelector('input[name="disease"]').value.trim().toLowerCase();
 
-        const selectedDisease = document.querySelector('input[name="disease"]').value.trim().toLowerCase();
+  rows.forEach(row => {
+    const fields = row.split(",");    if (fields.length < 5) return;
 
-        rows.forEach(row => {
-          const fields = row.split(",");
-          if (fields.length < 4) return; // Skip if row doesn't have all 4 values
+    const [name, age, region, historyRaw, eConsentRaw] = fields;
+    const history = historyRaw.trim().toLowerCase();
+    const ageNum = parseInt(age);
+    const regionClean = region.trim().toLowerCase();
+    const eConsent = eConsentRaw.trim();
 
-          const [name, age, region, historyRaw] = fields;
-          const history = historyRaw.trim().toLowerCase();
-          const ageNum = parseInt(age);
-          const regionClean = region.trim().toLowerCase();
+    const hasTargetDisease = history.includes(selectedDisease);
 
-          // Disease check
-          const hasTargetDisease = history.includes(selectedDisease);
+    const hasCriticalComorbidity =
+      history.includes("renal") ||
+      history.includes("hepatic") ||
+      history.includes("cardiovascular");
 
-          // Exclusion logic
-          const hasCriticalComorbidity =
-            history.includes("renal") ||
-            history.includes("hepatic") ||
-            history.includes("cardiovascular");
+    const isEligible =
+      hasTargetDisease &&
+      ageNum >= 18 && ageNum <= 65 &&
+      !hasCriticalComorbidity;
 
-          const isEligible =
-            hasTargetDisease &&
-            ageNum >= 18 && ageNum <= 65 &&
-            !hasCriticalComorbidity;
+    output.push({
+      name: name.trim(),
+      age: ageNum,
+      region: regionClean,
+      history,
+      eligible: isEligible ? '✅ Yes' : '❌ No',
+      eConsent
+    });
+  });
 
-          output.push({
-            name: name.trim(),
-            age: ageNum,
-            region: regionClean,
-            history,
-            eligible: isEligible ? '✅ Yes' : '❌ No'
-          });
-        });
-        const tbody = document.getElementById('patientTableBody');
-        tbody.innerHTML = '';
-        output.forEach(p => {
-          tbody.innerHTML += `
-            <tr>
-              <td class="border px-4 py-2">${p.name}</td>
-              <td class="border px-4 py-2">${p.age}</td>
-              <td class="border px-4 py-2">${p.region}</td>
-              <td class="border px-4 py-2">${p.history}</td>
-              <td class="border px-4 py-2">${p.eligible}</td>
-            </tr>
-          `;
-        });
+  const tbody = document.getElementById('patientTableBody');
+  tbody.innerHTML = '';
 
-        const eligibleOnly = output.filter(p => p.eligible === '✅ Yes');
-        localStorage.setItem('eligiblePatients', JSON.stringify(eligibleOnly));
+  output.forEach(p => {
+    const consentCell = p.eConsent.toLowerCase() === 'yes'
+      ? '✅ Yes'
+      : `<button onclick="fillConsent('${p.name}')" class="text-blue-600 underline hover:text-blue-800">Fill Consent</button>`;
 
-        document.getElementById('patientResult').classList.remove('hidden');
-        document.getElementById('filterEligibleBtn').classList.remove('hidden');
-        document.getElementById('openDashboardBtn').classList.remove('hidden');
-      };
+    tbody.innerHTML += `
+      <tr>
+        <td class="border px-4 py-2">${p.name}</td>
+        <td class="border px-4 py-2">${p.age}</td>
+        <td class="border px-4 py-2">${p.region}</td>
+        <td class="border px-4 py-2">${p.history}</td>
+        <td class="border px-4 py-2">${p.eligible}</td>
+        <td class="border px-4 py-2">${consentCell}</td>
+      </tr>
+    `;
+  });
+
+  const eligibleOnly = output.filter(p => p.eligible === '✅ Yes');
+  localStorage.setItem('eligiblePatients', JSON.stringify(eligibleOnly));
+
+  document.getElementById('patientResult').classList.remove('hidden');
+  document.getElementById('filterEligibleBtn').classList.remove('hidden');
+  document.getElementById('openDashboardBtn').classList.remove('hidden');
+};
 
       reader.readAsText(file);
     });

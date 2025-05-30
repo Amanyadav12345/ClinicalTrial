@@ -140,6 +140,22 @@ Tasks:
 });
 
 
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
+app.post('/analyze-compliance-docs', upload.array('docs'), async (req, res) => {
+  const fileSummaries = req.files.map(file => file.originalname).join(', ');
+
+  // Call AI service or heuristic analysis
+  const feedback = `Uploaded files (${fileSummaries}) were processed. 
+  - Ensure validation docs include IQ/OQ/PQ stages.
+  - Add audit trail samples with timestamps.
+  - Include access control policy if missing.`;
+
+  res.json({ feedback });
+});
+
+
 app.post("/optimize-production", async (req, res) => {
   const { reaction } = req.body;
 

@@ -1,0 +1,17 @@
+Standard Operating Procedure – Access Management
+
+Objective:
+To ensure secure, role-based access to all functions within the TrialTrack platform.
+
+Policy:
+- Admins can add/remove users and assign roles.
+- Researchers can submit trial data but cannot edit others’ submissions.
+- Viewers have read-only access.
+
+Procedure:
+1. New users are registered via the admin dashboard.
+2. Passwords must be 12+ characters with alphanumeric + symbols.
+3. Two-factor authentication is mandatory for all roles.
+4. Access logs are retained for 2 years.
+
+Review Cycle: Every 6 months
