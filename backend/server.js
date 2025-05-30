@@ -143,18 +143,25 @@ Tasks:
 app.post("/optimize-production", async (req, res) => {
   const { reaction } = req.body;
 
+
   const prompt = `
-You are a top-tier chemical engineer. Optimize the following reaction:
+You are an expert chemical engineer. Optimize this reaction: ${reactionInfo}
 
-${reaction}
+Details:
+- Reactants: ${reactants || "Not provided"}
+- Products: ${products || "Not provided"}
+- Current Temp: ${temp || "Not specified"}
+- Current Pressure: ${pressure || "Not specified"}
+- Catalyst Used: ${catalyst || "Not provided"}
+- Notes: ${notes || "None"}
 
-Tasks:
-1. Suggest ideal conditions (temperature, pressure, catalysts) to maximize yield and safety.
-2. Recommend cost-saving improvements without compromising efficiency.
-3. Mention any known side reactions and how to avoid them.
-4. Output in clean HTML (<h2>, <ul>, <p>, etc.).
+Please:
+1. Suggest optimal conditions (temperature, pressure, catalyst).
+2. Minimize cost without reducing yield.
+3. Flag safety issues or side reactions.
+4. Add references if available.
 
-Only return content — no code blocks or headers.
+Respond in clear HTML using <h2>, <ul>, <p>. No code blocks.
 `;
 
   try {
