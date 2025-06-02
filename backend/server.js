@@ -42,24 +42,83 @@ using our history and expertise.
 app.post("/submit-trial", async (req, res) => {
   const { disease, phase, region, endpoints, duration } = req.body;
 
-  const userPrompt = `
-You are an expert clinical trial assistant.
+const userPrompt = `
+You are a certified clinical trial design assistant, compliant with international standards including ICH-GCP, ISO 14155:2020, FDA 21 CFR Part 11, and CDISC guidelines.
 
-Based on the following parameters:
+Using the following trial parameters:
 - Disease: ${disease}
 - Phase: ${phase}
 - Region: ${region}
 - Endpoints: ${endpoints}
 - Duration: ${duration}
 
-Perform these tasks:
-1. Simulate trial outcomes for 3 design variations (low budget, standard, accelerated).
-2. Predict recruitment challenges and dropout risks based on trial phase and region.
-3. Recommend optimized endpoints using prior trial data and explain why.
-4. Auto-generate a clinical trial protocol draft.
-5. Include a visual timeline table (in HTML table format).
-6. Output everything in clean HTML using <h2>, <ul>, <table>, <p> etc., without <html> or <body> tags.
-7. Do not wrap the response in \`\`\`html\`\`\`.
+Please perform the following tasks while incorporating regulatory and ethical best practices:
+
+<h2>1. Simulate Trial Outcomes</h2>
+<ul>
+  <li>Model outcomes for three design variations:
+    <ul>
+      <li><strong>Low Budget:</strong> Focus on minimal resource settings with essential compliance (GCP minimums).</li>
+      <li><strong>Standard:</strong> Balanced design aligning with CDISC standards (SDTM/ADaM) and proper power calculation.</li>
+      <li><strong>Accelerated:</strong> Adaptive trial design considering fast-tracking rules (if region allows), with early stopping rules.</li>
+    </ul>
+  </li>
+  <li>Include assumptions, statistical power, and confidence levels based on ISO 14155 and FDA guidance.</li>
+</ul>
+
+<h2>2. Predict Recruitment and Dropout Risks</h2>
+<ul>
+  <li>Analyze risks based on region and phase using historical trial attrition data.</li>
+  <li>Flag ethical issues (e.g., vulnerable populations) per GCP and Declaration of Helsinki.</li>
+  <li>Include mitigation plans (informed consent clarity, eConsent strategies, community engagement).</li>
+</ul>
+
+<h2>3. Recommend Optimized Endpoints</h2>
+<ul>
+  <li>Leverage past trial data (preferably CDISC-structured) to propose better primary and secondary endpoints.</li>
+  <li>Justify changes using statistical significance and clinical relevance under ISO and FDA trial norms.</li>
+  <li>Ensure endpoints are:
+    <ul>
+      <li>Ethically measurable,</li>
+      <li>Patient-centered, and</li>
+      <li>Regulatory-acceptable for submissions (FDA/EMA/CTRI).</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>4. Generate Clinical Trial Protocol Draft</h2>
+<p>The draft should include:</p>
+<ul>
+  <li><strong>Title & Synopsis</strong> (as per ICH-GCP Section 6)</li>
+  <li><strong>Objectives</strong> (Primary, Secondary, Exploratory)</li>
+  <li><strong>Trial Design</strong> (Randomized, Blinded/Open-label, Parallel/Adaptive)</li>
+  <li><strong>Inclusion/Exclusion Criteria</strong></li>
+  <li><strong>Sample Size & Statistical Plan</strong> (with power justification)</li>
+  <li><strong>Informed Consent Process</strong> (with mention of electronic consent support if needed)</li>
+  <li><strong>Data Collection & Management Plan</strong> (aligned with 21 CFR Part 11)</li>
+  <li><strong>Safety Monitoring</strong> (with mention of DSMB if applicable)</li>
+  <li><strong>Adverse Event Reporting Mechanism</strong> per ICH-GCP and regional pharmacovigilance rules</li>
+  <li><strong>Ethics Committee Review</strong> requirement and CTRI/FDA registration precondition</li>
+</ul>
+
+<h2>5. Include Visual Timeline</h2>
+<p>Provide a simple HTML <code>&lt;table&gt;</code> format showing the clinical trial timeline (startup, recruitment, intervention, follow-up, closeout).</p>
+
+<h2>6. Output Formatting</h2>
+<p>All output should be in clean HTML using appropriate tags (<code>&lt;h2&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;table&gt;</code> etc.).</p>
+
+<h2>7. Compliance Checks</h2>
+<ul>
+  <li>Ensure response is aligned with:
+    <ul>
+      <li>ICH-GCP E6(R2) standards</li>
+      <li>ISO 14155:2020 quality framework</li>
+      <li>FDA 21 CFR Part 11 for electronic records and signatures</li>
+      <li>CDISC formats (SDTM for raw data, ADaM for analysis-ready)</li>
+    </ul>
+  </li>
+  <li>Flag any element that might require regulatory discussion or Ethics Committee clarification.</li>
+</ul>
 `;
 
   try {

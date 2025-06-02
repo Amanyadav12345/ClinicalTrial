@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <script src="https://3dmol.org/build/3Dmol-min.js"></script>
   <title>Chemistry Lab – Reaction Optimizer</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -12,90 +11,63 @@
 
     <form id="chemForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <input type="text" name="reaction" placeholder="Full reaction (e.g., A + B → C)" class="p-3 border rounded-md" />
-
       <input type="text" name="reactants" placeholder="Reactants (e.g., A + B)" required class="p-3 border rounded-md" />
       <input type="text" name="products" placeholder="Products (e.g., C)" required class="p-3 border rounded-md" />
       <input type="text" name="temp" placeholder="Temperature (e.g., 60°C)" class="p-3 border rounded-md" />
       <input type="text" name="pressure" placeholder="Pressure (e.g., 2 atm)" class="p-3 border rounded-md" />
       <input type="text" name="catalyst" placeholder="Catalyst (e.g., FeCl₃)" class="p-3 border rounded-md" />
-
       <textarea name="notes" rows="3" placeholder="Additional notes..." class="p-3 border rounded-md md:col-span-2"></textarea>
-
       <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-md shadow md:col-span-2">
         Optimize Reaction
       </button>
     </form>
 
-    <div id="chemistryOutput" class="prose bg-gray-50 p-5 rounded-md border text-gray-800 mt-6"><div id="moleculeViewer" class="w-full h-96 mt-6 border rounded-lg"></div>
-</div>
+    <div id="chemistryOutput" class="prose bg-gray-50 p-5 rounded-md border text-gray-800 mt-6"></div>
   </div>
 
   <script>
-     document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("chemForm");
-    const output = document.getElementById("chemistryOutput");
-    const viewerContainer = document.createElement("div");
-    viewerContainer.id = "moleculeViewer";
-    viewerContainer.className = "w-full h-96 mt-6 border rounded-lg";
-    output.insertAdjacentElement("afterend", viewerContainer);
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("chemForm");
+      const output = document.getElementById("chemistryOutput");
 
-    // Auto-fill from query params
-    const urlParams = new URLSearchParams(window.location.search);
-    for (const [key, value] of urlParams.entries()) {
-      const input = form.querySelector(`[name="${key}"]`);
-      if (input) input.value = decodeURIComponent(value);
-    }
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      output.innerHTML = "<p class='italic text-gray-500'>⏳ Analyzing your chemical reaction...</p>";
-      viewerContainer.innerHTML = "";
-
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      const btn = form.querySelector("button");
-      btn.disabled = true;
-      btn.textContent = "Analyzing...";
-
-      try {
-        const res = await fetch("http://localhost:4000/optimize-production", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
-
-        const result = await res.json();
-
-        output.innerHTML = result.recommendation
-          ? `<div class="prose max-w-none">${result.recommendation}</div>`
-          : "<p class='text-yellow-600'>⚠️ No useful AI response returned.</p>";
-
-        if (result.moleculeData) {
-          renderMolecule(result.moleculeData);
-        } else {
-          viewerContainer.innerHTML = "<p class='text-gray-600 p-4'>No 3D molecular structure provided.</p>";
-        }
-      } catch (err) {
-        output.innerHTML = `<p class='text-red-600'>❌ Error: ${err.message}</p>`;
-      } finally {
-        btn.disabled = false;
-        btn.textContent = "Optimize Reaction";
+      // Auto-fill from query params
+      const urlParams = new URLSearchParams(window.location.search);
+      for (const [key, value] of urlParams.entries()) {
+        const input = form.querySelector(`[name="${key}"]`);
+        if (input) input.value = decodeURIComponent(value);
       }
-    });
-  });
 
-  function renderMolecule(molData) {
-    const element = document.getElementById("moleculeViewer");
-    const viewer = $3Dmol.createViewer(element, {
-      backgroundColor: 'white'
-    });
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        output.innerHTML = "<p class='italic text-gray-500'>⏳ Analyzing your chemical reaction...</p>";
 
-    viewer.addModel(molData, "mol"); // or "smi" for SMILES
-    viewer.setStyle({}, { stick: {}, sphere: { scale: 0.3 } });
-    viewer.zoomTo();
-    viewer.render();
-  }
-   </script>
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        const btn = form.querySelector("button");
+        btn.disabled = true;
+        btn.textContent = "Analyzing...";
+
+        try {
+          const res = await fetch("http://localhost:4000/optimize-production", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+
+          const result = await res.json();
+
+          output.innerHTML = result.recommendation
+            ? `<div class="prose max-w-none">${result.recommendation}</div>`
+            : "<p class='text-yellow-600'>⚠️ No useful AI response returned.</p>";
+        } catch (err) {
+          output.innerHTML = `<p class='text-red-600'>❌ Error: ${err.message}</p>`;
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Optimize Reaction";
+        }
+      });
+    });
+  </script>
 </body>
 </html>
