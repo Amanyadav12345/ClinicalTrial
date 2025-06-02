@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script src="https://3dmol.org/build/3Dmol-min.js"></script>
   <title>Chemistry Lab – Reaction Optimizer</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -25,44 +26,76 @@
       </button>
     </form>
 
-    <div id="chemistryOutput" class="prose bg-gray-50 p-5 rounded-md border text-gray-800 mt-6"></div>
+    <div id="chemistryOutput" class="prose bg-gray-50 p-5 rounded-md border text-gray-800 mt-6"><div id="moleculeViewer" class="w-full h-96 mt-6 border rounded-lg"></div>
+</div>
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const form = document.getElementById("chemForm");
-      const output = document.getElementById("chemistryOutput");
+     document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("chemForm");
+    const output = document.getElementById("chemistryOutput");
+    const viewerContainer = document.createElement("div");
+    viewerContainer.id = "moleculeViewer";
+    viewerContainer.className = "w-full h-96 mt-6 border rounded-lg";
+    output.insertAdjacentElement("afterend", viewerContainer);
 
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        output.innerHTML = "<p class='italic text-gray-500'>⏳ Analyzing your chemical reaction...</p>";
+    // Auto-fill from query params
+    const urlParams = new URLSearchParams(window.location.search);
+    for (const [key, value] of urlParams.entries()) {
+      const input = form.querySelector(`[name="${key}"]`);
+      if (input) input.value = decodeURIComponent(value);
+    }
 
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      output.innerHTML = "<p class='italic text-gray-500'>⏳ Analyzing your chemical reaction...</p>";
+      viewerContainer.innerHTML = "";
 
-        const btn = form.querySelector("button");
-        btn.disabled = true;
-        btn.textContent = "Analyzing...";
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
 
-        try {
-          const res = await fetch("http://localhost:4000/optimize-production", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
-          });
+      const btn = form.querySelector("button");
+      btn.disabled = true;
+      btn.textContent = "Analyzing...";
 
-          const result = await res.json();
-          output.innerHTML = result.recommendation
-            ? `<div class="prose max-w-none">${result.recommendation}</div>`
-            : "<p class='text-yellow-600'>⚠️ No useful AI response returned.</p>";
-        } catch (err) {
-          output.innerHTML = `<p class='text-red-600'>❌ Error: ${err.message}</p>`;
-        } finally {
-          btn.disabled = false;
-          btn.textContent = "Optimize Reaction";
+      try {
+        const res = await fetch("http://localhost:4000/optimize-production", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json();
+
+        output.innerHTML = result.recommendation
+          ? `<div class="prose max-w-none">${result.recommendation}</div>`
+          : "<p class='text-yellow-600'>⚠️ No useful AI response returned.</p>";
+
+        if (result.moleculeData) {
+          renderMolecule(result.moleculeData);
+        } else {
+          viewerContainer.innerHTML = "<p class='text-gray-600 p-4'>No 3D molecular structure provided.</p>";
         }
-      });
+      } catch (err) {
+        output.innerHTML = `<p class='text-red-600'>❌ Error: ${err.message}</p>`;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Optimize Reaction";
+      }
     });
-  </script>
+  });
+
+  function renderMolecule(molData) {
+    const element = document.getElementById("moleculeViewer");
+    const viewer = $3Dmol.createViewer(element, {
+      backgroundColor: 'white'
+    });
+
+    viewer.addModel(molData, "mol"); // or "smi" for SMILES
+    viewer.setStyle({}, { stick: {}, sphere: { scale: 0.3 } });
+    viewer.zoomTo();
+    viewer.render();
+  }
+   </script>
 </body>
 </html>
