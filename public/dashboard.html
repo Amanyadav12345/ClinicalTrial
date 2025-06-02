@@ -39,11 +39,55 @@
     </div>
     <div class="bg-white rounded-lg shadow p-6">
       <h2 class="text-xl font-semibold mb-4">Eligibility Ratio</h2>
+      <div class="w-200 h-200 mx-auto">
       <div >
         <canvas id="eligibilityChart"></canvas>
       </div>
+      </div>
+      
     </div>
   </div>
+<!-- Section: Trial Budget Estimator -->
+<div class="bg-white p-6 rounded-lg shadow mb-10">
+  <h2 class="text-xl font-semibold mb-6 text-blue-700">💸 Trial Budget Estimator</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- Number of Patients -->
+    <div>
+      <label for="numPatients" class="block font-medium mb-2">Number of Patients: <span id="numPatientsVal">50</span></label>
+      <input type="range" id="numPatients" min="10" max="1000" step="10" value="50" class="w-full">
+    </div>
+
+    <!-- Trial Duration -->
+    <div>
+      <label for="duration" class="block font-medium mb-2">Trial Duration (months): <span id="durationVal">6</span></label>
+      <input type="range" id="duration" min="1" max="36" value="6" class="w-full">
+    </div>
+
+    <!-- Per-Patient Cost -->
+    <div>
+      <label for="costPerPatient" class="block font-medium mb-2">Cost per Patient (USD): <span id="costPerPatientVal">500</span></label>
+      <input type="range" id="costPerPatient" min="100" max="10000" step="100" value="500" class="w-full">
+    </div>
+
+    <!-- Number of Trial Sites -->
+    <div>
+      <label for="siteCount" class="block font-medium mb-2">Number of Trial Sites: <span id="siteCountVal">3</span></label>
+      <input type="range" id="siteCount" min="1" max="50" value="3" class="w-full">
+    </div>
+
+    <!-- Equipment/Setup Cost -->
+    <div class="md:col-span-2">
+      <label for="equipmentCost" class="block font-medium mb-2">Equipment & Setup Cost (USD): <span id="equipmentCostVal">10000</span></label>
+      <input type="range" id="equipmentCost" min="1000" max="500000" step="1000" value="10000" class="w-full">
+    </div>
+  </div>
+
+  <!-- Display Total Budget -->
+  <div class="mt-6 text-lg font-semibold text-green-700">
+    💰 Total Estimated Budget: <span id="totalBudget">$0</span>
+  </div>
+</div>
 
   <!-- Section: Eligible Patients List -->
   <div class="bg-white p-6 rounded-lg shadow mt-8">
@@ -64,6 +108,36 @@
   </div>
 
   <script>
+    // Budget slider bindings
+const numPatients = document.getElementById("numPatients");
+const duration = document.getElementById("duration");
+const costPerPatient = document.getElementById("costPerPatient");
+const siteCount = document.getElementById("siteCount");
+const equipmentCost = document.getElementById("equipmentCost");
+
+const totalBudgetSpan = document.getElementById("totalBudget");
+
+const updateValues = () => {
+  document.getElementById("numPatientsVal").textContent = numPatients.value;
+  document.getElementById("durationVal").textContent = duration.value;
+  document.getElementById("costPerPatientVal").textContent = costPerPatient.value;
+  document.getElementById("siteCountVal").textContent = siteCount.value;
+  document.getElementById("equipmentCostVal").textContent = equipmentCost.value;
+
+  const patientCost = numPatients.value * costPerPatient.value;
+  const operationalCost = siteCount.value * 5000 * duration.value; // arbitrary per-site monthly cost
+  const total = parseInt(equipmentCost.value) + patientCost + operationalCost;
+
+  totalBudgetSpan.textContent = `$${total.toLocaleString()}`;
+};
+
+// Attach listeners
+[numPatients, duration, costPerPatient, siteCount, equipmentCost].forEach(slider => {
+  slider.addEventListener('input', updateValues);
+});
+
+updateValues(); // initialize
+
     window.onload = async () => {
       const patients = JSON.parse(localStorage.getItem('eligiblePatients')) || [];
       const tableBody = document.getElementById('patientTable');
