@@ -152,7 +152,9 @@
                 <th class="border px-4 py-2">Medical History</th>
                 <th class="border px-4 py-2">Eligible</th>
                 <th class="border px-4 py-2">e-consent</th>
-
+                <th class="border px-4 py-2">Profession</th>
+                <th class="border px-4 py-2">company</th>
+                <th class="border px-4 py-2">Stress index</th>
               </tr>
             </thead>
             <tbody id="patientTableBody"></tbody>
@@ -327,79 +329,92 @@ function resizeCanvas(canvas) {
       printWindow.document.close();
       printWindow.print();
     }
+document.getElementById('patientUpload').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
 
-    document.getElementById('patientUpload').addEventListener('change', function(e) {
-      const file = e.target.files[0];
-      if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    const csv = event.target.result;
+    const rows = csv.split("\n").slice(1); // skip header
+    const output = [];
+    const selectedDisease = document.querySelector('input[name="disease"]').value.trim().toLowerCase();
 
-     const reader = new FileReader();
-      reader.onload = function(event) {
-  const csv = event.target.result;
-  const rows = csv.split("\n").slice(1); // skip header
-  const output = [];
-  const selectedDisease = document.querySelector('input[name="disease"]').value.trim().toLowerCase();
+    rows.forEach(row => {
+  const fields = row.split(",");
+  if (fields.length < 8) return;
 
-  rows.forEach(row => {
-    const fields = row.split(",");    if (fields.length < 5) return;
+  const [name, age, region, historyRaw, eConsentRaw, profession, company, stressIndexRaw] = fields;
 
-    const [name, age, region, historyRaw, eConsentRaw] = fields;
-    const history = historyRaw.trim().toLowerCase();
-    const ageNum = parseInt(age);
-    const regionClean = region.trim().toLowerCase();
-    const eConsent = eConsentRaw.trim();
+  const historyItems = historyRaw
+    .split(",")
+    .map(h => h.trim().toLowerCase());
 
-    const hasTargetDisease = history.includes(selectedDisease);
+  const ageNum = parseInt(age);
+  const stressIndex = parseInt(stressIndexRaw);
+  const regionClean = region.trim().toLowerCase();
+  const eConsent = eConsentRaw.trim();
 
-    const hasCriticalComorbidity =
-      history.includes("renal") ||
-      history.includes("hepatic") ||
-      history.includes("cardiovascular");
+  // Allow partial match with target disease
+  const hasTargetDisease = historyItems.some(h => h.includes(selectedDisease));
 
-    const isEligible =
-      hasTargetDisease &&
-      ageNum >= 18 && ageNum <= 65 &&
-      !hasCriticalComorbidity;
+  const criticalConditions = ["renal", "hepatic", "cardiovascular"];
+  const hasCriticalComorbidity = historyItems.some(item =>
+    criticalConditions.some(cond => item.includes(cond))
+  );
 
-    output.push({
-      name: name.trim(),
-      age: ageNum,
-      region: regionClean,
-      history,
-      eligible: isEligible ? '✅ Yes' : '❌ No',
-      eConsent
-    });
+  const isEligible =
+    hasTargetDisease &&
+    ageNum >= 18 && ageNum <= 65 &&
+    !hasCriticalComorbidity &&
+    stressIndex <= 4; // Stress Index must be ≤ 4 (less stressful)
+
+  output.push({
+    name: name.trim(),
+    age: ageNum,
+    region: regionClean,
+    history: historyItems.join(", "),
+    eligible: isEligible ? '✅ Yes' : '❌ No',
+    eConsent,
+    profession: profession?.trim(),
+    company: company?.trim(),
+    stressIndex: stressIndex
   });
+});
 
-  const tbody = document.getElementById('patientTableBody');
-  tbody.innerHTML = '';
+    const tbody = document.getElementById('patientTableBody');
+    tbody.innerHTML = '';
 
-  output.forEach(p => {
-    const consentCell = p.eConsent.toLowerCase() === 'yes'
-      ? '✅ Yes'
-      : `<button onclick="fillConsent('${p.name}')" class="text-blue-600 underline hover:text-blue-800">Fill Consent</button>`;
+    output.forEach(p => {
+      const consentCell = p.eConsent.toLowerCase() === 'yes'
+        ? '✅ Yes'
+        : `<button onclick="fillConsent('${p.name}')" class="text-blue-600 underline hover:text-blue-800">Fill Consent</button>`;
 
-    tbody.innerHTML += `
-      <tr>
-        <td class="border px-4 py-2">${p.name}</td>
-        <td class="border px-4 py-2">${p.age}</td>
-        <td class="border px-4 py-2">${p.region}</td>
-        <td class="border px-4 py-2">${p.history}</td>
-        <td class="border px-4 py-2">${p.eligible}</td>
-        <td class="border px-4 py-2">${consentCell}</td>
-      </tr>
-    `;
-  });
-
-  const eligibleOnly = output.filter(p => p.eligible === '✅ Yes');
-  localStorage.setItem('eligiblePatients', JSON.stringify(eligibleOnly));
-
-  document.getElementById('patientResult').classList.remove('hidden');
-  document.getElementById('filterEligibleBtn').classList.remove('hidden');
-  document.getElementById('openDashboardBtn').classList.remove('hidden');
-};
-
-      reader.readAsText(file);
+      tbody.innerHTML += `
+        <tr>
+          <td class="border px-4 py-2">${p.name}</td>
+          <td class="border px-4 py-2">${p.age}</td>
+          <td class="border px-4 py-2">${p.region}</td>
+          <td class="border px-4 py-2">${p.history}</td>
+          <td class="border px-4 py-2">${p.eligible}</td>
+          <td class="border px-4 py-2">${consentCell}</td>
+          <td class="border px-4 py-2">${p.profession}</td>
+          <td class="border px-4 py-2">${p.company}</td>
+          <td class="border px-4 py-2">${p.stressIndex}</td>
+        </tr>
+      `;
     });
+
+    const eligibleOnly = output.filter(p => p.eligible === '✅ Yes');
+    localStorage.setItem('eligiblePatients', JSON.stringify(eligibleOnly));
+
+    document.getElementById('patientResult').classList.remove('hidden');
+    document.getElementById('filterEligibleBtn').classList.remove('hidden');
+    document.getElementById('openDashboardBtn').classList.remove('hidden');
+  };
+
+  reader.readAsText(file);
+});
 
     document.getElementById('filterEligibleBtn').addEventListener('click', () => {
       const rows = document.querySelectorAll('#patientTableBody tr');

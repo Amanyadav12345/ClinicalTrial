@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 // AI setup
 const genAI = new GoogleGenerativeAI("AIzaSyBEqlViHCSL9XR8tVZDuYDINRly_bgBd6Y");
-const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash-preview-04-17' });
 
 console.log("✅ Gemini API Key Loaded");
 
