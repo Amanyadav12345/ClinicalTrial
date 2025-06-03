@@ -17,3 +17,4 @@ Requires CDISC standards in data-related sections.
 Insists on clean HTML output for UI compatibility.
 
 Embeds risk mitigation and timeline planning, mandatory in protocol planning.
+h
