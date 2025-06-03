@@ -4,295 +4,389 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Patient Monitoring Dashboard</title>
-
-  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
-
-  <!-- Chart.js Geo Plugin + TopoJSON -->
-  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-geo@4.3.0/build/index.umd.min.js"></script>
-
-  <!-- Tailwind CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .metric-card {
+      transition: all 0.3s ease;
+    }
+    
+    .metric-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .slider-container {
+      position: relative;
+    }
+    
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: #e2e8f0;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #4f46e5;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .slider::-webkit-slider-thumb:hover {
+      background: #3730a3;
+      transform: scale(1.1);
+    }
+    
+    .table-row:hover {
+      background-color: #f8fafc;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans min-h-screen p-6">
-  <h1 class="text-3xl font-bold text-center text-blue-700 mb-6">Patient Monitoring Dashboard</h1>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-    <div class="bg-white rounded-lg shadow p-6">
-      <h2 class="text-xl font-semibold mb-4">Age Distribution</h2>
-      <div >
-        <canvas id="ageChart"></canvas>
-      </div>
-    </div>
-    <div class="bg-white rounded-lg shadow p-6">
-      <h2 class="text-xl font-semibold mb-4">Region Heatmap (World)</h2>
-      <div >
-        <canvas id="regionMapChart"></canvas>
-      </div>
-    </div>
-    <div class="bg-white rounded-lg shadow p-6">
-      <h2 class="text-xl font-semibold mb-4">Medical History Breakdown</h2>
-      <div >
-        <canvas id="historyChart"></canvas>
-      </div>
-    </div>
-    <div class="bg-white rounded-lg shadow p-6">
-      <h2 class="text-xl font-semibold mb-4">Eligibility Ratio</h2>
-      <div class="w-200 h-200 mx-auto">
-      <div >
-        <canvas id="eligibilityChart"></canvas>
-      </div>
-      </div>
-    </div>
-  </div>
-<!-- Section: Trial Budget Estimator -->
-<div class="bg-white p-6 rounded-lg shadow mb-10">
-  <h2 class="text-xl font-semibold mb-6 text-blue-700">💸 Trial Budget Estimator</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-    <!-- Number of Patients -->
-    <div>
-      <label for="numPatients" class="block font-medium mb-2">Number of Patients: <span id="numPatientsVal">50</span></label>
-      <input type="range" id="numPatients" min="10" max="1000" step="10" value="50" class="w-full">
-    </div>
-
-    <!-- Trial Duration -->
-    <div>
-      <label for="duration" class="block font-medium mb-2">Trial Duration (months): <span id="durationVal">6</span></label>
-      <input type="range" id="duration" min="1" max="36" value="6" class="w-full">
-    </div>
-
-    <!-- Per-Patient Cost -->
-    <div>
-      <label for="costPerPatient" class="block font-medium mb-2">Cost per Patient (USD): <span id="costPerPatientVal">500</span></label>
-      <input type="range" id="costPerPatient" min="100" max="10000" step="100" value="500" class="w-full">
-    </div>
-
-    <!-- Number of Trial Sites -->
-    <div>
-      <label for="siteCount" class="block font-medium mb-2">Number of Trial Sites: <span id="siteCountVal">3</span></label>
-      <input type="range" id="siteCount" min="1" max="50" value="3" class="w-full">
-    </div>
-
-    <!-- Equipment/Setup Cost -->
-    <div class="md:col-span-2">
-      <label for="equipmentCost" class="block font-medium mb-2">Equipment & Setup Cost (USD): <span id="equipmentCostVal">10000</span></label>
-      <input type="range" id="equipmentCost" min="1000" max="500000" step="1000" value="10000" class="w-full">
+<body class="min-h-screen gradient-bg">
+  <!-- Header -->
+  <div class="bg-white shadow-sm border-b">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <h1 class="text-2xl font-bold text-gray-900">Patient Monitoring Dashboard</h1>
+      <p class="text-gray-600 mt-1">Clinical trial management and analytics</p>
     </div>
   </div>
 
-  <!-- Display Total Budget -->
-  <div class="mt-6 text-lg font-semibold text-green-700">
-    💰 Total Estimated Budget: <span id="totalBudget">$0</span>
-  </div>
-</div>
+  <div class="max-w-7xl mx-auto px-6 py-8">
+    <!-- Key Metrics -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      <div class="glass-card rounded-xl p-6 metric-card">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium text-gray-600">Total Patients</p>
+            <p class="text-2xl font-bold text-gray-900" id="totalPatients">0</p>
+          </div>
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      
+      <div class="glass-card rounded-xl p-6 metric-card">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium text-gray-600">Eligible</p>
+            <p class="text-2xl font-bold text-green-600" id="eligibleCount">0</p>
+          </div>
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      
+      <div class="glass-card rounded-xl p-6 metric-card">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium text-gray-600">Avg Age</p>
+            <p class="text-2xl font-bold text-purple-600" id="avgAge">0</p>
+          </div>
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      
+      <div class="glass-card rounded-xl p-6 metric-card">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium text-gray-600">Regions</p>
+            <p class="text-2xl font-bold text-orange-600" id="regionCount">0</p>
+          </div>
+          <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <!-- Section: Eligible Patients List -->
-  <div class="bg-white p-6 rounded-lg shadow mt-8">
-    <h2 class="text-xl font-semibold mb-4">Eligible Patients</h2>
-    <div class="overflow-x-auto">
-      <table class="min-w-full text-sm text-left border border-collapse border-gray-300">
-        <thead class="bg-gray-100">
-          <tr>
-            <th class="border px-4 py-2">Name</th>
-            <th class="border px-4 py-2">Age</th>
-            <th class="border px-4 py-2">Region</th>
-            <th class="border px-4 py-2">Medical History</th>
-          </tr>
-        </thead>
-        <tbody id="patientTable"></tbody>
-      </table>
+    <!-- Charts Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+      <div class="glass-card rounded-xl p-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Age Distribution</h3>
+        <div class="h-64">
+          <canvas id="ageChart"></canvas>
+        </div>
+      </div>
+      
+      <div class="glass-card rounded-xl p-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Medical Conditions</h3>
+        <div class="h-64">
+          <canvas id="historyChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Budget Calculator -->
+    <div class="glass-card rounded-xl p-6 mb-8">
+      <h3 class="text-lg font-semibold text-gray-900 mb-6 flex items-center">
+        <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+        </svg>
+        Trial Budget Calculator
+      </h3>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        <div class="slider-container">
+          <label class="block text-sm font-medium text-gray-700 mb-2">
+            Patients: <span class="font-semibold text-blue-600" id="numPatientsVal">50</span>
+          </label>
+          <input type="range" id="numPatients" min="10" max="500" step="10" value="50" class="slider">
+        </div>
+        
+        <div class="slider-container">
+          <label class="block text-sm font-medium text-gray-700 mb-2">
+            Duration: <span class="font-semibold text-blue-600" id="durationVal">6</span> months
+          </label>
+          <input type="range" id="duration" min="1" max="24" value="6" class="slider">
+        </div>
+        
+        <div class="slider-container">
+          <label class="block text-sm font-medium text-gray-700 mb-2">
+            Cost/Patient: $<span class="font-semibold text-blue-600" id="costPerPatientVal">500</span>
+          </label>
+          <input type="range" id="costPerPatient" min="100" max="5000" step="100" value="500" class="slider">
+        </div>
+      </div>
+      
+      <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-4 text-center">
+        <p class="text-sm text-gray-600">Estimated Total Budget</p>
+        <p class="text-3xl font-bold text-green-600" id="totalBudget">$0</p>
+      </div>
+    </div>
+
+    <!-- Patient Table -->
+    <div class="glass-card rounded-xl p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold text-gray-900">Eligible Patients</h3>
+        <div class="flex items-center space-x-2">
+          <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <input type="text" placeholder="Search patients..." class="text-sm border border-gray-300 rounded-lg px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+      </div>
+      
+      <div class="overflow-hidden rounded-lg border border-gray-200">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Age</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Region</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Conditions</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+            </tr>
+          </thead>
+          <tbody id="patientTable" class="bg-white divide-y divide-gray-200">
+            <!-- Patients will be populated here -->
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
   <script>
-    // Budget slider bindings
-const numPatients = document.getElementById("numPatients");
-const duration = document.getElementById("duration");
-const costPerPatient = document.getElementById("costPerPatient");
-const siteCount = document.getElementById("siteCount");
-const equipmentCost = document.getElementById("equipmentCost");
+    // Sample data for demonstration
+    const samplePatients = [
+      { name: "John Smith", age: 45, region: "USA", history: "Diabetes, Hypertension", eligible: true },
+      { name: "Maria Garcia", age: 52, region: "Spain", history: "Arthritis", eligible: true },
+      { name: "David Chen", age: 38, region: "China", history: "Asthma, Allergies", eligible: true },
+      { name: "Sarah Johnson", age: 29, region: "Canada", history: "Migraine", eligible: true },
+      { name: "Ahmed Hassan", age: 61, region: "Egypt", history: "Heart Disease", eligible: true }
+    ];
 
-const totalBudgetSpan = document.getElementById("totalBudget");
+    // Use sample data if no localStorage data exists
+    let patients = [];
+    try {
+      patients = JSON.parse(localStorage.getItem('eligiblePatients')) || samplePatients;
+    } catch {
+      patients = samplePatients;
+    }
 
-const updateValues = () => {
-  document.getElementById("numPatientsVal").textContent = numPatients.value;
-  document.getElementById("durationVal").textContent = duration.value;
-  document.getElementById("costPerPatientVal").textContent = costPerPatient.value;
-  document.getElementById("siteCountVal").textContent = siteCount.value;
-  document.getElementById("equipmentCostVal").textContent = equipmentCost.value;
+    // Budget calculator
+    const budgetElements = {
+      numPatients: document.getElementById("numPatients"),
+      duration: document.getElementById("duration"),
+      costPerPatient: document.getElementById("costPerPatient"),
+      totalBudget: document.getElementById("totalBudget")
+    };
 
-  const patientCost = numPatients.value * costPerPatient.value;
-  const operationalCost = siteCount.value * 5000 * duration.value; // arbitrary per-site monthly cost
-  const total = parseInt(equipmentCost.value) + patientCost + operationalCost;
+    const updateBudget = () => {
+      document.getElementById("numPatientsVal").textContent = budgetElements.numPatients.value;
+      document.getElementById("durationVal").textContent = budgetElements.duration.value;
+      document.getElementById("costPerPatientVal").textContent = budgetElements.costPerPatient.value;
 
-  totalBudgetSpan.textContent = `$${total.toLocaleString()}`;
-};
+      const total = parseInt(budgetElements.numPatients.value) * parseInt(budgetElements.costPerPatient.value) * parseInt(budgetElements.duration.value);
+      budgetElements.totalBudget.textContent = `$${total.toLocaleString()}`;
+    };
 
-// Attach listeners
-[numPatients, duration, costPerPatient, siteCount, equipmentCost].forEach(slider => {
-  slider.addEventListener('input', updateValues);
-});
+    // Attach budget listeners
+    Object.values(budgetElements).slice(0, 3).forEach(slider => {
+      slider?.addEventListener('input', updateBudget);
+    });
 
-updateValues(); // initialize
+    // Initialize dashboard
+    const initializeDashboard = () => {
+      // Update metrics
+      document.getElementById('totalPatients').textContent = patients.length;
+      document.getElementById('eligibleCount').textContent = patients.filter(p => p.eligible !== false).length;
+      
+      const avgAge = patients.length > 0 ? Math.round(patients.reduce((sum, p) => sum + parseInt(p.age), 0) / patients.length) : 0;
+      document.getElementById('avgAge').textContent = avgAge;
+      
+      const uniqueRegions = [...new Set(patients.map(p => p.region))].length;
+      document.getElementById('regionCount').textContent = uniqueRegions;
 
-    window.onload = async () => {
-      const patients = JSON.parse(localStorage.getItem('eligiblePatients')) || [];
+      // Populate patient table
       const tableBody = document.getElementById('patientTable');
-      const ageGroups = ['18-25', '26-35', '36-45', '46-55', '56-65', '66+'];
-      const ageData = [0, 0, 0, 0, 0, 0];
-      const regionDataMap = {};
-      const historyDataMap = {};
-
-      patients.forEach(p => {
+      tableBody.innerHTML = '';
+      
+      patients.forEach(patient => {
         const row = document.createElement('tr');
+        row.className = 'table-row';
         row.innerHTML = `
-          <td class="border px-4 py-2">${p.name}</td>
-          <td class="border px-4 py-2">${p.age}</td>
-          <td class="border px-4 py-2">${p.region}</td>
-          <td class="border px-4 py-2">${p.history}</td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div class="text-sm font-medium text-gray-900">${patient.name}</div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${patient.age}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${patient.region}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${patient.history}</td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+              Eligible
+            </span>
+          </td>
         `;
-        tableBody.appendChild(row);
-
-        const age = parseInt(p.age);
-        if (age <= 25) ageData[0]++;
-        else if (age <= 35) ageData[1]++;
-        else if (age <= 45) ageData[2]++;
-        else if (age <= 55) ageData[3]++;
-        else if (age <= 65) ageData[4]++;
-        else ageData[5]++;
-
-        const region = p.region.trim();
-        regionDataMap[region] = (regionDataMap[region] || 0) + 1;
-
+        
         row.addEventListener('click', () => {
-          localStorage.setItem('selectedPatientName', p.name);
+          // Store selected patient data and navigate to personal dashboard
+          localStorage.setItem('selectedPatientName', patient.name);
+          localStorage.setItem('selectedPatientData', JSON.stringify(patient));
+          
+          // Navigate to personal dashboard page
           window.open('personal-dashboard.html', '_blank');
         });
-
-        const conditions = p.history.split(',');
-        conditions.forEach(cond => {
-          const key = cond.trim().toLowerCase();
-          if (key) historyDataMap[key] = (historyDataMap[key] || 0) + 1;
-        });
+        
+        tableBody.appendChild(row);
       });
 
-      // Charts
+      // Create charts
+      createCharts();
+      updateBudget();
+    };
+
+    const createCharts = () => {
+      // Age distribution chart
+      const ageGroups = ['18-30', '31-40', '41-50', '51-60', '61+'];
+      const ageData = [0, 0, 0, 0, 0];
+      
+      patients.forEach(p => {
+        const age = parseInt(p.age);
+        if (age <= 30) ageData[0]++;
+        else if (age <= 40) ageData[1]++;
+        else if (age <= 50) ageData[2]++;
+        else if (age <= 60) ageData[3]++;
+        else ageData[4]++;
+      });
+
       new Chart(document.getElementById('ageChart'), {
-        type: 'bar',
+        type: 'doughnut',
         data: {
           labels: ageGroups,
           datasets: [{
-            label: 'Number of Patients',
             data: ageData,
-            backgroundColor: 'rgba(59, 130, 246, 0.7)'
+            backgroundColor: [
+              '#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444'
+            ],
+            borderWidth: 0
           }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom'
+            }
+          }
         }
+      });
+
+      // Medical conditions chart
+      const conditionsMap = {};
+      patients.forEach(p => {
+        const conditions = p.history.split(',');
+        conditions.forEach(condition => {
+          const key = condition.trim();
+          if (key) conditionsMap[key] = (conditionsMap[key] || 0) + 1;
+        });
       });
 
       new Chart(document.getElementById('historyChart'), {
         type: 'bar',
         data: {
-          labels: Object.keys(historyDataMap),
+          labels: Object.keys(conditionsMap),
           datasets: [{
-            label: 'Conditions',
-            data: Object.values(historyDataMap),
-            backgroundColor: 'rgba(16, 185, 129, 0.7)'
+            label: 'Patients',
+            data: Object.values(conditionsMap),
+            backgroundColor: '#10b981',
+            borderRadius: 4
           }]
         },
         options: {
-          indexAxis: 'y'
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                stepSize: 1
+              }
+            }
+          }
         }
       });
-
-      new Chart(document.getElementById('eligibilityChart'), {
-        type: 'pie',
-        data: {
-          labels: ['Eligible', 'Not Eligible'],
-          datasets: [{
-            label: 'Eligibility',
-            data: [patients.length, localStorage.getItem('nonEligibleCount') || 0],
-            backgroundColor: ['#10b981','#f87171']
-          }]
-        }
-      });
-    const regionAliasMap = {
-  usa: "United States of America",
-  us: "United States of America",
-  uk: "United Kingdom",
-  'u.k.': "United Kingdom",
-  'united states': "United States of America"
-};
-
-// Region Choropleth Map
-const res = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json');
-const world = await res.json();
-const countries = ChartGeo.topojson.feature(world, world.objects.countries).features;
-
-// Optional: log all available names to verify
-const countryNames = countries.map(c => c.properties.name.toLowerCase());
-console.log("Available country names in map:", countryNames);
-
-// Normalize region names using alias map
-const regionCounts = Object.entries(regionDataMap).map(([region, count]) => {
-  const normalizedRegion = regionAliasMap[region.toLowerCase()] || region;
-  const match = countries.find(
-    f => f.properties.name.toLowerCase() === normalizedRegion.toLowerCase()
-  );
-  return match ? { feature: match, value: count } : null;
-}).filter(Boolean);
-
-const mapCanvas = document.getElementById('regionMapChart');
-new Chart(mapCanvas, {
-  type: 'choropleth',
-  data: {
-    labels: regionCounts.map(d => d.feature.properties.name),
-    datasets: [{
-      label: 'Patients by Country',
-      data: regionCounts,
-      backgroundColor: (ctx) => {
-        const value = ctx.raw?.value || 0;
-        if (value === 0) return 'rgba(107, 114, 128, 0.4)'; // gray fallback
-        const alpha = Math.min(0.2 + value / 10, 1);
-        return `rgba(37, 99, 235, ${alpha})`; // blue gradient
-      },
-      borderColor: '#cccccc',
-      borderWidth: 0.5
-    }]
-  },
-  options: {
-    maintainAspectRatio: true,
-    showOutline: true,
-    showGraticule: true,
-    scales: {
-      projection: {
-        axis: 'x',
-        projection: 'equalEarth',
-        center: [0, 15],
-        rotate: [0, 0, 0],
-        scale: 1,
-        translate: [0, 0],
-      }
-    },
-    elements: {
-      arc: {
-        borderWidth: 1
-      }
-    },
-    plugins: {
-      tooltip: {
-        callbacks: {
-          label: ctx => `${ctx.raw.feature.properties.name}: ${ctx.raw.value} patients`
-        }
-      },
-      legend: {
-        display: false
-      }
-    }
-  }
-});
     };
+
+    // Initialize when page loads
+    window.addEventListener('load', initializeDashboard);
   </script>
 </body>
 </html>

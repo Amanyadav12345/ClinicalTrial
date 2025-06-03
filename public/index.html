@@ -2,25 +2,37 @@
 <html lang="en">
 <head>
   <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TrialTrack – Tracks trials and patients in real-time</title>
+  <title>TrialTrack – Clinical Trial Management</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 3px;
+    }
+    
+    /* AI Response Styling */
     #aiResponse h2 {
       font-size: 1.5rem;
       font-weight: 700;
       margin-top: 1.5rem;
       margin-bottom: 1rem;
-      color: #1e3a8a;
+      color: #1e40af;
     }
     #aiResponse h3 {
       font-size: 1.25rem;
       font-weight: 600;
       margin-top: 1.25rem;
       margin-bottom: 0.75rem;
-      color: #334155;
+      color: #374151;
     }
     #aiResponse ul, #aiResponse ol {
       margin-left: 1.5rem;
@@ -29,273 +41,306 @@
     #aiResponse table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 1rem;
-      font-size: 0.95rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
     }
     #aiResponse th, #aiResponse td {
-      border: 1px solid #d1d5db;
+      border: 1px solid #e5e7eb;
       padding: 8px 12px;
       text-align: left;
     }
     #aiResponse th {
-      background-color: #f1f5f9;
+      background-color: #f8fafc;
       font-weight: 600;
     }
     #aiResponse p {
       margin-bottom: 1rem;
     }
-    #aiResponse pre {
-      background-color: #f3f4f6;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      overflow-x: auto;
+    
+    /* Animations */
+    .slide-in {
+      animation: slideIn 0.3s ease-out;
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-gray-100 text-gray-800 font-sans min-h-screen flex">
-<button id="toggleSidebar"
-  class="fixed top-4 left-4 z-50 bg-blue-700 text-white p-2 rounded-full shadow-lg hover:bg-blue-800 transition-all duration-300 ease-in-out">
-  📁
-</button>
-
-<!-- Sidebar Wrapper -->
-<aside id="sidebarWrapper"
-  class="fixed top-0 left-0 h-full w-60 bg-white shadow-md p-4 transform -translate-x-full transition-transform duration-300 ease-in-out z-40">
-  <h2 class="text-xl font-bold text-blue-700 mb-4">📁 Previous Trials</h2>
-  <ul id="historyList" class="space-y-2 text-sm text-gray-700">Loading...</ul>
-</aside>
+<body class="bg-gray-50 font-sans min-h-screen">
+  <!-- Header -->
+  <header class="bg-white shadow-sm border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-sm">T</span>
+          </div>
+          <h1 class="text-xl font-semibold text-gray-900">TrialTrack</h1>
+        </div>
+        
+        <div class="flex items-center space-x-3">
+          <button onclick="toggleHistory()" 
+                  class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+          <button onclick="openChemistryLab()" 
+                  class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+            <span class="text-lg">🧪</span>
+          </button>
+          <button onclick="window.open('compliance-upload.html', '_blank')" 
+                  class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
 
   <!-- Main Content -->
-   <div class="absolute top-4 right-4 z-50">
-  <div class="relative group inline-block mr-2">
-  <button onclick="openChemistryLab()"
-          class="bg-purple-600 hover:bg-purple-700 text-white text-xl rounded-full w-10 h-10 flex items-center justify-center shadow-md transition">
-    🧪 
-  </button>
-  <span class="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition pointer-events-none">
-
-    Open Chemistry Lab
-  </span>
-</div>
-
-<!-- Compliance Document Upload Button with Tooltip -->
-<div class="relative group inline-block">
-  <button onclick="window.open('compliance-upload.html', '_blank')"
-
-          class="bg-purple-600 hover:bg-purple-700 text-white text-xl rounded-full w-10 h-10 flex items-center justify-center shadow-md transition">
-    📄 
-  </button>
-  <span class="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition pointer-events-none">
-  
-    Upload Compliance Docs
-  </span>
-</div>
-</div>
-  <main class="flex-1 p-6 flex justify-center">
-
-    <div class="bg-white shadow-xl rounded-2xl p-8 w-full max-w-4xl space-y-6">
-      <h2 class="text-3xl font-bold text-center text-blue-700">TrialTrack – Tracks trials and patients in real-time</h2>
-
-      <form id="trialForm" class="space-y-5">
-        <input type="text" name="disease" placeholder="Disease" required
-               class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"/>
-        <input list="trialPhases" name="phase" placeholder="Trial Phase" required
-        class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"/>
-
-                <datalist id="trialPhases">
-                  <option value="Phase 0">
-                  <option value="Phase 1">
-                  <option value="Phase 2">
-                  <option value="Phase 3">
-                  <option value="Phase 4">
-                </datalist>
-        <input list="countryList" name="region" placeholder="Region" required
-         class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"/>
-        <datalist id="countryList"></datalist>
-        <input type="text" name="endpoints" placeholder="Endpoints (comma-separated)" required
-               class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"/>
-        <input type="text" name="duration" placeholder="Duration (e.g., 12 months)" required
-               class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"/>
-
-        <button type="submit"
-                class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition duration-200">
-          Submit Trial
-        </button>
-      </form>
-
-      <div class="mt-6">
-        <h3 class="text-lg font-semibold text-gray-700 mb-2">AI Recommendation:</h3>
-        <div id="aiResponse"
-             class="bg-white p-6 rounded-md shadow border text-gray-800 prose max-w-none overflow-auto max-h-[600px]">
-          <p>No response yet.</p>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- Trial Form Section -->
+      <div class="lg:col-span-1">
+        <div class="bg-white rounded-xl shadow-sm p-6 sticky top-8">
+          <h2 class="text-lg font-semibold text-gray-900 mb-6">Create New Trial</h2>
+          
+          <form id="trialForm" class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Disease</label>
+              <input type="text" name="disease" required
+                     class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                     placeholder="Enter disease name">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Trial Phase</label>
+              <select name="phase" required
+                      class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                <option value="">Select Phase</option>
+                <option value="Phase 0">Phase 0</option>
+                <option value="Phase 1">Phase 1</option>
+                <option value="Phase 2">Phase 2</option>
+                <option value="Phase 3">Phase 3</option>
+                <option value="Phase 4">Phase 4</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Region</label>
+              <input list="countryList" name="region" required
+                     class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                     placeholder="Select region">
+              <datalist id="countryList"></datalist>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Endpoints</label>
+              <textarea name="endpoints" required rows="3"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                        placeholder="Enter endpoints (comma-separated)"></textarea>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Duration</label>
+              <input type="text" name="duration" required
+                     class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                     placeholder="e.g., 12 months">
+            </div>
+            
+            <button type="submit"
+                    class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+              Generate Trial Recommendation
+            </button>
+          </form>
         </div>
-
-        <button onclick="printResponse()"
-                class="mt-4 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200">
-          Download Recommendation
-        </button>
-        <button onclick="document.getElementById('patientUpload').click()"
-                class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-200">
-          Upload Patient List
-        </button>
-        <input type="file" id="patientUpload" accept=".csv" class="hidden" />
-
-        <!-- Eligibility Table -->
-        <div id="patientResult" class="mt-6 hidden overflow-auto max-h-[600px] bg-white p-6 rounded-md shadow border">
-          <h3 class="text-lg font-semibold text-gray-700 mb-2">Patient Eligibility Check</h3>
-          <table class="w-full text-sm text-left border border-collapse border-gray-300">
-            <thead class="bg-gray-100">
-              <tr>
-                <th class="border px-4 py-2">Patient Name</th>
-                <th class="border px-4 py-2">Age</th>
-                <th class="border px-4 py-2">Region</th>
-                <th class="border px-4 py-2">Medical History</th>
-                <th class="border px-4 py-2">Eligible</th>
-                <th class="border px-4 py-2">e-consent</th>
-                <th class="border px-4 py-2">Profession</th>
-                <th class="border px-4 py-2">company</th>
-                <th class="border px-4 py-2">Stress index</th>
-              </tr>
-            </thead>
-            <tbody id="patientTableBody"></tbody>
-          </table>
+      </div>
+      
+      <!-- Results Section -->
+      <div class="lg:col-span-2 space-y-6">
+        
+        <!-- AI Recommendation -->
+        <div class="bg-white rounded-xl shadow-sm">
+          <div class="p-6 border-b border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-900">AI Recommendation</h3>
+          </div>
+          <div class="p-6">
+            <div id="aiResponse" class="prose max-w-none text-gray-700 min-h-[200px]">
+              <p class="text-gray-500 italic">Submit a trial form to get AI recommendations...</p>
+            </div>
+            <div class="mt-6 pt-6 border-t border-gray-200 flex space-x-3">
+              <button onclick="printResponse()"
+                      class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm font-medium">
+                Download PDF
+              </button>
+              <button onclick="document.getElementById('patientUpload').click()"
+                      class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm font-medium">
+                Upload Patients
+              </button>
+              <input type="file" id="patientUpload" accept=".csv" class="hidden" />
+            </div>
+          </div>
         </div>
-        <button id="filterEligibleBtn"
-                  class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200 hidden">
-            Show Only Eligible Patients
-          </button>
-          <button id="openDashboardBtn"
-                  class="mt-4 ml-4 bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition duration-200 hidden"
-                  onclick="window.open('dashboard.html', '_blank')">
-            Open Monitoring Dashboard
-          </button>
+        
+        <!-- Patient Eligibility Table -->
+        <div id="patientResult" class="bg-white rounded-xl shadow-sm hidden">
+          <div class="p-6 border-b border-gray-200">
+            <div class="flex justify-between items-center">
+              <h3 class="text-lg font-semibold text-gray-900">Patient Eligibility</h3>
+              <div class="flex space-x-2">
+                <button id="filterEligibleBtn"
+                        class="px-3 py-1 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors text-sm font-medium">
+                  Show Eligible Only
+                </button>
+                <button id="openDashboardBtn"
+                        onclick="window.open('dashboard.html', '_blank')"
+                        class="px-3 py-1 bg-teal-100 text-teal-700 rounded-lg hover:bg-teal-200 transition-colors text-sm font-medium">
+                  Open Dashboard
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Patient</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Age</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Region</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Medical History</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Eligible</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Consent</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Profession</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Company</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stress Index</th>
+                </tr>
+              </thead>
+              <tbody id="patientTableBody" class="bg-white divide-y divide-gray-200"></tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </main>
-<!-- Consent Modal with Signature Pad -->
-<div id="consentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-  <div class="bg-white rounded-lg p-6 w-full max-w-md shadow-lg relative">
-    <h2 class="text-xl font-bold text-blue-700 mb-4">📄 eConsent Form</h2>
-    <p id="consentPatientName" class="mb-2 text-sm text-gray-600"></p>
 
-    <label class="block mb-2 text-sm font-medium text-gray-700">Signature:</label>
-    <div class="border rounded mb-2 bg-gray-100">
-      <canvas id="signatureCanvas" class="w-full h-40"></canvas>
+  <!-- History Sidebar -->
+  <div id="historySidebar" class="fixed top-0 right-0 h-full w-80 bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out z-50">
+    <div class="p-6 border-b border-gray-200">
+      <div class="flex justify-between items-center">
+        <h2 class="text-lg font-semibold text-gray-900">Trial History</h2>
+        <button onclick="toggleHistory()" class="p-1 hover:bg-gray-100 rounded">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
     </div>
-    <div class="flex justify-between mb-4">
-      <button onclick="clearSignature()" class="text-sm text-red-600 underline">Clear Signature</button>
-    </div>
-
-    <div class="flex justify-end space-x-3">
-      <button onclick="submitConsent()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-        Submit Consent
-      </button>
-      <button onclick="closeConsent()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400">
-        Cancel
-      </button>
+    <div class="p-6">
+      <ul id="historyList" class="space-y-3"></ul>
     </div>
   </div>
-</div>
+
+  <!-- Consent Modal -->
+  <div id="consentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-xl p-6 w-full max-w-md shadow-2xl">
+      <h2 class="text-xl font-semibold text-gray-900 mb-4">Digital Consent</h2>
+      <p id="consentPatientName" class="mb-4 text-sm text-gray-600"></p>
+      
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700 mb-2">Digital Signature</label>
+        <div class="border-2 border-dashed border-gray-300 rounded-lg bg-gray-50">
+          <canvas id="signatureCanvas" class="w-full h-32"></canvas>
+        </div>
+        <button onclick="clearSignature()" class="mt-2 text-sm text-red-600 hover:text-red-800">
+          Clear Signature
+        </button>
+      </div>
+      
+      <div class="flex justify-end space-x-3">
+        <button onclick="closeConsent()" 
+                class="px-4 py-2 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors">
+          Cancel
+        </button>
+        <button onclick="submitConsent()" 
+                class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+          Submit Consent
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
-let currentConsentPatient = "";
-let signaturePad;
+    let currentConsentPatient = "";
+    let signaturePad;
+    let historyOpen = false;
 
-function fillConsent(name) {
-  currentConsentPatient = name;
-  document.getElementById("consentPatientName").textContent = `Filling consent for: ${name}`;
-  document.getElementById("consentModal").classList.remove("hidden");
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      loadCountries();
+      loadTrialHistory();
+    });
 
-  const canvas = document.getElementById("signatureCanvas");
-  resizeCanvas(canvas);
-  signaturePad = new SignaturePad(canvas);
-}
-
-function closeConsent() {
-  document.getElementById("consentModal").classList.add("hidden");
-  if (signaturePad) signaturePad.clear();
-}
-
-function clearSignature() {
-  if (signaturePad) signaturePad.clear();
-}
-
-function submitConsent() {
-  if (signaturePad.isEmpty()) {
-    alert("Please provide a signature.");
-    return;
-  }
-
-  const signatureData = signaturePad.toDataURL(); // base64 encoded PNG
-  alert(`Consent recorded for ${currentConsentPatient}.`);
-
-  // Optional: Save to backend, e.g., via fetch or form submission
-  // console.log(signatureData);
-
-  // Update the table cell
-  const rows = document.querySelectorAll('#patientTableBody tr');
-  rows.forEach(row => {
-    if (row.cells[0].textContent.trim() === currentConsentPatient) {
-      row.cells[5].innerHTML = '✅ Yes';
-    }
-  });
-
-  closeConsent();
-}
-
-// Make canvas DPI aware
-function resizeCanvas(canvas) {
-  const ratio = Math.max(window.devicePixelRatio || 1, 1);
-  canvas.width = canvas.offsetWidth * ratio;
-  canvas.height = canvas.offsetHeight * ratio;
-  canvas.getContext("2d").scale(ratio, ratio);
-}
-
-
-      const toggleBtn = document.getElementById('toggleSidebar');
-  const sidebar = document.getElementById('sidebarWrapper');
-
-  let sidebarOpen = false;
-
-  toggleBtn.addEventListener('click', () => {
-    sidebarOpen = !sidebarOpen;
-
-    // Slide sidebar
-    sidebar.classList.toggle('-translate-x-full');
-
-    // Animate button
-    toggleBtn.style.left = sidebarOpen ? '16rem' : '1rem';
-  });
-    const form = document.getElementById('trialForm');
-    const responseEl = document.getElementById('aiResponse');
+    // Countries loader
     async function loadCountries() {
-      const res = await fetch('https://restcountries.com/v3.1/all');
-      const countries = await res.json();
-      const datalist = document.getElementById('countryList');
+      try {
+        const res = await fetch('https://restcountries.com/v3.1/all');
+        const countries = await res.json();
+        const datalist = document.getElementById('countryList');
 
-      countries
-        .map(c => c.name.common)
-        .sort()
-        .forEach(name => {
-          const option = document.createElement('option');
-          option.value = name;
-          datalist.appendChild(option);
-        });
+        countries
+          .map(c => c.name.common)
+          .sort()
+          .forEach(name => {
+            const option = document.createElement('option');
+            option.value = name;
+            datalist.appendChild(option);
+          });
+      } catch (error) {
+        console.error('Failed to load countries:', error);
+      }
     }
 
-    loadCountries();
+    // History sidebar toggle
+    function toggleHistory() {
+      historyOpen = !historyOpen;
+      const sidebar = document.getElementById('historySidebar');
+      sidebar.classList.toggle('translate-x-full');
+    }
 
+    // Chemistry lab opener
+    function openChemistryLab() {
+      window.open('chemistry-lab.html', '_blank');
+    }
 
-      function openChemistryLab() {
-        window.open('chemistry-lab.html', '_blank');
-      }
-
-
-    form.addEventListener('submit', async (e) => {
+    // Form submission
+    document.getElementById('trialForm').addEventListener('submit', async (e) => {
       e.preventDefault();
-      const formData = new FormData(form);
+      const formData = new FormData(e.target);
       const data = Object.fromEntries(formData);
 
-      responseEl.innerHTML = "<p class='italic text-gray-500'>🧠 Making your trial based on past studies...</p>";
+      const responseEl = document.getElementById('aiResponse');
+      responseEl.innerHTML = "<div class='flex items-center space-x-2'><div class='animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600'></div><span class='text-gray-500'>Generating AI recommendation...</span></div>";
 
       try {
         const res = await fetch('/submit-trial', {
@@ -312,140 +357,215 @@ function resizeCanvas(canvas) {
         }
 
         responseEl.innerHTML = content;
-        await loadTrialHistory(); // refresh sidebar
+        responseEl.classList.add('fade-in');
+        await loadTrialHistory();
       } catch (err) {
-        responseEl.innerHTML = "<p class='text-red-500'>❌ Error fetching AI response.</p>";
+        responseEl.innerHTML = "<p class='text-red-500'>❌ Error fetching AI response. Please try again.</p>";
       }
     });
 
+    // Print/Download function
     function printResponse() {
       const content = document.getElementById('aiResponse').innerHTML;
       const printWindow = window.open('', '', 'width=800,height=600');
       printWindow.document.write(`
-        <html><head><title>AI Trial Recommendation</title>
-        <style>body{font-family:Arial;padding:20px;}table{width:100%;border-collapse:collapse;}th,td{border:1px solid #ccc;padding:8px;}h2,h3{color:#333;}ul,ol{margin-left:20px;}</style>
-        </head><body>${content}</body></html>
+        <html>
+          <head>
+            <title>TrialTrack AI Recommendation</title>
+            <style>
+              body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }
+              table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+              th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+              th { background-color: #f5f5f5; font-weight: bold; }
+              h2, h3 { color: #333; margin-top: 30px; }
+              ul, ol { margin-left: 20px; }
+            </style>
+          </head>
+          <body>
+            <h1>TrialTrack AI Recommendation</h1>
+            <hr>
+            ${content}
+          </body>
+        </html>
       `);
       printWindow.document.close();
       printWindow.print();
     }
-document.getElementById('patientUpload').addEventListener('change', function(e) {
-  const file = e.target.files[0];
-  if (!file) return;
 
-  const reader = new FileReader();
-  reader.onload = function(event) {
-    const csv = event.target.result;
-    const rows = csv.split("\n").slice(1); // skip header
-    const output = [];
-    const selectedDisease = document.querySelector('input[name="disease"]').value.trim().toLowerCase();
+    // Patient upload handler
+    document.getElementById('patientUpload').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
 
-    rows.forEach(row => {
-  const fields = row.split(",");
-  if (fields.length < 8) return;
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const csv = event.target.result;
+        const rows = csv.split("\n").slice(1);
+        const output = [];
+        const selectedDisease = document.querySelector('input[name="disease"]').value.trim().toLowerCase();
 
-  const [name, age, region, historyRaw, eConsentRaw, profession, company, stressIndexRaw] = fields;
+        rows.forEach(row => {
+          const fields = row.split(",");
+          if (fields.length < 8) return;
 
-  const historyItems = historyRaw
-    .split(",")
-    .map(h => h.trim().toLowerCase());
+          const [name, age, region, historyRaw, eConsentRaw, profession, company, stressIndexRaw] = fields;
+          const historyItems = historyRaw.split(",").map(h => h.trim().toLowerCase());
+          const ageNum = parseInt(age);
+          const stressIndex = parseInt(stressIndexRaw);
+          const eConsent = eConsentRaw.trim();
 
-  const ageNum = parseInt(age);
-  const stressIndex = parseInt(stressIndexRaw);
-  const regionClean = region.trim().toLowerCase();
-  const eConsent = eConsentRaw.trim();
+          const hasTargetDisease = historyItems.some(h => h.includes(selectedDisease));
+          const criticalConditions = ["renal", "hepatic", "cardiovascular"];
+          const hasCriticalComorbidity = historyItems.some(item =>
+            criticalConditions.some(cond => item.includes(cond))
+          );
 
-  // Allow partial match with target disease
-  const hasTargetDisease = historyItems.some(h => h.includes(selectedDisease));
+          const isEligible = hasTargetDisease && ageNum >= 18 && ageNum <= 65 && 
+                           !hasCriticalComorbidity && stressIndex <= 4;
 
-  const criticalConditions = ["renal", "hepatic", "cardiovascular"];
-  const hasCriticalComorbidity = historyItems.some(item =>
-    criticalConditions.some(cond => item.includes(cond))
-  );
+          output.push({
+            name: name.trim(),
+            age: ageNum,
+            region: region.trim(),
+            history: historyItems.join(", "),
+            eligible: isEligible ? '✅ Yes' : '❌ No',
+            eConsent,
+            profession: profession?.trim(),
+            company: company?.trim(),
+            stressIndex: stressIndex
+          });
+        });
 
-  const isEligible =
-    hasTargetDisease &&
-    ageNum >= 18 && ageNum <= 65 &&
-    !hasCriticalComorbidity &&
-    stressIndex <= 4; // Stress Index must be ≤ 4 (less stressful)
+        populatePatientTable(output);
+        // Store eligible patients for dashboard
+        const eligibleOnly = output.filter(p => p.eligible === '✅ Yes');
+        // Note: Using a simple variable instead of localStorage for Claude.ai compatibility
+        window.eligiblePatients = eligibleOnly;
+      };
 
-  output.push({
-    name: name.trim(),
-    age: ageNum,
-    region: regionClean,
-    history: historyItems.join(", "),
-    eligible: isEligible ? '✅ Yes' : '❌ No',
-    eConsent,
-    profession: profession?.trim(),
-    company: company?.trim(),
-    stressIndex: stressIndex
-  });
-});
-
-    const tbody = document.getElementById('patientTableBody');
-    tbody.innerHTML = '';
-
-    output.forEach(p => {
-      const consentCell = p.eConsent.toLowerCase() === 'yes'
-        ? '✅ Yes'
-        : `<button onclick="fillConsent('${p.name}')" class="text-blue-600 underline hover:text-blue-800">Fill Consent</button>`;
-
-      tbody.innerHTML += `
-        <tr>
-          <td class="border px-4 py-2">${p.name}</td>
-          <td class="border px-4 py-2">${p.age}</td>
-          <td class="border px-4 py-2">${p.region}</td>
-          <td class="border px-4 py-2">${p.history}</td>
-          <td class="border px-4 py-2">${p.eligible}</td>
-          <td class="border px-4 py-2">${consentCell}</td>
-          <td class="border px-4 py-2">${p.profession}</td>
-          <td class="border px-4 py-2">${p.company}</td>
-          <td class="border px-4 py-2">${p.stressIndex}</td>
-        </tr>
-      `;
+      reader.readAsText(file);
     });
 
-    const eligibleOnly = output.filter(p => p.eligible === '✅ Yes');
-    localStorage.setItem('eligiblePatients', JSON.stringify(eligibleOnly));
+    // Populate patient table
+    function populatePatientTable(patients) {
+      const tbody = document.getElementById('patientTableBody');
+      tbody.innerHTML = '';
 
-    document.getElementById('patientResult').classList.remove('hidden');
-    document.getElementById('filterEligibleBtn').classList.remove('hidden');
-    document.getElementById('openDashboardBtn').classList.remove('hidden');
-  };
+      patients.forEach(p => {
+        const consentCell = p.eConsent.toLowerCase() === 'yes'
+          ? '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">✅ Signed</span>'
+          : `<button onclick="fillConsent('${p.name}')" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors">Sign Consent</button>`;
 
-  reader.readAsText(file);
-});
+        const eligibilityCell = p.eligible === '✅ Yes' 
+          ? '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">✅ Eligible</span>'
+          : '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">❌ Not Eligible</span>';
 
+        tbody.innerHTML += `
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 text-sm font-medium text-gray-900">${p.name}</td>
+            <td class="px-4 py-3 text-sm text-gray-500">${p.age}</td>
+            <td class="px-4 py-3 text-sm text-gray-500">${p.region}</td>
+            <td class="px-4 py-3 text-sm text-gray-500">${p.history}</td>
+            <td class="px-4 py-3 text-sm">${eligibilityCell}</td>
+            <td class="px-4 py-3 text-sm">${consentCell}</td>
+            <td class="px-4 py-3 text-sm text-gray-500">${p.profession}</td>
+            <td class="px-4 py-3 text-sm text-gray-500">${p.company}</td>
+            <td class="px-4 py-3 text-sm text-gray-500">${p.stressIndex}</td>
+          </tr>
+        `;
+      });
+
+      document.getElementById('patientResult').classList.remove('hidden');
+      document.getElementById('patientResult').classList.add('slide-in');
+    }
+
+    // Filter eligible patients
     document.getElementById('filterEligibleBtn').addEventListener('click', () => {
       const rows = document.querySelectorAll('#patientTableBody tr');
       rows.forEach(row => {
-        const eligibility = row.cells[4].textContent.trim();
-        row.style.display = eligibility === '✅ Yes' ? '' : 'none';
+        const eligibilityCell = row.cells[4];
+        const isEligible = eligibilityCell.textContent.includes('✅ Eligible');
+        row.style.display = isEligible ? '' : 'none';
       });
     });
 
-    async function loadTrialHistory() {
-      const res = await fetch('/history');
-      const data = await res.json();
-      const container = document.getElementById('historyList');
-      container.innerHTML = '';
+    // Consent modal functions
+    function fillConsent(name) {
+      currentConsentPatient = name;
+      document.getElementById("consentPatientName").textContent = `Patient: ${name}`;
+      document.getElementById("consentModal").classList.remove("hidden");
 
-      data.forEach(trial => {
-        const li = document.createElement('li');
-        li.className = 'cursor-pointer hover:underline';
-        li.textContent = `${trial.disease} – ${trial.phase} (${trial.region})`;
-        li.onclick = () => {
-          ['disease', 'phase', 'region', 'endpoints', 'duration'].forEach(key => {
-            document.querySelector(`[name="${key}"]`).value = trial[key];
-          });
-          document.getElementById('aiResponse').innerHTML = trial.ai_output || "<p>No saved AI output.</p>";
-        };
-        container.appendChild(li);
-      });
+      const canvas = document.getElementById("signatureCanvas");
+      resizeCanvas(canvas);
+      signaturePad = new SignaturePad(canvas);
     }
 
-    // Load on page load
-    loadTrialHistory();
+    function closeConsent() {
+      document.getElementById("consentModal").classList.add("hidden");
+      if (signaturePad) signaturePad.clear();
+    }
+
+    function clearSignature() {
+      if (signaturePad) signaturePad.clear();
+    }
+
+    function submitConsent() {
+      if (signaturePad.isEmpty()) {
+        alert("Please provide a signature.");
+        return;
+      }
+
+      const signatureData = signaturePad.toDataURL();
+      
+      // Update the table cell
+      const rows = document.querySelectorAll('#patientTableBody tr');
+      rows.forEach(row => {
+        if (row.cells[0].textContent.trim() === currentConsentPatient) {
+          row.cells[5].innerHTML = '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">✅ Signed</span>';
+        }
+      });
+
+      alert(`Consent recorded for ${currentConsentPatient}.`);
+      closeConsent();
+    }
+
+    function resizeCanvas(canvas) {
+      const ratio = Math.max(window.devicePixelRatio || 1, 1);
+      canvas.width = canvas.offsetWidth * ratio;
+      canvas.height = canvas.offsetHeight * ratio;
+      canvas.getContext("2d").scale(ratio, ratio);
+    }
+
+    // Load trial history
+    async function loadTrialHistory() {
+      try {
+        const res = await fetch('/history');
+        const data = await res.json();
+        const container = document.getElementById('historyList');
+        container.innerHTML = '';
+
+        data.forEach(trial => {
+          const li = document.createElement('li');
+          li.className = 'p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors';
+          li.innerHTML = `
+            <div class="font-medium text-gray-900">${trial.disease}</div>
+            <div class="text-sm text-gray-500">${trial.phase} • ${trial.region}</div>
+          `;
+          li.onclick = () => {
+            ['disease', 'phase', 'region', 'endpoints', 'duration'].forEach(key => {
+              const element = document.querySelector(`[name="${key}"]`);
+              if (element) element.value = trial[key];
+            });
+            document.getElementById('aiResponse').innerHTML = trial.ai_output || "<p>No saved AI output.</p>";
+            toggleHistory();
+          };
+          container.appendChild(li);
+        });
+      } catch (error) {
+        console.error('Failed to load trial history:', error);
+        document.getElementById('historyList').innerHTML = '<li class="text-gray-500 text-sm">Failed to load history</li>';
+      }
+    }
   </script>
 </body>
 </html>
