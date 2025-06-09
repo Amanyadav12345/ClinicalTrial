@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChemLab AI - Advanced Reaction Optimizer</title>
+  <title>ChemLab AI - 3D Molecular Reaction Visualizer</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -42,9 +43,6 @@
               '0%, 100%': { transform: 'translateY(0) scale(1)' },
               '50%': { transform: 'translateY(-10px) scale(1.05)' }
             }
-          },
-          backdropBlur: {
-            'xs': '2px',
           }
         }
       }
@@ -74,333 +72,735 @@
       box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.2);
     }
     
-    .molecule-orbit {
-      position: absolute;
-      border: 2px solid rgba(139, 92, 246, 0.2);
-      border-radius: 50%;
-      animation: molecule-spin 15s linear infinite;
-    }
-    
-    .molecule-dot {
-      position: absolute;
-      background: linear-gradient(45deg, #8b5cf6, #06b6d4);
-      border-radius: 50%;
-      animation: bubble 3s ease-in-out infinite;
+    #threejs-container {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
   </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-x-hidden">
-  <!-- Animated Background -->
-  <div class="fixed inset-0 molecular-bg">
-    <div class="molecule-orbit w-96 h-96 top-10 left-10">
-      <div class="molecule-dot w-4 h-4 top-0 left-1/2 transform -translate-x-1/2"></div>
-      <div class="molecule-dot w-3 h-3 bottom-0 right-1/4"></div>
-      <div class="molecule-dot w-2 h-2 left-0 top-1/3"></div>
-    </div>
-    <div class="molecule-orbit w-64 h-64 bottom-20 right-20" style="animation-duration: 25s; animation-direction: reverse;">
-      <div class="molecule-dot w-3 h-3 top-1/4 right-0"></div>
-      <div class="molecule-dot w-2 h-2 bottom-1/3 left-1/4"></div>
-    </div>
-  </div>
-
+  
   <!-- Main Container -->
-  <div class="relative z-10 min-h-screen flex items-center justify-center p-4">
-    <div class="w-full max-w-6xl">
-      
-      <!-- Header -->
-      <div class="text-center mb-12 animate-fade-in">
-        <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full mb-6 animate-pulse-glow">
-          <svg class="w-10 h-10 text-white animate-float" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2L13.09 8.26L18 7L16.74 12L22 13.09L15.74 14L17 19L12 17.74L7 19L8.26 14L2 13.09L8.26 12L7 7L12 8.26L12 2Z"/>
-          </svg>
-        </div>
-        <h1 class="text-5xl md:text-7xl font-bold bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent mb-4">
-          ChemLab AI
-        </h1>
-        <p class="text-xl text-gray-300 font-light">Advanced Molecular Reaction Optimizer</p>
-        <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mt-4 rounded-full"></div>
+  <div class="relative z-10 min-h-screen p-4">
+    
+    <!-- Header -->
+    <div class="text-center mb-8 animate-fade-in">
+      <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full mb-4 animate-pulse-glow">
+        <svg class="w-8 h-8 text-white animate-float" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2L13.09 8.26L18 7L16.74 12L22 13.09L15.74 14L17 19L12 17.74L7 19L8.26 14L2 13.09L8.26 12L7 7L12 8.26L12 2Z"/>
+        </svg>
       </div>
+      <h1 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent mb-2">
+        ChemLab AI
+      </h1>
+      <p class="text-lg text-gray-300 font-light">3D Molecular Reaction Visualizer</p>
+      <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto mt-3 rounded-full"></div>
+    </div>
 
-      <!-- Main Card -->
-      <div class="glass-morphism rounded-3xl p-8 md:p-12 shadow-2xl animate-slide-up">
+    <!-- Main Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-7xl mx-auto">
+      
+      <!-- Input Panel -->
+      <div class="glass-morphism rounded-3xl p-6 shadow-2xl animate-slide-up">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+          <svg class="w-6 h-6 mr-3 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          Reaction Input
+        </h2>
         
-        <!-- Form -->
-        <form id="chemForm" class="space-y-8">
-          
-          <!-- Primary Reaction Input -->
-          <div class="space-y-4">
-            <label class="block text-white font-semibold text-lg">Chemical Reaction</label>
+        <form id="chemForm" class="space-y-6">
+          <!-- Compound A -->
+          <div class="space-y-3">
+            <label class="block text-white font-semibold">Compound A</label>
             <div class="relative">
               <input 
                 type="text" 
-                name="reaction" 
-                placeholder="e.g., 2H₂ + O₂ → 2H₂O" 
-                class="w-full p-6 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-gray-400 text-lg input-glow transition-all duration-300 focus:bg-white/15 focus:border-purple-400"
+                name="compoundA" 
+                placeholder="e.g., CH₄, H₂O, C₆H₆" 
+                required
+                class="w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 input-glow transition-all duration-300 focus:bg-white/15 focus:border-purple-400"
               />
-              <div class="absolute right-4 top-1/2 transform -translate-y-1/2">
-                <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                </svg>
-              </div>
+              <span class="absolute right-4 top-1/2 transform -translate-y-1/2 text-purple-400">🧪</span>
             </div>
           </div>
 
-          <!-- Grid Layout for Inputs -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            <!-- Reactants -->
-            <div class="space-y-3">
-              <label class="block text-white font-medium">Reactants</label>
-              <input 
-                type="text" 
-                name="reactants" 
-                placeholder="e.g., H₂ + O₂" 
-                required 
-                class="w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 input-glow transition-all duration-300 focus:bg-white/15"
-              />
-            </div>
-
-            <!-- Products -->
-            <div class="space-y-3">
-              <label class="block text-white font-medium">Products</label>
-              <input 
-                type="text" 
-                name="products" 
-                placeholder="e.g., H₂O" 
-                required 
-                class="w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 input-glow transition-all duration-300 focus:bg-white/15"
-              />
-            </div>
-
-            <!-- Temperature -->
-            <div class="space-y-3">
-              <label class="block text-white font-medium">Temperature</label>
-              <div class="relative">
-                <input 
-                  type="text" 
-                  name="temp" 
-                  placeholder="e.g., 298K or 25°C" 
-                  class="w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 input-glow transition-all duration-300 focus:bg-white/15"
-                />
-                <span class="absolute right-4 top-1/2 transform -translate-y-1/2 text-purple-400">🌡️</span>
-              </div>
-            </div>
-
-            <!-- Pressure -->
-            <div class="space-y-3">
-              <label class="block text-white font-medium">Pressure</label>
-              <div class="relative">
-                <input 
-                  type="text" 
-                  name="pressure" 
-                  placeholder="e.g., 1 atm or 101.3 kPa" 
-                  class="w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 input-glow transition-all duration-300 focus:bg-white/15"
-                />
-                <span class="absolute right-4 top-1/2 transform -translate-y-1/2 text-blue-400">⚡</span>
-              </div>
-            </div>
-
-            <!-- Catalyst -->
-            <div class="space-y-3 md:col-span-2">
-              <label class="block text-white font-medium">Catalyst (Optional)</label>
-              <div class="relative">
-                <input 
-                  type="text" 
-                  name="catalyst" 
-                  placeholder="e.g., Pt, Pd/C, H₂SO₄" 
-                  class="w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 input-glow transition-all duration-300 focus:bg-white/15"
-                />
-                <span class="absolute right-4 top-1/2 transform -translate-y-1/2 text-green-400">⚗️</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Notes -->
+          <!-- Compound B -->
           <div class="space-y-3">
-            <label class="block text-white font-medium">Additional Notes</label>
-            <textarea 
-              name="notes" 
-              rows="4" 
-              placeholder="Describe any specific conditions, safety concerns, or optimization goals..."
-              class="w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 input-glow transition-all duration-300 focus:bg-white/15 resize-none"
-            ></textarea>
+            <label class="block text-white font-semibold">Compound B</label>
+            <div class="relative">
+              <input 
+                type="text" 
+                name="compoundB" 
+                placeholder="e.g., O₂, Cl₂, NH₃" 
+                required
+                class="w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 input-glow transition-all duration-300 focus:bg-white/15 focus:border-blue-400"
+              />
+              <span class="absolute right-4 top-1/2 transform -translate-y-1/2 text-blue-400">⚗️</span>
+            </div>
+          </div>
+
+          <!-- Reaction Conditions -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="space-y-3">
+              <label class="block text-white font-medium">Temperature (K)</label>
+              <input 
+                type="number" 
+                name="temperature" 
+                placeholder="298" 
+                value="298"
+                class="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 input-glow transition-all duration-300 focus:bg-white/15"
+              />
+            </div>
+            <div class="space-y-3">
+              <label class="block text-white font-medium">Pressure (atm)</label>
+              <input 
+                type="number" 
+                name="pressure" 
+                placeholder="1" 
+                value="1"
+                step="0.1"
+                class="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 input-glow transition-all duration-300 focus:bg-white/15"
+              />
+            </div>
+          </div>
+
+          <!-- Reaction Type -->
+          <div class="space-y-3">
+            <label class="block text-white font-medium">Reaction Type</label>
+            <select name="reactionType" class="w-full p-3 bg-white/10 border border-white/20 rounded-lg text-white input-glow transition-all duration-300 focus:bg-white/15">
+              <option value="synthesis">Synthesis</option>
+              <option value="decomposition">Decomposition</option>
+              <option value="single-replacement">Single Replacement</option>
+              <option value="double-replacement">Double Replacement</option>
+              <option value="combustion">Combustion</option>
+            </select>
           </div>
 
           <!-- Submit Button -->
-          <div class="flex justify-center pt-4">
-            <button 
-              type="submit" 
-              class="group relative px-12 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold text-lg rounded-2xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-            >
-              <span class="relative z-10 flex items-center">
-                <svg class="w-6 h-6 mr-3 group-hover:animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                </svg>
-                <span id="btnText">Optimize Reaction</span>
-              </span>
-              <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-            </button>
-          </div>
+          <button 
+            type="submit" 
+            class="w-full group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold text-lg rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <span class="relative z-10 flex items-center justify-center">
+              <svg class="w-5 h-5 mr-3 group-hover:animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              <span id="btnText">Visualize Reaction</span>
+            </span>
+          </button>
         </form>
 
-        <!-- Results Section -->
-        <div id="resultsSection" class="mt-12 hidden">
-          <div class="border-t border-white/20 pt-8">
-            <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
-              <svg class="w-8 h-8 mr-3 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
-              AI Optimization Results
-            </h3>
-            <div id="chemistryOutput" class="bg-white/5 border border-white/10 rounded-2xl p-8 text-gray-100 leading-relaxed"></div>
-          </div>
-        </div>
-
-        <!-- Loading Animation -->
-        <div id="loadingSection" class="mt-12 hidden">
-          <div class="border-t border-white/20 pt-8">
-            <div class="text-center">
-              <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full mb-4 animate-spin">
-                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-              </div>
-              <p class="text-xl text-white font-medium mb-2">Analyzing Molecular Interactions</p>
-              <p class="text-gray-400">Our AI is optimizing your chemical reaction...</p>
-              <div class="flex justify-center mt-6">
-                <div class="flex space-x-2">
-                  <div class="w-3 h-3 bg-purple-500 rounded-full animate-bounce"></div>
-                  <div class="w-3 h-3 bg-blue-500 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
-                  <div class="w-3 h-3 bg-green-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
-                </div>
-              </div>
-            </div>
+        <!-- Quick Examples -->
+        <div class="mt-6 p-4 bg-white/5 border border-white/10 rounded-xl">
+          <h4 class="text-white font-medium mb-3">Quick Examples:</h4>
+          <div class="space-y-2">
+            <button onclick="fillExample('H2', 'O2')" class="text-sm text-purple-400 hover:text-purple-300 block">H₂ + O₂ → H₂O</button>
+            <button onclick="fillExample('CH4', 'O2')" class="text-sm text-blue-400 hover:text-blue-300 block">CH₄ + O₂ → CO₂ + H₂O</button>
+            <button onclick="fillExample('NaCl', 'H2O')" class="text-sm text-green-400 hover:text-green-300 block">NaCl + H₂O → Solvation</button>
           </div>
         </div>
       </div>
 
-      <!-- Footer -->
-      <div class="text-center mt-8 text-gray-400">
-        <p class="text-sm">Powered by advanced AI algorithms and quantum chemistry principles</p>
+      <!-- 3D Visualization Panel -->
+      <div class="glass-morphism rounded-3xl p-6 shadow-2xl animate-slide-up">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+          <svg class="w-6 h-6 mr-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+          3D Molecular View
+        </h2>
+        
+        <!-- 3D Canvas Container -->
+        <div id="threejs-container" class="w-full h-96 bg-gradient-to-br from-slate-800 to-slate-900 relative rounded-2xl border border-white/20">
+          <div id="canvas-placeholder" class="absolute inset-0 flex items-center justify-center text-gray-400">
+            <div class="text-center">
+              <svg class="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+              </svg>
+              <p class="text-lg font-medium">Enter compounds to visualize</p>
+              <p class="text-sm mt-2">3D molecular structures will appear here</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="mt-4 flex flex-wrap gap-3">
+          <button id="resetView" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-all duration-300 disabled:opacity-50" disabled>
+            <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+            Reset View
+          </button>
+          <button id="playAnimation" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-all duration-300 disabled:opacity-50" disabled>
+            <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293H15M6 20l4-16m0 0l4 16M6 16l3-2 3 2"></path>
+            </svg>
+            Animate Reaction
+          </button>
+          <button id="toggleLabels" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-all duration-300 disabled:opacity-50" disabled>
+            <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
+            </svg>
+            Toggle Labels
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Panel -->
+    <div id="resultsSection" class="mt-6 hidden max-w-7xl mx-auto">
+      <div class="glass-morphism rounded-3xl p-6 shadow-2xl">
+        <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+          <svg class="w-6 h-6 mr-3 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+          Reaction Analysis
+        </h3>
+        <div id="chemistryOutput" class="bg-white/5 border border-white/10 rounded-2xl p-6 text-gray-100 leading-relaxed"></div>
       </div>
     </div>
   </div>
 
   <script>
+    // Global variables for Three.js
+    let scene, camera, renderer, controls;
+    let moleculeGroupA, moleculeGroupB, reactionGroup;
+    let animationId;
+    let isAnimating = false;
+
+    // Element colors based on common atoms
+    const elementColors = {
+      'H': 0xFFFFFF,  // White
+      'C': 0x909090,  // Gray
+      'N': 0x3050F8,  // Blue
+      'O': 0xFF0D0D,  // Red
+      'F': 0x90E050,  // Green
+      'Cl': 0x1FF01F, // Green
+      'Br': 0xA62929, // Brown
+      'I': 0x940094,  // Purple
+      'S': 0xFFFF30,  // Yellow
+      'P': 0xFF8000,  // Orange
+      'Na': 0xAB5CF2, // Violet
+      'K': 0x8F40D4,  // Dark Violet
+      'Ca': 0x3DFF00, // Lime
+      'Mg': 0x8AFF00, // Lime Green
+      'default': 0xCC0080 // Pink for unknown
+    };
+
+    // Initialize Three.js scene
+    function initThreeJS() {
+      const container = document.getElementById('threejs-container');
+      const placeholder = document.getElementById('canvas-placeholder');
+      
+      // Scene setup
+      scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x0f172a);
+      
+      // Camera setup
+      camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+      camera.position.set(0, 0, 10);
+      
+      // Renderer setup
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      
+      // Remove placeholder and add canvas
+      placeholder.style.display = 'none';
+      container.appendChild(renderer.domElement);
+      
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+      scene.add(ambientLight);
+      
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+      directionalLight.position.set(10, 10, 5);
+      directionalLight.castShadow = true;
+      scene.add(directionalLight);
+      
+      const pointLight = new THREE.PointLight(0x8b5cf6, 0.5, 100);
+      pointLight.position.set(-10, -10, 10);
+      scene.add(pointLight);
+      
+      // Simple orbit controls (mouse interaction)
+      addMouseControls();
+      
+      // Start render loop
+      animate();
+      
+      // Enable controls
+      enableControls();
+    }
+
+    function addMouseControls() {
+      let mouseDown = false;
+      let mouseX = 0;
+      let mouseY = 0;
+      
+      renderer.domElement.addEventListener('mousedown', (event) => {
+        mouseDown = true;
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+      });
+      
+      renderer.domElement.addEventListener('mouseup', () => {
+        mouseDown = false;
+      });
+      
+      renderer.domElement.addEventListener('mousemove', (event) => {
+        if (!mouseDown) return;
+        
+        const deltaX = event.clientX - mouseX;
+        const deltaY = event.clientY - mouseY;
+        
+        if (scene.children.length > 3) { // Only rotate if there are molecules
+          scene.rotation.y += deltaX * 0.01;
+          scene.rotation.x += deltaY * 0.01;
+        }
+        
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+      });
+      
+      // Zoom with mouse wheel
+      renderer.domElement.addEventListener('wheel', (event) => {
+        camera.position.z += event.deltaY * 0.01;
+        camera.position.z = Math.max(3, Math.min(20, camera.position.z));
+      });
+    }
+
+    function animate() {
+      animationId = requestAnimationFrame(animate);
+      
+      // Rotate molecules slowly
+      if (moleculeGroupA) {
+        moleculeGroupA.rotation.y += 0.005;
+      }
+      if (moleculeGroupB) {
+        moleculeGroupB.rotation.y -= 0.005;
+      }
+      
+      renderer.render(scene, camera);
+    }
+
+    function enableControls() {
+      document.getElementById('resetView').disabled = false;
+      document.getElementById('playAnimation').disabled = false;
+      document.getElementById('toggleLabels').disabled = false;
+    }
+
+    // Parse molecular formula
+    function parseMolecularFormula(formula) {
+      const atoms = [];
+      const regex = /([A-Z][a-z]?)(\d*)/g;
+      let match;
+      
+      while ((match = regex.exec(formula)) !== null) {
+        const element = match[1];
+        const count = parseInt(match[2]) || 1;
+        
+        for (let i = 0; i < count; i++) {
+          atoms.push(element);
+        }
+      }
+      
+      return atoms;
+    }
+
+    // Create 3D molecule
+    function createMolecule(formula, position, color) {
+      const group = new THREE.Group();
+      const atoms = parseMolecularFormula(formula);
+      
+      // Create atoms
+      atoms.forEach((element, index) => {
+        const atomColor = elementColors[element] || elementColors.default;
+        const geometry = new THREE.SphereGeometry(0.5, 16, 16);
+        const material = new THREE.MeshPhongMaterial({ 
+          color: atomColor,
+          shininess: 100,
+          transparent: true,
+          opacity: 0.9
+        });
+        const atom = new THREE.Mesh(geometry, material);
+        
+        // Position atoms in a rough molecular structure
+        const angle = (index / atoms.length) * Math.PI * 2;
+        const radius = atoms.length > 1 ? 1.5 : 0;
+        atom.position.set(
+          Math.cos(angle) * radius,
+          Math.sin(angle) * radius * 0.5,
+          (Math.random() - 0.5) * 0.5
+        );
+        
+        atom.castShadow = true;
+        atom.receiveShadow = true;
+        group.add(atom);
+        
+        // Add bonds between atoms
+        if (index > 0) {
+          const bondGeometry = new THREE.CylinderGeometry(0.1, 0.1, 1.5);
+          const bondMaterial = new THREE.MeshPhongMaterial({ color: 0xcccccc });
+          const bond = new THREE.Mesh(bondGeometry, bondMaterial);
+          
+          const prevAtom = group.children[index - 1];
+          bond.position.copy(atom.position).add(prevAtom.position).multiplyScalar(0.5);
+          bond.lookAt(prevAtom.position);
+          bond.rotateX(Math.PI / 2);
+          
+          group.add(bond);
+        }
+      });
+      
+      group.position.copy(position);
+      return group;
+    }
+
+    // Visualize reaction
+    function visualizeReaction(compoundA, compoundB) {
+      // Clear previous molecules
+      if (moleculeGroupA) scene.remove(moleculeGroupA);
+      if (moleculeGroupB) scene.remove(moleculeGroupB);
+      if (reactionGroup) scene.remove(reactionGroup);
+      
+      // Create molecules
+      moleculeGroupA = createMolecule(compoundA, new THREE.Vector3(-4, 0, 0), 0x8b5cf6);
+      moleculeGroupB = createMolecule(compoundB, new THREE.Vector3(4, 0, 0), 0x06b6d4);
+      
+      scene.add(moleculeGroupA);
+      scene.add(moleculeGroupB);
+      
+      // Add labels
+      addMoleculeLabel(compoundA, new THREE.Vector3(-4, -3, 0));
+      addMoleculeLabel(compoundB, new THREE.Vector3(4, -3, 0));
+      
+      // Reset camera position
+      camera.position.set(0, 0, 10);
+      scene.rotation.set(0, 0, 0);
+    }
+
+    function addMoleculeLabel(text, position) {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      canvas.width = 256;
+      canvas.height = 64;
+      
+      context.fillStyle = 'rgba(255, 255, 255, 0.9)';
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.fillStyle = 'black';
+      context.font = 'Bold 24px Arial';
+      context.textAlign = 'center';
+      context.fillText(text, canvas.width / 2, canvas.height / 2 + 8);
+      
+      const texture = new THREE.CanvasTexture(canvas);
+      const material = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
+      const geometry = new THREE.PlaneGeometry(2, 0.5);
+      const label = new THREE.Mesh(geometry, material);
+      
+      label.position.copy(position);
+      scene.add(label);
+    }
+
+    // Animate reaction
+    function animateReaction() {
+      if (isAnimating || !moleculeGroupA || !moleculeGroupB) return;
+      
+      isAnimating = true;
+      const duration = 3000; // 3 seconds
+      const startTime = Date.now();
+      
+      const initialPosA = moleculeGroupA.position.clone();
+      const initialPosB = moleculeGroupB.position.clone();
+      const targetPos = new THREE.Vector3(0, 0, 0);
+      
+      function animateStep() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeProgress = 1 - Math.pow(1 - progress, 3); // Ease out cubic
+        
+        // Move molecules towards center
+        moleculeGroupA.position.lerpVectors(initialPosA, targetPos, easeProgress);
+        moleculeGroupB.position.lerpVectors(initialPosB, targetPos, easeProgress);
+        
+        // Add some excitement with scaling
+        const scale = 1 + Math.sin(progress * Math.PI * 4) * 0.1;
+        moleculeGroupA.scale.setScalar(scale);
+        moleculeGroupB.scale.setScalar(scale);
+        
+        if (progress < 1) {
+          requestAnimationFrame(animateStep);
+        } else {
+          // Reset animation
+          setTimeout(() => {
+            moleculeGroupA.position.copy(initialPosA);
+            moleculeGroupB.position.copy(initialPosB);
+            moleculeGroupA.scale.setScalar(1);
+            moleculeGroupB.scale.setScalar(1);
+            isAnimating = false;
+          }, 1000);
+        }
+      }
+      
+      animateStep();
+    }
+
+    // Event listeners
     document.addEventListener("DOMContentLoaded", () => {
       const form = document.getElementById("chemForm");
       const output = document.getElementById("chemistryOutput");
       const resultsSection = document.getElementById("resultsSection");
-      const loadingSection = document.getElementById("loadingSection");
       const btnText = document.getElementById("btnText");
 
-      // Auto-fill from query params
-      const urlParams = new URLSearchParams(window.location.search);
-      for (const [key, value] of urlParams.entries()) {
-        const input = form.querySelector(`[name="${key}"]`);
-        if (input) input.value = decodeURIComponent(value);
-      }
+      // Initialize 3D scene
+      setTimeout(initThreeJS, 100);
 
-      // Add input animations
-      const inputs = form.querySelectorAll('input, textarea');
-      inputs.forEach(input => {
-        input.addEventListener('focus', () => {
-          input.parentElement.style.transform = 'scale(1.02)';
-        });
-        input.addEventListener('blur', () => {
-          input.parentElement.style.transform = 'scale(1)';
+      // Control buttons
+      document.getElementById('resetView').addEventListener('click', () => {
+        camera.position.set(0, 0, 10);
+        scene.rotation.set(0, 0, 0);
+      });
+
+      document.getElementById('playAnimation').addEventListener('click', () => {
+        animateReaction();
+      });
+
+      document.getElementById('toggleLabels').addEventListener('click', () => {
+        // Toggle visibility of labels (simplified implementation)
+        scene.children.forEach(child => {
+          if (child.material && child.material.map) {
+            child.visible = !child.visible;
+          }
         });
       });
 
+      // Form submission
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
         
-        // Hide results and show loading
-        resultsSection.classList.add('hidden');
-        loadingSection.classList.remove('hidden');
-
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
-
+        
         const btn = form.querySelector("button");
         btn.disabled = true;
-        btnText.textContent = "Analyzing...";
+        btnText.textContent = "Processing...";
 
         try {
-          // Simulate API call with timeout for demo
-          await new Promise(resolve => setTimeout(resolve, 3000));
+          // Visualize the reaction in 3D
+          visualizeReaction(data.compoundA, data.compoundB);
           
-          // Mock response for demo purposes
-          const mockResponse = {
-            recommendation: `
-              <div class="space-y-6">
-                <div class="bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-500/30 rounded-xl p-6">
-                  <h4 class="text-xl font-bold text-green-400 mb-3">✅ Reaction Analysis Complete</h4>
-                  <p class="text-gray-200">Your reaction has been successfully analyzed and optimized.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div class="bg-white/5 border border-white/10 rounded-lg p-4">
-                    <h5 class="font-semibold text-purple-400 mb-2">Optimal Temperature</h5>
-                    <p class="text-gray-300">85°C ±5°C for maximum yield</p>
-                  </div>
-                  <div class="bg-white/5 border border-white/10 rounded-lg p-4">
-                    <h5 class="font-semibold text-blue-400 mb-2">Pressure Recommendation</h5>
-                    <p class="text-gray-300">2.5 atm for optimal reaction rate</p>
-                  </div>
-                </div>
-                
-                <div class="bg-white/5 border border-white/10 rounded-lg p-6">
-                  <h5 class="font-semibold text-yellow-400 mb-3">🔬 Key Insights</h5>
-                  <ul class="space-y-2 text-gray-300">
-                    <li>• Expected yield: 94.2% under optimal conditions</li>
-                    <li>• Reaction time: 2.5 hours at recommended temperature</li>
-                    <li>• Side reactions minimal at suggested parameters</li>
-                    <li>• Energy efficiency: High (ΔG = -45.3 kJ/mol)</li>
-                  </ul>
-                </div>
-              </div>
-            `
-          };
-
-          /* 
-          Uncomment for actual API integration:
-          const res = await fetch("http://localhost:4000/optimize-production", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
-          });
-          const result = await res.json();
-          */
-
-          // Hide loading and show results
-          loadingSection.classList.add('hidden');
+          // Simulate processing time
+          await new Promise(resolve => setTimeout(resolve, 1500));
+          
+          // Generate reaction analysis
+          const analysis = generateReactionAnalysis(data.compoundA, data.compoundB, data);
+          
+          // Show results
           resultsSection.classList.remove('hidden');
+          output.innerHTML = analysis;
           
-          output.innerHTML = mockResponse.recommendation || "<p class='text-yellow-400'>⚠️ No optimization data available for this reaction.</p>";
+          // Scroll to results
+          resultsSection.scrollIntoView({ behavior: 'smooth' });
 
         } catch (err) {
-          loadingSection.classList.add('hidden');
-          resultsSection.classList.remove('hidden');
           output.innerHTML = `<div class="bg-red-500/20 border border-red-500/30 rounded-xl p-6"><p class='text-red-400'>❌ Error: ${err.message}</p></div>`;
+          resultsSection.classList.remove('hidden');
         } finally {
           btn.disabled = false;
-          btnText.textContent = "Optimize Reaction";
+          btnText.textContent = "Visualize Reaction";
         }
       });
 
-      // Add some interactive particle effects
-      document.addEventListener('mousemove', (e) => {
-        const particles = document.querySelectorAll('.molecule-dot');
-        particles.forEach((particle, index) => {
-          const speed = (index + 1) * 0.0001;
-          const x = e.clientX * speed;
-          const y = e.clientY * speed;
-          particle.style.transform += ` translate(${x}px, ${y}px)`;
-        });
+      // Window resize handler
+      window.addEventListener('resize', () => {
+        if (camera && renderer) {
+          const container = document.getElementById('threejs-container');
+          camera.aspect = container.clientWidth / container.clientHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(container.clientWidth, container.clientHeight);
+        }
       });
     });
+
+    // Helper functions
+    function fillExample(compA, compB) {
+      document.querySelector('[name="compoundA"]').value = compA;
+      document.querySelector('[name="compoundB"]').value = compB;
+    }
+
+    function generateReactionAnalysis(compoundA, compoundB, conditions) {
+      // Simple reaction prediction logic
+      const reactions = {
+        'H2+O2': {
+          product: '2H₂O',
+          type: 'Combustion',
+          energy: -572,
+          yield: 95,
+          conditions: 'Requires ignition, exothermic'
+        },
+        'CH4+O2': {
+          product: 'CO₂ + 2H₂O',
+          type: 'Combustion',
+          energy: -890,
+          yield: 98,
+          conditions: 'Complete combustion, highly exothermic'
+        },
+        'NaCl+H2O': {
+          product: 'Na⁺ + Cl⁻ (aq)',
+          type: 'Dissolution',
+          energy: -4,
+          yield: 100,
+          conditions: 'Ionic dissociation in water'
+        },
+        'Ca+H2O': {
+          product: 'Ca(OH)₂ + H₂',
+          type: 'Single Replacement',
+          energy: -414,
+          yield: 92,
+          conditions: 'Vigorous reaction with gas evolution'
+        },
+        'Mg+O2': {
+          product: '2MgO',
+          type: 'Synthesis',
+          energy: -1204,
+          yield: 96,
+          conditions: 'Bright white flame, very exothermic'
+        }
+      };
+
+      const key = `${compoundA}+${compoundB}`;
+      const reverseKey = `${compoundB}+${compoundA}`;
+      const reaction = reactions[key] || reactions[reverseKey];
+
+      if (reaction) {
+        return `
+          <div class="space-y-6">
+            <div class="bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-500/30 rounded-xl p-6">
+              <h4 class="text-xl font-bold text-green-400 mb-3">✅ Reaction Prediction Complete</h4>
+              <p class="text-gray-200 text-lg"><strong>${compoundA} + ${compoundB} → ${reaction.product}</strong></p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="bg-gradient-to-br from-purple-500/20 to-purple-600/20 border border-purple-500/30 rounded-lg p-4">
+                <h5 class="font-semibold text-purple-400 mb-2">🔬 Reaction Type</h5>
+                <p class="text-gray-300">${reaction.type}</p>
+              </div>
+              <div class="bg-gradient-to-br from-blue-500/20 to-blue-600/20 border border-blue-500/30 rounded-lg p-4">
+                <h5 class="font-semibold text-blue-400 mb-2">⚡ Energy Change</h5>
+                <p class="text-gray-300">${reaction.energy} kJ/mol</p>
+              </div>
+              <div class="bg-gradient-to-br from-green-500/20 to-green-600/20 border border-green-500/30 rounded-lg p-4">
+                <h5 class="font-semibold text-green-400 mb-2">📊 Expected Yield</h5>
+                <p class="text-gray-300">${reaction.yield}%</p>
+              </div>
+            </div>
+            
+            <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+              <h5 class="font-semibold text-yellow-400 mb-3">🔬 Reaction Conditions</h5>
+              <p class="text-gray-300 mb-4">${reaction.conditions}</p>
+              <div class="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span class="text-purple-400 font-medium">Temperature:</span>
+                  <span class="text-gray-300 ml-2">${conditions.temperature}K</span>
+                </div>
+                <div>
+                  <span class="text-blue-400 font-medium">Pressure:</span>
+                  <span class="text-gray-300 ml-2">${conditions.pressure} atm</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-xl p-6">
+              <h5 class="font-semibold text-indigo-400 mb-3">🧪 3D Visualization Notes</h5>
+              <ul class="space-y-2 text-gray-300 text-sm">
+                <li>• <strong>Purple molecule:</strong> ${compoundA} (Compound A)</li>
+                <li>• <strong>Blue molecule:</strong> ${compoundB} (Compound B)</li>
+                <li>• Use mouse to rotate and zoom the 3D view</li>
+                <li>• Click "Animate Reaction" to see molecular collision</li>
+                <li>• Atom colors follow standard CPK coloring scheme</li>
+              </ul>
+            </div>
+          </div>
+        `;
+      } else {
+        return `
+          <div class="space-y-6">
+            <div class="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-xl p-6">
+              <h4 class="text-xl font-bold text-yellow-400 mb-3">⚠️ Custom Reaction Analysis</h4>
+              <p class="text-gray-200 text-lg"><strong>${compoundA} + ${compoundB}</strong></p>
+              <p class="text-gray-300 mt-2">This appears to be a custom or complex reaction not in our database.</p>
+            </div>
+            
+            <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+              <h5 class="font-semibold text-blue-400 mb-3">🔬 General Analysis</h5>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span class="text-purple-400 font-medium">Compound A:</span>
+                  <span class="text-gray-300 ml-2">${compoundA}</span>
+                </div>
+                <div>
+                  <span class="text-blue-400 font-medium">Compound B:</span>
+                  <span class="text-gray-300 ml-2">${compoundB}</span>
+                </div>
+                <div>
+                  <span class="text-green-400 font-medium">Temperature:</span>
+                  <span class="text-gray-300 ml-2">${conditions.temperature}K</span>
+                </div>
+                <div>
+                  <span class="text-yellow-400 font-medium">Pressure:</span>
+                  <span class="text-gray-300 ml-2">${conditions.pressure} atm</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-xl p-6">
+              <h5 class="font-semibold text-indigo-400 mb-3">💡 Recommendations</h5>
+              <ul class="space-y-2 text-gray-300 text-sm">
+                <li>• Check molecular compatibility and reaction feasibility</li>
+                <li>• Consider catalysts to improve reaction rate</li>
+                <li>• Monitor temperature and pressure for optimal conditions</li>
+                <li>• Ensure proper safety protocols are followed</li>
+                <li>• The 3D visualization shows molecular structures</li>
+              </ul>
+            </div>
+
+            <div class="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-xl p-6">
+              <h5 class="font-semibold text-purple-400 mb-3">🧪 3D Visualization</h5>
+              <p class="text-gray-300 text-sm">
+                The molecular structures are displayed above. Use the interactive controls to explore 
+                the 3D representation of your compounds. The visualization helps understand molecular 
+                geometry and potential reaction sites.
+              </p>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // Add some sparkle effects on load
+    document.addEventListener('DOMContentLoaded', () => {
+      // Create floating particles in background
+      for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+          createFloatingParticle();
+        }, i * 200);
+      }
+    });
+
+    function createFloatingParticle() {
+      const particle = document.createElement('div');
+      particle.className = 'fixed w-2 h-2 bg-purple-400 rounded-full opacity-30 pointer-events-none z-0';
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.top = Math.random() * 100 + 'vh';
+      particle.style.animation = `float ${5 + Math.random() * 10}s ease-in-out infinite`;
+      document.body.appendChild(particle);
+      
+      setTimeout(() => {
+        particle.remove();
+      }, 15000);
+    }
   </script>
 </body>
 </html>
