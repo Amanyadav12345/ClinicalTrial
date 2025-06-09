@@ -6,15 +6,12 @@ port is 4000 : localhost:4000
 
 
 
-included all type of certification needed for the best practices in the response 
+Incorporates key compliance frameworks including GCP (ICH-GCP), ISO 14155, and FDA 21 CFR Part 11 to ensure regulatory alignment.
 
-Adds compliance frameworks (GCP, ISO, FDA).
+Emphasizes ethical standards and informed consent practices, in line with international research ethics and the Declaration of Helsinki.
 
-Explicitly asks for ethical and informed consent considerations.
+Mandates the use of CDISC standards (such as SDTM and ADaM) for consistent and regulatory-acceptable clinical data structuring.
 
-Requires CDISC standards in data-related sections.
+Requires clean, semantically structured HTML output to ensure compatibility with modern dashboards and frontend frameworks.
 
-Insists on clean HTML output for UI compatibility.
-
-Embeds risk mitigation and timeline planning, mandatory in protocol planning.
-h
+Integrates risk mitigation strategies and detailed timeline planning, both of which are essential for comprehensive and compliant protocol development.
