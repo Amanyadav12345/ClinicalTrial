@@ -246,20 +246,20 @@
 
   <!-- History Sidebar -->
   <div id="historySidebar" class="fixed top-0 right-0 h-full w-80 bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out z-50">
-    <div class="p-6 border-b border-gray-200">
-      <div class="flex justify-between items-center">
-        <h2 class="text-lg font-semibold text-gray-900">Trial History</h2>
-        <button onclick="toggleHistory()" class="p-1 hover:bg-gray-100 rounded">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-    <div class="p-6">
-      <ul id="historyList" class="space-y-3"></ul>
+  <div class="p-6 border-b border-gray-200">
+    <div class="flex justify-between items-center">
+      <h2 class="text-lg font-semibold text-gray-900">Trial History</h2>
+      <button onclick="toggleHistory()" class="p-1 hover:bg-gray-100 rounded">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
     </div>
   </div>
+  <div class="p-6 overflow-y-auto h-[calc(100%-4.5rem)]"> <!-- Scrollable content -->
+    <ul id="historyList" class="space-y-3"></ul>
+  </div>
+</div>
 
   <!-- Consent Modal -->
   <div id="consentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">

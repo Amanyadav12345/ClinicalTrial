@@ -801,6 +801,21 @@
         particle.remove();
       }, 15000);
     }
+    fetch("/optimize-production", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    reaction: "CH4 + O2 → CO2 + H2O",
+    reactants: "CH4, O2",
+    products: "CO2, H2O",
+    temp: 298,
+    pressure: 1,
+    catalyst: "None",
+    notes: "Combustion of methane"
+  })
+})
+.then(res => res.json())
+.then(data => console.log(data));
   </script>
 </body>
 </html>

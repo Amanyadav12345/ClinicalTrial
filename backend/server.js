@@ -174,18 +174,28 @@ app.get("/export", (req, res) => {
 
 // === Chemistry Reaction Optimizer ===
 app.post("/optimize-production", async (req, res) => {
-  const { reaction, reactants, products, temp, pressure, catalyst, notes } = req.body;
+  try {
+    const {
+      reaction,
+      reactants = "Not provided",
+      products = "Not provided",
+      temp = "Not specified",
+      pressure = "Not specified",
+      catalyst = "Not provided",
+      notes = "None"
+    } = req.body;
 
-  const prompt = `
+    // Build the prompt for Gemini or your AI model
+    const prompt = `
 You are an expert chemical engineer. Optimize this reaction: ${reaction}
 
 Details:
-- Reactants: ${reactants || "Not provided"}
-- Products: ${products || "Not provided"}
-- Current Temp: ${temp || "Not specified"}
-- Current Pressure: ${pressure || "Not specified"}
-- Catalyst Used: ${catalyst || "Not provided"}
-- Notes: ${notes || "None"}
+- Reactants: ${reactants}
+- Products: ${products}
+- Current Temp: ${temp}
+- Current Pressure: ${pressure}
+- Catalyst Used: ${catalyst}
+- Notes: ${notes}
 
 Please:
 1. Suggest optimal conditions (temperature, pressure, catalyst).
@@ -194,17 +204,18 @@ Please:
 4. Add references if available.
 
 Respond in clear HTML using <h2>, <ul>, <p>. No code blocks.
-`;
+`.trim();
 
-  try {
+    // Call the Gemini API (or whichever model you use)
     const result = await model.generateContent({
       contents: [{ role: "user", parts: [{ text: prompt }] }],
     });
 
     const recommendation = result.response.text();
 
+    // Optional: mock molecular data (replace with real moleculeData if you have it)
     const moleculeData = `
-  MJ201100                      
+MJ201100                      
 
   4  3  0  0  0  0            999 V2000
     0.0000    0.0000    0.0000 C   0  0
@@ -215,17 +226,20 @@ Respond in clear HTML using <h2>, <ul>, <p>. No code blocks.
   2  3  2  0
   1  4  1  0
 M  END
-    `.trim();
+`.trim();
 
     res.status(200).json({
+      success: true,
       recommendation,
       moleculeData
     });
   } catch (err) {
-    console.error("AI error:", err);
+    console.error("AI optimization error:", err);
 
     const isQuotaExceeded = err.status === 429;
+
     res.status(isQuotaExceeded ? 429 : 500).json({
+      success: false,
       recommendation: isQuotaExceeded
         ? "⚠️ Gemini API quota exceeded. Please try again later."
         : "❌ AI failed to generate a response.",
