@@ -5,7 +5,7 @@ services:
     build: .
     container_name: node_backend
     ports:
-      - "3000:3000"
+      - "4000:4000"
     # volumes:
     #   - .:/app
     command: ["sh", "./executable.sh"]
