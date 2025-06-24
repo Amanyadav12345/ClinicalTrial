@@ -1,22 +1,18 @@
-# Use an official Node.js runtime as base image
+# Use an official Node.js runtime as a parent image
 FROM node:18-alpine
 
-# Create and set working directory
+# Set working directory
 WORKDIR /app
 
 # Copy package.json and install dependencies
 COPY package*.json ./
 RUN npm install
 
-# Copy entire project, including the script
+# Copy the entire project
 COPY . .
 
-# Make the script executable
-RUN chmod +x ./executable.sh
-
-# Expose the port your app runs on
+# Expose port (you can change if your app uses another)
 EXPOSE 3000
 
-# Use the shell script as entrypoint
-CMD ["sh", "./executable.sh"]
-
+# Command to run the app
+CMD ["node", "backend/server.js"]
