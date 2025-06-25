@@ -214,7 +214,7 @@
                   Show Eligible Only
                 </button>
                 <button id="openDashboardBtn"
-                        onclick="window.open('dashboard.html', '_blank')"
+                        onclick="openDashboard()"
                         class="px-3 py-1 bg-teal-100 text-teal-700 rounded-lg hover:bg-teal-200 transition-colors text-sm font-medium">
                   Open Dashboard
                 </button>
@@ -294,6 +294,8 @@
     let currentConsentPatient = "";
     let signaturePad;
     let historyOpen = false;
+    let allPatients = []; // Store all patient data
+    let currentTrialData = {}; // Store current trial information
 
     // Initialize
     document.addEventListener('DOMContentLoaded', function() {
@@ -333,11 +335,64 @@
       window.open('chemistry-lab.html', '_blank');
     }
 
+    // NEW: Dashboard opener with data transfer
+    function openDashboard() {
+      if (allPatients.length === 0) {
+        alert('Please upload patient data first before opening the dashboard.');
+        return;
+      }
+
+      // Prepare data package to send to dashboard
+      const dashboardData = {
+        patients: allPatients,
+        trialInfo: currentTrialData,
+        eligiblePatients: allPatients.filter(p => p.eligible === '✅ Yes'),
+        timestamp: new Date().toISOString()
+      };
+
+      // Open dashboard in new window
+      const dashboardWindow = window.open('dashboard.html', '_blank');
+      
+      // Wait for dashboard to load, then send data
+      dashboardWindow.addEventListener('load', function() {
+        dashboardWindow.postMessage({
+          type: 'PATIENT_DATA',
+          data: dashboardData
+        }, '*');
+      });
+
+      // Alternative: Set data on window object for immediate access
+      if (dashboardWindow) {
+        // Set a timeout to ensure the window is ready
+        setTimeout(() => {
+          try {
+            dashboardWindow.patientData = dashboardData;
+            dashboardWindow.postMessage({
+              type: 'PATIENT_DATA',
+              data: dashboardData
+            }, '*');
+          } catch (error) {
+            console.log('Dashboard window not ready yet, data will be sent via postMessage');
+          }
+        }, 1000);
+      }
+    }
+
     // Form submission
     document.getElementById('trialForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
       const data = Object.fromEntries(formData);
+      
+      // Store current trial data
+      currentTrialData = {
+        disease: data.disease,
+        phase: data.phase,
+        region: data.region,
+        endpoints: data.endpoints,
+        duration: data.duration,
+        createdAt: new Date().toISOString()
+      };
 
       const responseEl = document.getElementById('aiResponse');
       responseEl.innerHTML = "<div class='flex items-center space-x-2'><div class='animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600'></div><span class='text-gray-500'>Generating AI recommendation...</span></div>";
@@ -479,7 +534,7 @@
           const isEligible = hasTargetDisease && ageNum >= 18 && ageNum <= 65 && 
                            !hasCriticalComorbidity && stressIndex <= 4;
 
-          output.push({
+          const patientData = {
             name: name.trim(),
             age: ageNum,
             region: region.trim(),
@@ -488,15 +543,20 @@
             eConsent,
             profession: profession?.trim(),
             company: company?.trim(),
-            stressIndex: stressIndex
-          });
+            stressIndex: stressIndex,
+            uploadedAt: new Date().toISOString()
+          };
+
+          output.push(patientData);
         });
 
+        // Store all patients data globally
+        allPatients = output;
+        
         populatePatientTable(output);
-        // Store eligible patients for dashboard
-        const eligibleOnly = output.filter(p => p.eligible === '✅ Yes');
-        // Note: Using a simple variable instead of localStorage for Claude.ai compatibility
-        window.eligiblePatients = eligibleOnly;
+        
+        // Also store eligible patients for backward compatibility
+        window.eligiblePatients = output.filter(p => p.eligible === '✅ Yes');
       };
 
       reader.readAsText(file);
@@ -581,6 +641,14 @@
         }
       });
 
+      // Update the stored patient data
+      const patientIndex = allPatients.findIndex(p => p.name === currentConsentPatient);
+      if (patientIndex !== -1) {
+        allPatients[patientIndex].eConsent = 'yes';
+        allPatients[patientIndex].signatureData = signatureData;
+        allPatients[patientIndex].consentDate = new Date().toISOString();
+      }
+
       alert(`Consent recorded for ${currentConsentPatient}.`);
       closeConsent();
     }
@@ -622,6 +690,22 @@
         document.getElementById('historyList').innerHTML = '<li class="text-gray-500 text-sm">Failed to load history</li>';
       }
     }
+
+    // Listen for messages from other windows (for cross-window communication)
+    window.addEventListener('message', function(event) {
+      if (event.data.type === 'REQUEST_PATIENT_DATA') {
+        // Send patient data to requesting window
+        event.source.postMessage({
+          type: 'PATIENT_DATA_RESPONSE',
+          data: {
+            patients: allPatients,
+            trialInfo: currentTrialData,
+            eligiblePatients: allPatients.filter(p => p.eligible === '✅ Yes'),
+            timestamp: new Date().toISOString()
+          }
+        }, '*');
+      }
+    });
   </script>
 </body>
 </html>
