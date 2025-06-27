@@ -9,3 +9,4 @@ services:
     volumes:
       - .:/app
     command: ["sh", "./executable.sh"]
+    restart: always
